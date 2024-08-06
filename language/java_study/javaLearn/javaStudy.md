@@ -351,8 +351,13 @@ JRE基本介绍
 1. JRE （Java Runtime Environment）<br> JRE = JVM + Java核心的类库
 2. 包括java虚拟机和java程序所需要的核心类库等，如果向要运行一个开发好的java程序，计算机中只需要安装JRE即可。
 
+JDK、JRE和JVM的关系
+1. JDK = JRE + 开发工具集
+2. JRE = JVM + Java SE 标准类库
+3. JDK = JVM + Java SE 标准类库 + 开发工具集
+4. 如果只想运行开发好的.class文件 只需要JRE即可
 
 xxx.java --> java.class --> jvm(java.class)
 
 ##### Java 开发环境搭建
-
+略。。。
