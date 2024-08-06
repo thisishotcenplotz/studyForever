@@ -334,10 +334,25 @@ Java技术体系平台
 ##### Java 特点
 1. Java语言是面向对象的
 2. Java语言是健壮的。Java的强类型机制、异常处理、垃圾回收等特性是Java健壮性的重要保障
-3. Java是跨平台的。
+3. Java是跨平台的(一次编译，到处运行)。
 4. Java语言是解释型的。
 
 ##### Java 运行机制及运行流程
+- Java 核心机制---java虚拟机
+  - JVM是一个虚拟的计算机，具有几零几并使用不同的存储区域。负责执行指令，管理数据、内存、寄存器，包含在JDK中。
+  - 对于不同的平台，you不同的虚拟机。
+  - Java虚拟机机制屏蔽了底层运行平台的区别，实现了"一次编译，到处运行"
+
+什么是JDK，JRE
+1. JDK的全称是 java development kit。<br> JDK = JRE + Java的开发工具（java,javac,javadoc,javap等）
+2. JDK是提供给Java开发人员使用的，其中包含了java的开发工具，也包括了JRE。所以安装JDK，就不用单独再安装JRE了
+
+JRE基本介绍
+1. JRE （Java Runtime Environment）<br> JRE = JVM + Java核心的类库
+2. 包括java虚拟机和java程序所需要的核心类库等，如果向要运行一个开发好的java程序，计算机中只需要安装JRE即可。
+
+
+xxx.java --> java.class --> jvm(java.class)
 
 ##### Java 开发环境搭建
 
