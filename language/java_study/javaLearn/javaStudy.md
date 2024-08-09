@@ -423,17 +423,35 @@ java中的注释类型：
 ```java
 javadoc -d 文件名 -author -version ...  Demo.java
 ```
-| 标签          | 描述                         | 示例代码                                               |
-|:------------|:---------------------------|:---------------------------------------------------|
-| @author     | 标记一个类的作者                   | @author description                                |
-| @deprecated | 描述一个过期的类或成员                | @deprecated description                            |
-| @docRoot    | 指明当前文档根目录的路径               | Directory Path                                     |
-| @exception  | 标志一个类爬出的异常                 | @exception exception-name explanation              |
-| @inheritDoc | 从直接父类继承的注释                 | Inherits a comment from the immediate super class. |
-| @link       | 插入一个到另一个主题的链接              | {@link name text}                                  |
-| @linkplain  | 插入一个到另一个主题的链接,但是该链接显示纯文本文字 | Insert an in-line link to another topic            |
-|             |                            |                                                    |
-|             |                            |                                                    |
-|             |                            |                                                    |
-|             |                            |                                                    |
-|             |                            |                                                    |
+| 标签          | 描述                                       | 示例代码                                                           |
+|:------------|:-----------------------------------------|:---------------------------------------------------------------|
+| @author     | 标记一个类的作者                                 | @author description                                            |
+| @deprecated | 描述一个过期的类或成员                              | @deprecated description                                        |
+| @docRoot    | 指明当前文档根目录的路径                             | Directory Path                                                 |
+| @exception  | 标志一个类爬出的异常                               | @exception exception-name explanation                          |
+| @inheritDoc | 从直接父类继承的注释                               | Inherits a comment from the immediate super class.             |
+| @link       | 插入一个到另一个主题的链接                            | {@link name text}                                              |
+| @linkplain  | 插入一个到另一个主题的链接,但是该链接显示纯文本文字               | Insert an in-line link to another topic                        |
+| @param      | 说明一个方法的参数                                | @param parameter-name explanation                              |
+| @return     | 说明返回值类型                                  | @return explanation                                            |
+| @see        | 执行到另一个主题的链接                              | @see author                                                    |
+| @serial     | 说明一个序列化属性                                | @serial description                                            |
+| @serialData | 说明通过writeObject() 和writeExternal()方法写的数据 | @serialData description                                        |
+| @since      | 表一当前引入一个特定的变化时                           | @since release                                                 |
+| @throws     | 和 @exception 标签一样                        | the @throw tag has the same meaning as the @exception tag.     |
+| @value      | 显示常量的值，该常量必须是static属性。                   | Display the value of a constant, which must be a static field. |
+| @version    | 指定类的版本                                   | @version info                                                  |
+
+<br>
+<br>
+<br>
+<br>
+##### Java 代码规范
+
+1. 类、方法的注释，要以javadoc的方式来写。
+2. 非 Java Doc的注释，往往是给代码的维护者看的，着重告诉读者为什么这样写
+3. 使用tab操作，实现缩进，默认整体向右边移动，使用 `shift + tag` 整体向左移动
+4. 运算符和 = 两边习惯各加一个空格。
+5. 源文件使用utf-8编码
+6. 行宽高度不要超过80字符
+7. 代码编写次行风格和尾行风格
