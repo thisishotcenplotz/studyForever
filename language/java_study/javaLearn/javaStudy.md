@@ -428,7 +428,7 @@ javadoc -d 文件名 -author -version ...  Demo.java
 | @author     | 标记一个类的作者                                 | @author description                                            |
 | @deprecated | 描述一个过期的类或成员                              | @deprecated description                                        |
 | @docRoot    | 指明当前文档根目录的路径                             | Directory Path                                                 |
-| @exception  | 标志一个类爬出的异常                               | @exception exception-name explanation                          |
+| @exception  | 标志一个类抛出的异常                               | @exception exception-name explanation                          |
 | @inheritDoc | 从直接父类继承的注释                               | Inherits a comment from the immediate super class.             |
 | @link       | 插入一个到另一个主题的链接                            | {@link name text}                                              |
 | @linkplain  | 插入一个到另一个主题的链接,但是该链接显示纯文本文字               | Insert an in-line link to another topic                        |
@@ -455,3 +455,13 @@ javadoc -d 文件名 -author -version ...  Demo.java
 5. 源文件使用utf-8编码
 6. 行宽高度不要超过80字符
 7. 代码编写次行风格和尾行风格
+
+
+# 第三章 变量
+目录：
+- 变量介绍
+- +号的使用
+- 数据类型
+- 编码
+- 数据类型转换
+
