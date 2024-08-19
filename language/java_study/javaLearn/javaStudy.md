@@ -753,4 +753,16 @@ a^b: 当a和b不同时，则为true，否则为false.
 - return
 
 
+##### switch
+1. switch 关键字表示switch分支
+2. 表达式对应一个值
+3. case常量1：当表达式的值等于常量1，就执行语句块1
+4. break：表示退出switch
+5. 如果case常量1匹配，就执行语句块1，如果没有匹配就继续匹配case常量2.
+6. 如果一个都没有匹配上，执行default
+
+##### for loop
+
+
+
  
