@@ -9,6 +9,20 @@ public class For01 {
         }
     }
 
+    public static void example02(){
+        // 无限循环
+        // 可以配合break使用
+        for (;;){
+            System.out.println("");
+        }
+    }
+    public static void example03(){
+        for (int i = 0, j = 0; i < 10000; i++,j+=2){
+            System.out.println(i);
+            System.out.println(j);
+        }
+    }
+
     public static void main(String[] args) {
         for (int i = 0; i < 100; i++) {
             System.out.println("Hello World");

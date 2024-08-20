@@ -763,6 +763,30 @@ a^b: 当a和b不同时，则为true，否则为false.
 
 ##### for loop
 
+死循环示例：
+```java
+for(;;){
+    
+}
+
+```
 
 
  
+##### while loop
+
+```java
+while (){
+    
+}
+```
+
+
+```java
+do{
+    
+}
+while();
+
+
+```
