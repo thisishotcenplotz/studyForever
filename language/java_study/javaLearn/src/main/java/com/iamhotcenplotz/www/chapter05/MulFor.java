@@ -56,9 +56,9 @@ public class MulFor {
             }
 
             for (int j = 1; j <= 2 * i - 1; j++) {
-                if (j == 1 || j == 2 * i -1 || i == size){
+                if (j == 1 || j == 2 * i - 1 || i == size) {
                     System.out.print("*");
-                }else {
+                } else {
                     System.out.print(" ");
                 }
             }
@@ -66,11 +66,23 @@ public class MulFor {
         }
     }
 
+    public static void randomNum() {
+        int cnt = 0;
+        int randomNumber = 0;
+        do {
+            randomNumber = (int) (Math.random() * 100 + 1);
+            cnt++;
+            System.out.println(cnt + " " + randomNumber);
+        } while (randomNumber != 97);
+
+    }
+
     public static void main(String[] args) {
 //        exercise01();
 //        exercise02();
 //        exercise03();
 //        exercise04();
-        exercise05();
+//        exercise05();
+        randomNum();
     }
 }
