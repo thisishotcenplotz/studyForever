@@ -790,3 +790,15 @@ while();
 
 
 ```
+
+##### break,continue
+
+```java
+if(...){... break;}
+        
+if(...){... continue;}
+
+```
+
+##### return 
+return 使用在方法，表示跳出所在的方法，在讲解方法的时候，会详细的介绍。
