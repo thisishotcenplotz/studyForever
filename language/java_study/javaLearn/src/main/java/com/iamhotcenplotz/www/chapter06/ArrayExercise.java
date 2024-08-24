@@ -150,6 +150,21 @@ public class ArrayExercise {
         }
     }
 
+    public static void arrayExtension(){
+        int[] arr = {1,2,3};
+        int[] arrNew = new int[arr.length +1];
+
+        for (int i = 0; i < arr.length; i++) {
+            arrNew[i] = arr[i];
+        }
+        arrNew[arrNew.length -1] = 4;
+        arr = arrNew;
+    }
+
+    public static void arrayReduction(){
+
+    }
+
     public static void main(String[] args) {
 //        exercise01();
 //        arrayInitialization01();
