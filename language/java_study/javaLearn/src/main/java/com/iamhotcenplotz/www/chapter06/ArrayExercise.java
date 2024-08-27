@@ -82,7 +82,7 @@ public class ArrayExercise {
     }
 
     public static void arrayExercise02() {
-        int[] data = {1, 2, 3, 4, 5, 6, 7, 8, 9,-1};
+        int[] data = {1, 2, 3, 4, 5, 6, 7, 8, 9, -1};
         int maxNum = data[0];
         int maxNumIdx = 0;
 
@@ -100,25 +100,26 @@ public class ArrayExercise {
                 minNumIdx = i;
             }
         }
-        System.out.println(maxNum+" "+maxNumIdx);
-        System.out.println(minNum+" "+minNumIdx);
+        System.out.println(maxNum + " " + maxNumIdx);
+        System.out.println(minNum + " " + minNumIdx);
     }
 
     public static void arrayAssign01() {
         // 基本数据类型赋值，赋值方式是值拷贝。
         // 数组在默认情况下是引用传递，赋的值是地址，赋值方式为引用
 
-        int[] a1 = {1,2,3};
+        int[] a1 = {1, 2, 3};
         int[] a2 = a1;
-        a2[2] =4;
+        a2[2] = 4;
 
         for (int i = 0; i < a1.length; i++) {
             System.out.println(a1[i] + " " + a2[i]);
         }
 
     }
-    public static void arrayCopy(){
-        int[] arr1 = {1,2,3,4,5};
+
+    public static void arrayCopy() {
+        int[] arr1 = {1, 2, 3, 4, 5};
         int[] arr2 = new int[arr1.length];
 
         for (int i = 0; i < arr1.length; i++) {
@@ -126,23 +127,23 @@ public class ArrayExercise {
         }
     }
 
-    public static void arrayReverse(){
-        int[] arr = {11,22,33,44,55,66};
+    public static void arrayReverse() {
+        int[] arr = {11, 22, 33, 44, 55, 66};
         int[] rst = new int[arr.length];
-        for (int i = arr.length-1; i >=0 ; i--) {
-            rst[arr.length-i-1] = arr[i];
+        for (int i = arr.length - 1; i >= 0; i--) {
+            rst[arr.length - i - 1] = arr[i];
         }
         for (int i = 0; i < arr.length; i++) {
             System.out.println(rst[i]);
         }
         System.out.println();
-        for (int i = 0; i < arr.length/2; i++) {
+        for (int i = 0; i < arr.length / 2; i++) {
             int tmp = arr[i];
             int left = arr[i];
-            int right = arr[arr.length-i-1];
+            int right = arr[arr.length - i - 1];
 
             arr[i] = right;
-            arr[arr.length-1-i] = tmp;
+            arr[arr.length - 1 - i] = tmp;
 
         }
         for (int i = 0; i < arr.length; i++) {
@@ -150,18 +151,24 @@ public class ArrayExercise {
         }
     }
 
-    public static void arrayExtension(){
-        int[] arr = {1,2,3};
-        int[] arrNew = new int[arr.length +1];
+    public static void arrayExtension() {
+        int[] arr = {1, 2, 3};
+        int[] arrNew = new int[arr.length + 1];
 
         for (int i = 0; i < arr.length; i++) {
             arrNew[i] = arr[i];
         }
-        arrNew[arrNew.length -1] = 4;
+        arrNew[arrNew.length - 1] = 4;
         arr = arrNew;
     }
 
-    public static void arrayReduction(){
+    public static void arrayReduction() {
+        int[] arr = {1, 2, 3, 4};
+        int[] arrNew = new int[arr.length - 1];
+
+        for (int i = 0; i < arr.length - 2; i++) {
+            arrNew[i] = arr[i];
+        }
 
     }
 
