@@ -65,5 +65,10 @@ class Tools {
             }
             System.out.println();
         }
+        this.printStatement();
+    }
+
+    public void printStatement(){
+        System.out.println("Hello~");
     }
 }
