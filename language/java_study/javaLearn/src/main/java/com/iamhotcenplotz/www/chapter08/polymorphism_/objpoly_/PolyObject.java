@@ -10,6 +10,6 @@ public class PolyObject {
 
         // 会调用运行类型的具体方法
         dog.cry();
-        cat.cry(); 
+        cat.cry();
     }
 }
