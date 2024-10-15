@@ -45,26 +45,46 @@ public class HouseView {
                     addHouse();
                     break;
                 case '2':
-                    System.out.println("查 找");
+                    find();
                     break;
                 case '3':
-                    System.out.println("删 除");
+                    deleteHouse();
                     break;
                 case '4':
-                    System.out.println("修 改");
+                    update();
                     break;
                 case '5':
-                    System.out.println("房 屋 列 表");
+                    listHouses();
                     break;
                 case '6':
-                    System.out.println("退出");
-                    this.loop = false;
+                    exit();
                     break;
             }
         } while (loop);
     }
 
-    public void addHouse(){
+    public void deleteHouse() {
+        System.out.println("---------------删除房源---------------");
+        System.out.println("---------请输入待删除房屋的编号---------");
+        int delID = Utility.readInt();
+        if (delID == -1) {
+            System.out.println("放弃删除");
+            return;
+        }
+        char choice = Utility.readConfirmSelection();
+
+        if (choice == 'Y') {
+            if (houseService.del(delID)) {
+                System.out.println("删除成功");
+            } else {
+                System.out.println("编号不存在，删除失败");
+            }
+        } else {
+            System.out.println("放弃删除");
+        }
+    }
+
+    public void addHouse() {
         System.out.println("---------------添加房源---------------");
 
         System.out.print("房主姓名：");
@@ -83,12 +103,83 @@ public class HouseView {
         String status = Utility.readString(16);
 
         House house = new House(0, name, phone, address, rent, status);
-        if(houseService.add(house)){
+        if (houseService.add(house)) {
             System.out.println("添加成功");
-        }else {
+        } else {
             System.out.println("添加失败");
         }
+    }
 
+    public void exit() {
+        char c = Utility.readConfirmSelection();
+        if (c == 'Y') {
+            loop = false;
+        }
+    }
+
+    public void find() {
+        System.out.println("请输入要查找的ID: ");
+        int findID = Utility.readInt();
+        House house = houseService.findById(findID);
+
+        if (house != null) {
+            System.out.println(house);
+        } else {
+            System.out.println("房屋不存在");
+        }
+    }
+
+    public void update() {
+        System.out.println("修改房屋信息");
+        System.out.print("请选择待修改房屋的编号:");
+
+        int updateId = Utility.readInt();
+
+        if(updateId == -1){
+            System.out.println("放弃修改...");
+            return;
+        }
+
+        House house = houseService.findById(updateId);
+
+        if (house == null) {
+            System.out.println("编号：" + updateId + " 不存在");
+            return;
+        }
+
+        System.out.println(house.getName());
+        String name = Utility.readString(8);
+        if(!"".equals(name)){
+            house.setName(name);
+        }
+
+        System.out.println(house.getPhone());
+        String  phone = Utility.readString(12);
+        if(!"".equals(phone)){
+            house.setPhone(String.valueOf(phone));
+        }
+
+        System.out.println(house.getAddress());
+        String  addr = Utility.readString(18);
+        if(!"".equals(addr)){
+            house.setAddress(String.valueOf(addr));
+        }
+
+        System.out.println(house.getRent());
+        int  rent = Utility.readInt(-1);
+        if(rent != -1){
+            house.setRent(rent);
+        }
+
+        System.out.println(house.getStatus());
+        String   status = Utility.readString(20);
+        if(!"".equals(status)){
+            house.setStatus(status);
+        }
+
+        System.out.println("修改成功");
 
     }
+
+
 }
