@@ -1,4 +1,4 @@
-package com.iamhotcenplotz.www.chapter08.houserent.model;
+package com.iamhotcenplotz.www.chapter09.houserent.model;
 /**
  * House 的对象表示一个房屋信息
  */

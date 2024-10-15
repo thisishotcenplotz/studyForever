@@ -1,8 +1,8 @@
-package com.iamhotcenplotz.www.chapter08.houserent.view;
+package com.iamhotcenplotz.www.chapter09.houserent.view;
 
-import com.iamhotcenplotz.www.chapter08.houserent.model.House;
-import com.iamhotcenplotz.www.chapter08.houserent.service.HouseService;
-import com.iamhotcenplotz.www.chapter08.houserent.utils.Utility;
+import com.iamhotcenplotz.www.chapter09.houserent.model.House;
+import com.iamhotcenplotz.www.chapter09.houserent.service.HouseService;
+import com.iamhotcenplotz.www.chapter09.houserent.utils.Utility;
 
 /**
  * 1. 显示界面

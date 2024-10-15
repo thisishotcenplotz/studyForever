@@ -1,6 +1,6 @@
-package com.iamhotcenplotz.www.chapter08.houserent;
+package com.iamhotcenplotz.www.chapter09.houserent;
 
-import com.iamhotcenplotz.www.chapter08.houserent.view.HouseView;
+import com.iamhotcenplotz.www.chapter09.houserent.view.HouseView;
 
 public class HouseRentApp {
     public static void main(String[] args) {

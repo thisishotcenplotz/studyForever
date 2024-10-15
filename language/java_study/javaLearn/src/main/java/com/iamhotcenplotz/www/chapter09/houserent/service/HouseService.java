@@ -1,6 +1,6 @@
-package com.iamhotcenplotz.www.chapter08.houserent.service;
+package com.iamhotcenplotz.www.chapter09.houserent.service;
 
-import com.iamhotcenplotz.www.chapter08.houserent.model.House;
+import com.iamhotcenplotz.www.chapter09.houserent.model.House;
 
 /**
  * 1. 定义House[]
