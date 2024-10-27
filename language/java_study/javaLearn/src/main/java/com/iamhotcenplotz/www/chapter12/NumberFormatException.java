@@ -14,6 +14,8 @@ public class NumberFormatException {
             int num2 = Integer.parseInt("abcd");
         } catch (java.lang.NumberFormatException e) {
             throw new java.lang.NumberFormatException("........");
+        } finally {
+            System.out.println("Finally...");
         }
     }
 }

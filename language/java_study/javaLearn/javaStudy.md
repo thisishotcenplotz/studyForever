@@ -1442,3 +1442,38 @@ Throwable
   - 程序员在代码中捕获发生的异常，自行处理
 - throws
   - 将发生的异常抛出，交给调用者（方法）来处理，最顶级的处理者就是jvm
+
+
+##### throws异常处理
+1. 如果一个方法（中的语句执行时）可能发生某种异常，但是并不确定如何处理这种异常，则此方法应显示地声明抛出异常，表明该方法将不对这些异常进行处理，而由该方法的调用者负责处理。
+2. 在方法声明中用throws语句可以声明抛出异常的列表，throws后面的异常类型可以是方法中产生的异常类型，也可以是它的父类
+
+##### 自定义异常
+1. 定义类：自定义异常类名，继承Exception 或RuntimeException
+2. 如果继承Exception，属于编译异常
+3. 如果继承RuntimeException，属于运行异常（一般来说，继承RuntimeException）
+
+
+# 第十三章：常用类
+
+目录：
+- 包装类
+- String类
+- StringBuffer和StringBuilder类
+- Math类
+- Date日期类、Calendar日历类以及新的日期
+- System类
+- Arrays类
+- BigInteger和BigDecimal
+
+
+##### 包装类
+1. 针对八种基本定义的数据类型相对的引用类型-包装类
+- boolean:Boolean
+- char: Character
+- byte: Byte
+- short: Short
+- int: Integer
+- long: Long
+- float: Float
+- double: Double
