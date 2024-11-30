@@ -1482,3 +1482,36 @@ Throwable
 
 1. String 对象用于保存字符串，也就是一组字符序列
 2. 字符串的字符使用Unicode字符编码，一个字符（不区分大小写和汉字）占两个字节。
+
+##### StringBuilder
+
+1. 一个可变的字符序列。此类提供一个与StringBuffer兼容的API，但不保证同步（StringBuilder不是线程安全。）该类被设计用作StringBuffer的一个简易替换，用在字符串缓冲区被单个线程使用的时候。
+如果可能，建议有限采用该类，因为在大多数视线中，它比StringBuffer要快。
+
+2. 在StringBuilder上的主要造作是append和insert方法，专科重载这些方法，以接受任意类型的数据。
+
+
+##### String VS StringBuilder VS StringBuffer
+
+1. StringBuilder 和StringBuffer 非常类似，均代表可变字符序列，而且方法也一样。
+2. String: 不可变字符序列，效率低，但是复用率高。
+3. StringBuffer: 可变字符序列，效率高（增删），线程安全
+4. StringBuilder: 可变字符序列，效率最高，线程不安全
+
+使用原则：
+1. 如果字符串存在大量的修改操作，一般使用StringBuffer 或 StringBuilder
+2. 如果字符串存在大量修改操作，并在单线程中，用StringBuilder
+3. 如果字符串存在大量的修改操作，并在多线程的情况，使用StringBuffer
+4. 如果我们字符串很少修改，被多个对象引用，使用String，如配置信息等。
+
+##### Arrays 类
+
+Arrays 里面包含了一些列静态方法，用于管理或操作数组（比如排序和搜索）。
+
+1. toString 返回数组的字符串形式
+2. sort 排序
+3. binarySearch 通过二分搜索进行查找，要求必须排好序
+4. copyOf 数组元素的复制
+5. fill 数组元素的填充
+6. equals 比较两个数组元素内容是否一致
+7. asList 将一组值转成list
