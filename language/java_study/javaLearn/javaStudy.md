@@ -1515,3 +1515,11 @@ Arrays 里面包含了一些列静态方法，用于管理或操作数组（比�
 5. fill 数组元素的填充
 6. equals 比较两个数组元素内容是否一致
 7. asList 将一组值转成list
+
+
+##### System 类
+
+1. exit
+2. arraycopy
+3. currentTimeMillens：返回当前时间距离1970-01-01 00：00：00 的毫秒数
+4. gc：运行垃圾回收机制
