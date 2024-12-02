@@ -1523,3 +1523,62 @@ Arrays 里面包含了一些列静态方法，用于管理或操作数组（比�
 2. arraycopy
 3. currentTimeMillens：返回当前时间距离1970-01-01 00：00：00 的毫秒数
 4. gc：运行垃圾回收机制
+
+
+##### 日期类
+1. 第一代：Date
+2. 第二代：Calendar
+3. 第三代：LocalDateTime  推荐使用
+
+# 第十四章：集合
+
+##### 目录：
+1. 集合框架体系图
+2. Collection 接口 特点 方法
+3. Collection接口的子接口：
+   - List实现类：
+     - ArrayList
+     - LinkedList
+     - Vector
+4. Collection接口的子接口
+ - Set实现类：
+   - HashSet
+   - LinkedHashSet
+   - TreeSet
+5. Map接口 特点方法 遍历方法
+6. Map接口的实现类：HashMap、Hashtable、LinkedHashMap、TreeMap、Properties
+7. Collections工具类的使用
+
+##### 集合的理解和好处
+
+数组：
+1. 长度开始时必须指定，而且一旦指定，不能更改
+2. 保存的必须为同一类型的元素
+3. 使用数组进行增加或删除元素比较麻烦
+
+集合：
+1. 可以懂爱保存任意多个对象，使用比较方便
+2. 提供了一系列方便的操作对象的方法：add、remove、set、get等
+3. 使用集合添加、删除新元素比较简洁
+
+##### 集合的框架体系
+
+- Collection
+  - List
+    - ArrayList
+    - LinkedList
+    - Vector
+  - Set
+    - HashSet
+    - TreeSet
+- Map
+  - HashMap
+  - Hashtable
+    - Properties
+  - TreeMap
+
+##### Collection 接口实现类的特点
+1. collection实现子类可以存放多个元素，每个元素可以使Object
+2. 有些Collection的实现类，可以存放重复的元素，有些不可以
+3. 有些Collection的实现类，有些是有序的（List），有些不是有序的（Set）
+4. Collection 接口没有直接的实现子类，是通过它的子接口Set和List来实现的。

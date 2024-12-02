@@ -1,6 +1,6 @@
 package com.iamhotcenplotz.www.chapter05
 
-object WhileLoop_ {
+object  WhileLoop_ {
   def exercise01(): Unit = {
     var i: Int = 0
 
