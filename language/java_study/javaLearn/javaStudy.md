@@ -1608,3 +1608,19 @@ Arrays 里面包含了一些列静态方法，用于管理或操作数组（比�
 1. Vector 底层也是一个对象数组，protected Object[] elementData;
 2. Vector 是线程同步的，即线程安全，Vector类的操作带synchronize
 3. 在开发中，需要线程同步安全时，使用Vector
+
+##### LinkedList
+1. LinkedList 底层实现了双向链表和双端队列的特点
+2. 可以先加任意元素（元素可以重复），可以添加null
+3. 线程不安全，没有实现同步
+
+LinkedList 底层机制
+1. linkedList底层维护了一个双向链表
+2. LinkedList中维护了两个属性first和last分别指向第一个和最后一个节点
+3. 每个节点（Node），里面又维护了prev、next和item三个属性，其中prev指向前一个，next指向下一个，最终实现双向链表。
+4. 所以LinkedList的元素的添加和删除不是通过数组完成的，相对来说效率较高。
+
+##### ArrayList VS LinkedList
+1. 如果我们改查的操作多，选ArrayList
+2. 如果增删操作多，选LInkedList
+3. 一般来说，80% ~ 90% 都是查询，因此大部分情况选择ArrayList
