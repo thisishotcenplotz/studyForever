@@ -1624,3 +1624,17 @@ LinkedList 底层机制
 1. 如果我们改查的操作多，选ArrayList
 2. 如果增删操作多，选LInkedList
 3. 一般来说，80% ~ 90% 都是查询，因此大部分情况选择ArrayList
+
+
+##### Set接口和常用方法
+
+1. 无序（添加和取出顺序不一致），没有索引
+2. 不允许添加重复元素，所以最多包含一个null
+3. JDK API 中set接口实现类有：AbstractSet，ConcurrentSKipListSet，CopyOrWriteArraySet，EnumSet，HashSet，TreeSet，JobStateReasons，LinkedHashSet。。。
+4. 常用方法：
+   - 和List接口一样，Set接口也是Collection的子接口，因此常用方法和collection接口一样。
+   - Set接口的遍历方式
+     - 可以使用迭代器
+     - 增强For
+     -  `不能使用`索引的方式来获取。
+5. HashSet 底层是 HashMap -> [数组+链表+红黑树]
