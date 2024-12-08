@@ -1638,3 +1638,26 @@ LinkedList 底层机制
      - 增强For
      -  `不能使用`索引的方式来获取。
 5. HashSet 底层是 HashMap -> [数组+链表+红黑树]
+    - HashSet底层是HashMap
+    - 添加一个元素时，先得到hash值-会转成索引 -> 索引值
+    - 找到存储数据表table，看到这个索引位置是否已经存放有元素
+    - 如果没有，直接加入
+    - 如果有，调用equals比较，如果相同，就放弃添加，如果不相同，则添加到最后
+    - 在Java8中，如果一条链表的元素个数超过TREEIFY_THRESHOLD（默认值8），并且table的大小 >= MIN_TREEIFY_CAPACITY(默认64)就会进行树化（红黑树）
+
+
+##### LinkedHashSet
+
+1. LinkedHashSet 是 HashSet 的子类
+2. LinkedHashSet 底层是一个LinkedHashMap，底层维护了一个 数组+双向链表
+3. LinkedHashSet 根据元素的HashCode 值来决定元素的存储位置，同时使用链表维护元素的次序，这使得元素看起来是以插入顺序保存的，
+4. linkedHashSet不允许添加重复元素
+
+##### Map接口和常用方法
+1. Map与collectin并列存在。用于保存具有映射关系的数据 k-v
+2. Map中的key和value可以使任何引用类型的数据，会封装到HashMap$node对象中
+3. Map中的key不允许重复
+4. Map中的value可以重复
+5. Map的key可以为null，value也可以为null，注意 key为null只能有一个
+6. 常用String类作为Map的key
+7. key和value之间存在单向一对一关系，即通过指定的key总能找到对应的value
