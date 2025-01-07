@@ -1661,3 +1661,13 @@ LinkedList 底层机制
 5. Map的key可以为null，value也可以为null，注意 key为null只能有一个
 6. 常用String类作为Map的key
 7. key和value之间存在单向一对一关系，即通过指定的key总能找到对应的value
+8. Map存放数据，一对k-v是放在一个HashMap$Node中的，因为Node实现了Entry接口。
+
+##### Map接口实现类 HashMap
+1. Map接口的常用实现类：HashMap、Hashtable和Properties
+2. HashMap是Map接口使用频率最高的实现类。
+3. HashMap是以key-value对的方式来存储数据的
+4. Key不能重复，但是value可以重复，允许使用null作为key或value
+5. 如果添加相同的key，则会覆盖原来的key-value pair，等同于修改key
+6. 与HashSet一样，不保证映射的顺序，因为底层是以hash表的方式来存储的。
+7. HashMap没有实现同步，因此线程不安全。
