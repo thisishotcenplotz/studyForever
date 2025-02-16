@@ -1671,3 +1671,43 @@ LinkedList 底层机制
 5. 如果添加相同的key，则会覆盖原来的key-value pair，等同于修改key
 6. 与HashSet一样，不保证映射的顺序，因为底层是以hash表的方式来存储的。
 7. HashMap没有实现同步，因此线程不安全。
+8. 原码剖析
+    - HashMap 底层维护了Node类型的数组table，默认为null
+    - 当创建对象时，将加载因子（loadfactor）初始化为0.75
+    - 当添加key-val时，通过key的哈希值得到在table的索引。然后判断该索引处是否有元素，如果没有元素直接添加。如果该索引处有元素，继续判断该元素的key是否和准备加入的key相等，如果相等，则直接替换val；如果不相等需要判断是树结构还是链表结构，做出相应的处理。如果添加时发现容量不够，则需要扩容。
+    - 第一次添加，则需要扩容table容量为16，临界值（threshold）为12.
+    - 以后再扩容，则需要扩容table容量为原来的2倍，临界值为原来的2倍，即24，依此类推。
+
+##### HashTable 的基本介绍
+1. 存放的元素时kv类型的
+2. hashTable的kv都不能为null，否则会抛出NullPointerException
+3. hashTable的使用方法和HashMap一样
+4. HashTable是线程安全的（synchronized），hashMap是线程不安全的。
+
+
+##### Map接口实现类-Properties
+
+1. Properties类继承自HashMap类并且实现了Map接口，也是使用一种kv对的形式来保存数据。
+2. 他的使用特点和Hashtable类似
+3. Properties 还可以用于 从 xxx.properties 文件中，加载数据到Properties类对象，进行读取和修改。
+4. 说明：xxx.properties 文件通常作为配置文件。[推荐文章](https://www.cnblogs.com/xudong-bupt/p/3758136.html)
+
+
+##### Summary ***
+
+在开发中，选择什么集合实现类，主要取决于业务操作特点，然后根据集合实现类特性进行选择
+
+1. 判断存储类型（一组对象或一组键值对）
+2. 一组对象：Collection接口
+    - 允许重复 List
+      - 增删多：LinkedList（底层维护了一个双向链表）
+      - 改查多：ArrayList（底层维护Object类型的可变数组）
+    - 不允许重复：Set
+      - 无序: HashSet （底层是HashMap，维护了一个哈希表，即 数组 + 链表 + 红黑树）
+      - 排序：TreeSet
+      - 插入和取出顺序一致： LinkedHashSet， 维护数组+双向链表
+3. 一组键值对：Map
+    - 键无序： HashMap （底层是 数组+链表+红黑树）
+    - 键排序：TreeMap
+    - 键插入和取出顺序一致：LinkedHashMap
+    - 读取文件：Properties
