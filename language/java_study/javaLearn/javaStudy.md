@@ -283,6 +283,15 @@ Java技术体系导图:
             - floyd-最短路径
             - 迪杰斯拉特-最短路径
     - 设计模式（23种）
+      - 单例模式
+      - 观察者模式
+      - 工厂模式
+      - 适配器模式
+      - 装饰者模式
+      - 代理模式
+      - 模板模式
+      - 职责链模式
+      - 其它（组合模式，桥接模式，原型模式。。）
     - JVM
       - JVM体系
       - 类加载过程/机制
@@ -307,6 +316,11 @@ Java技术体系导图:
 - DevOps，自动化部分管理项目，解决CI/CD
 - 大数据技术
 - 项目
+  - 电商
+  - 金融
+  - 教育
+  - 直播
+  - CRM、ERP
 - 高频面试题
 - 底层源码/内核研究
   - 计算机网络
@@ -1711,3 +1725,14 @@ LinkedList 底层机制
     - 键排序：TreeMap
     - 键插入和取出顺序一致：LinkedHashMap
     - 读取文件：Properties
+
+
+##### Collection 工具类
+
+1. Collections 是一个操作Set、List和Map等集合的工具类
+2. Collections中提供了一系列静态的方法对集合元素进行排序、查询和修改等操作
+    - reverse(List) 翻转List中的元素顺序
+    - shuffle(List) 对LIst集合元素进行随机排序
+    - sort(List) 根据元素的自然顺序指定List集合元素按升序排序
+    - sort(List, Comparator) 根据指定的Comparator 产生的顺序对List集合元素进行排序
+    - swap(List,int,int) 将指定list集合中的i处元素与j处元素进行交换
