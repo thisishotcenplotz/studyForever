@@ -49,5 +49,25 @@ class MyPanel extends JPanel {
         super.paint(g); // 调用父类方法，完成初始化
 
         g.drawOval(10,10,100,100);
+
+        // show draw methods
+//        g.drawLine(10,10,110,110);
+
+//        g.drawRect(10,10,100,100);
+
+//            g.setColor(Color.BLACK);
+//            g.fillRect(10,10,110,110);
+
+//        g.setColor(Color.cyan);
+//        g.fillOval(10,10,100,100);
+
+//        Image image = Toolkit.getDefaultToolkit().getImage(Panel.class.getResource("/"));
+//        g.drawImage(image, 0, 0, this);
+
+//        g.setColor(Color.BLACK);
+//        g.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+//        g.drawString("Hello World",30,30);
+
     }
+
 }
