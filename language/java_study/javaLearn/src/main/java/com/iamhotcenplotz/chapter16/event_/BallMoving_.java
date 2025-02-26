@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+
 /**
  * @author Der Hotcenplotz
  * @version 1.0
@@ -36,6 +37,9 @@ public class BallMoving_ extends JFrame{
 
 class BallPanel extends JPanel implements KeyListener {
 
+    private int x= 10;
+    private int y= 10;
+
     public BallPanel() {
         this.setBackground(Color.LIGHT_GRAY);
         this.setFocusable(true);
@@ -46,7 +50,7 @@ class BallPanel extends JPanel implements KeyListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.fillOval(10,10,20,20);
+        g.fillOval(x,y,20,20);
 
     }
 
@@ -60,6 +64,22 @@ class BallPanel extends JPanel implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         System.out.println((char)e.getKeyCode() + "被按下...");
+
+        if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+            y+=5;
+            System.out.println(x + "," + y);
+        }else if(e.getKeyCode() == KeyEvent.VK_UP) {
+            y-=5;
+            System.out.println(x + "," + y);
+        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            x-=5;
+            System.out.println(x + "," + y);
+        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            x+=5;
+            System.out.println(x + "," + y);
+        }
+
+        this.repaint();
     }
 
     // 当某个键松开了，该方法会触发
