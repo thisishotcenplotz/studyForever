@@ -8,19 +8,28 @@ public class Tank {
     private int x; //
     private int y;
     private int direct; // 0 -> up; 1 -> right; 2 -> down; 3 -> left;
+    private int speed = 1;
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 
     public void moveUp(){
-        y -=1;
+        y -=speed;
     }
     public void moveRight(){
-        x+=1;
+        x+=speed;
     }
 
     public void moveDown(){
-        y +=1;
+        y +=speed;
     }
     public void moveLeft(){
-        x-=1;
+        x-=speed;
     }
 
     public int getDirect() {

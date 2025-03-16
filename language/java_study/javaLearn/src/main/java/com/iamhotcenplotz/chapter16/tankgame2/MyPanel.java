@@ -15,7 +15,13 @@ public class MyPanel extends JPanel implements KeyListener {
     Hero hero = null;
 
     public MyPanel() {
+        //tank initial position
         hero = new Hero(100, 100);
+
+        // tank moving speed
+        hero.setSpeed(2);
+
+
         this.setBackground(Color.LIGHT_GRAY);
         this.setFocusable(true);
         this.addKeyListener(this);
