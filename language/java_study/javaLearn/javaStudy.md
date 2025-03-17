@@ -1875,3 +1875,29 @@ java事件处理采取”委派事件模型“。当事件发生时，产生事�
 2. 多线程：同一个时刻，可以执行多个线程，比如：一个qq进程，可以同时打开多个聊天窗口，一个迅雷进程，可以同时下载多个文件。
 3. 并发：同一个时刻，多个任务交替执行，造成一种“貌似同时”的错觉，简单说，单核cpu实现的多任务就是并发。
 4. 并行：同一个时刻，多个任务同时执行。多核cpu可以实现并行。
+
+
+##### 创建线程的两种方式
+
+1. 继承Thread类，重写run方法
+
+```java
+public class MyJob extends Thread {
+    @Override
+    public void run() {
+        ...
+    }
+}
+
+public class Test {
+
+    public static void main(String[] args) {
+        Myjob myjob = new Myjob();
+        
+        myjob.start();
+    }
+} 
+```
+2. 实现Runnable接口，重写run方法
+- 由于java是单继承的，在某些情况下一个类可能已经继承了某个父类，这时再用继承Thread类方法来创建线程显然是不可能了。
+- java设计者们提供了另外一个方式创建线程，就是通过实现Runnable接口来创建线程。
