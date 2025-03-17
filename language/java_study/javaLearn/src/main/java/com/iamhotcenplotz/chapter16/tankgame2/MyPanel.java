@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Vector;
 
 /**
  * @author Der Hotcenplotz
@@ -14,9 +15,18 @@ public class MyPanel extends JPanel implements KeyListener {
     // define tank
     Hero hero = null;
 
+    int enemySize = 3;
+    Vector<EnemyTank> enemyTanks = new Vector<>();
+
     public MyPanel() {
         //tank initial position
-        hero = new Hero(100, 100);
+        hero = new Hero(240, 400);
+
+        // enemy tanks
+        for (int i = 0; i< enemySize; i++){
+            enemyTanks.add(new EnemyTank(120 * (i + 1),0));
+        }
+
 
         // tank moving speed
         hero.setSpeed(2);
@@ -33,7 +43,12 @@ public class MyPanel extends JPanel implements KeyListener {
         super.paintComponent(g);
 
         // draw tank
-        drawTank(hero.getX(), hero.getY(), g, hero.getDirect(), 0);
+        drawTank(hero.getX(), hero.getY(), g, hero.getDirect(), 1);
+
+        for (EnemyTank e : enemyTanks){
+            drawTank(e.getX(), e.getY(), g, 2, 0);
+        }
+
 //        drawTank(hero.getX()+120, hero.getY(), g, hero.getDirect(), 1);
 //        drawTank(hero.getX()+240, hero.getY(), g, hero.getDirect(), 0);
 //        drawTank(hero.getX()+360, hero.getY(), g, hero.getDirect(), 1);
