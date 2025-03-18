@@ -1901,3 +1901,9 @@ public class Test {
 2. 实现Runnable接口，重写run方法
 - 由于java是单继承的，在某些情况下一个类可能已经继承了某个父类，这时再用继承Thread类方法来创建线程显然是不可能了。
 - java设计者们提供了另外一个方式创建线程，就是通过实现Runnable接口来创建线程。
+
+
+##### 继承Thread VS 实现Runnable的区别
+
+1. 从java的设计来看，通过继承Thread或者实现Runnable接口来创建线程本质上没有区别，从jdk帮助文档我们可以看到Thread类本身就实现了Runnable接口。
+2. 实现Runnable接口方式更加适合多个线程共享一个资源的情况，并且避免了单继承限制。

@@ -6,6 +6,8 @@ package com.iamhotcenplotz.chapter17.runnable01_;
  */
 public class RunnableDemo01_ {
     public static void main(String[] args) {
+
+        // 此处使用了静态代理模式...
         Thread thread = new Thread(new Cat2());
         thread.start();
 
