@@ -1924,4 +1924,9 @@ public class Test {
   - 5. setPriority: 更改线程的优先级
   - 6. getPriority: 获取该线程的优先级
   - 7. sleep: 在指定的毫秒数内让当前正在执行的线程休眠
-  - 8. interrupt: 中断线程 
+  - 8. interrupt: 中断线程
+  - 注意事项：
+    - start 底层会创建新的线程，调用run，run就是一个简单的方法调用，不会启动新线程
+    - 线程优先级范围
+    - interrupt 中断线程，但并没有真正的结束线程。所以一般用于正在休眠的线程
+    - sleep： 线程的金泰方法，让当前线程休眠
