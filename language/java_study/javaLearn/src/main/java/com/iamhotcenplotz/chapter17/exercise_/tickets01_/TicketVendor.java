@@ -10,8 +10,8 @@ public class TicketVendor extends Thread{
 
     @Override
     public void run() {
-        while (tickets > 0){
-            System.out.println("Vendor 01 sold a ticket, " + (tickets--) + " left...");
+        while (tickets >= 0){
+            System.out.println("Vendor " +Thread.currentThread().getName()+" sold a ticket, " + (tickets--) + " left...");
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {

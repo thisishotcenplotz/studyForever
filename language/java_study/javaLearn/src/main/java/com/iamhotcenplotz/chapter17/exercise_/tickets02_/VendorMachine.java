@@ -7,25 +7,17 @@ import com.iamhotcenplotz.chapter14.map_.TreeMap_;
  * @version 1.0
  */
 public class VendorMachine implements Runnable{
-    private String vendorName;
-
-    private int tickets;
-
-    public VendorMachine(String vendorName, int tickets) {
-        this.vendorName = vendorName;
-        this.tickets = tickets;
-    }
+    private static int tickets = 100;
 
     @Override
     public void run() {
-        while (tickets > 0){
-            System.out.println(this.vendorName + " sold a ticket, " + tickets-- + " tickets left");
-        }
-
-        try{
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            System.out.println(e.getMessage());
+        while (tickets >= 0){
+            System.out.println("Vendor " +Thread.currentThread().getName()+" sold a ticket, " + (--tickets) + " left...");
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }
