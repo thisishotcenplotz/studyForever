@@ -68,7 +68,7 @@ public class Short implements Runnable {
             }
 
             // print bullet position for test
-            System.out.println(Thread.currentThread().getName()+ " bullet position: [" + x + "," + y + "]");
+//            System.out.println(Thread.currentThread().getName()+ " bullet position: [" + x + "," + y + "]");
 
             // 挡子弹碰到敌人坦克时，也应该退出
             if (!(x >= 0 && y <= 1000 && y >= 0 && y <=750 && isAlive)) {

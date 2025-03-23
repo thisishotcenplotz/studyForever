@@ -37,7 +37,7 @@ public class EnemyTank extends Tank implements Runnable {
 
         while (true) {
             // 判断是否还有子弹,如果没有再建一个
-            if (shorts.size() < 1 && isAlive) {
+            if (shorts.size() < 2 && isAlive) {
                 Short s = null;
                 switch (getDirect()) {
                     case 0:
@@ -61,7 +61,7 @@ public class EnemyTank extends Tank implements Runnable {
             // 根据坦克方向继续移动
             switch (getDirect()) {
                 case 0:
-                    for (int i = 0; i < 30; i++) {
+                    for (int i = 0; i < 50; i++) {
                         if (getY() > 10) {
                             moveUp();
                         }
@@ -73,7 +73,7 @@ public class EnemyTank extends Tank implements Runnable {
                     }
                     break;
                 case 1:
-                    for (int i = 0; i < 30; i++) {
+                    for (int i = 0; i < 50; i++) {
                         if (getX() + 60 < 990) {
                             moveRight();
                         }
@@ -85,7 +85,7 @@ public class EnemyTank extends Tank implements Runnable {
                     }
                     break;
                 case 2:
-                    for (int i = 0; i < 30; i++) {
+                    for (int i = 0; i < 50; i++) {
                         if (getY() + 60 < 740) {
                             moveDown();
                         }
@@ -98,7 +98,7 @@ public class EnemyTank extends Tank implements Runnable {
                     }
                     break;
                 case 3:
-                    for (int i = 0; i < 30; i++) {
+                    for (int i = 0; i < 50; i++) {
 
                         if (getX() > 10) {
                             moveLeft();
