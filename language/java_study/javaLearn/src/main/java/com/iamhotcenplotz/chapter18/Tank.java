@@ -9,6 +9,15 @@ public class Tank {
     private int y;
     private int direct; // 0 -> up; 1 -> right; 2 -> down; 3 -> left;
     private int speed = 1;
+    private boolean isAlive = true;
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void dead() {
+        isAlive = false;
+    }
 
     public int getSpeed() {
         return speed;

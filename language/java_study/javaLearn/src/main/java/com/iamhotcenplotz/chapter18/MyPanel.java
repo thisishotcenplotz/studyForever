@@ -18,7 +18,7 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     // define tank
     Hero hero = null;
 
-    int enemySize = 8;
+    int enemySize = 7;
     Vector<EnemyTank> enemyTanks = new Vector<>();
 
     // define a vector for store bombs...
@@ -64,7 +64,9 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
         super.paintComponent(g);
 
         // draw hero tank
-        drawTank(hero.getX(), hero.getY(), g, hero.getDirect(), 1);
+        if(hero.isAlive()){
+            drawTank(hero.getX(), hero.getY(), g, hero.getDirect(), 1);
+        }
 
         // enemy tank
         Iterator<EnemyTank> enemyTankIterator = enemyTanks.iterator();
@@ -106,7 +108,7 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
         }
 
         //draw hero bullet
-        if (hero.getShot() != null && hero.getShot().isAlive()) {
+        if (hero.getShot() != null && hero.getShot().isAlive() && hero.isAlive()) {
             g.fill3DRect(hero.getShot().getX(), hero.getShot().getY(), 5, 5, false);
         }
 
@@ -182,40 +184,61 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
 
     // 编写方法，判断我放子弹是否集中敌人的坦克。
     // 什么时候判断我方子弹是否击中敌人坦克 --> run()
-    public void hitTank(Short s, EnemyTank enemyTank){
+    public void hitTank(Short s, Tank tank){
         // 判断s击中坦克
-        switch (enemyTank.getDirect()){
+        switch (tank.getDirect()){
             case 0:
             case 2:
                 if(
-                    (s.getX() > enemyTank.getX() && s.getX() < enemyTank.getX() + 40 )
+                    (s.getX() > tank.getX() && s.getX() < tank.getX() + 40 )
                     &&
-                    (s.getY() > enemyTank.getY() && s.getY() < enemyTank.getY() + 60)
+                    (s.getY() > tank.getY() && s.getY() < tank.getY() + 60)
                 ){
                     s.dead();
-                    enemyTank.dead();
+                    tank.dead();
 
                     // 创建bomb
-                    Bomb bomb = new Bomb(enemyTank.getX(), enemyTank.getY());
-                    bombs.add(bomb);
+                    bombs.add(new Bomb(tank.getX(), tank.getY()));
                 }
                 break;
             case 1:
             case 3:
                 if(
-                    (s.getX() > enemyTank.getX() && s.getX() < enemyTank.getX() + 60)
+                    (s.getX() > tank.getX() && s.getX() < tank.getX() + 60)
                     &&
-                    (s.getY() > enemyTank.getY() && s.getY() < enemyTank.getY() + 40)
+                    (s.getY() > tank.getY() && s.getY() < tank.getY() + 40)
                 ){
                     s.dead();
-                    enemyTank.dead();
+                    tank.dead();
 
                     // 创建bomb
-                    Bomb bomb = new Bomb(enemyTank.getX(), enemyTank.getY());
-                    bombs.add(bomb);
+                    bombs.add(new Bomb(tank.getX(), tank.getY()));
                 }
                 break;
+        }
+    }
 
+    // 判断敌方子弹是否击中玩家坦克
+    public void hitHero() {
+        Iterator<EnemyTank> enemyTankIterator = enemyTanks.iterator();
+        while (enemyTankIterator.hasNext()) {
+            EnemyTank enemy = enemyTankIterator.next();
+
+            Iterator<Short> enemyShortsIterator = enemy.shorts.iterator();
+            while (enemyShortsIterator.hasNext()) {
+                Short s = enemyShortsIterator.next();
+                if (hero.isAlive() && s.isAlive()) {
+                    hitTank(s, hero);
+                }
+            }
+        }
+    }
+
+    public void hitEnemy() {
+        if(hero.getShot() != null && hero.getShot().isAlive()){
+            for (EnemyTank e : enemyTanks){
+                hitTank(hero.getShot(),e);
+            }
         }
     }
 
@@ -230,16 +253,25 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
         if (e.getKeyCode() == KeyEvent.VK_W) {
             //修改方向
             hero.setDirect(0);
-            hero.moveUp();
+
+            if(hero.getY() > 10){
+                hero.moveUp();
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_S) {
             hero.setDirect(2);
-            hero.moveDown();
+            if(hero.getY() + 60 < 710){
+                hero.moveDown();
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_A) {
             hero.setDirect(3);
-            hero.moveLeft();
+            if(hero.getX() > 10) {
+                hero.moveLeft();
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_D) {
             hero.setDirect(1);
-            hero.moveRight();
+            if(hero.getX() + 60 < 990){
+                hero.moveRight();
+            }
         }
 
         if (e.getKeyCode() == KeyEvent.VK_J) {
@@ -266,12 +298,11 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
 
 
             //判断我方子弹是否击中敌方坦克
-            if(hero.getShot() != null && hero.getShot().isAlive()){
-                for (EnemyTank e : enemyTanks){
-                    hitTank(hero.getShot(),e);
+            hitEnemy();
 
-                }
-            }
+            // 判断敌人坦克是否击中Hero
+            hitHero();
+
 
             // repaint
             this.repaint();

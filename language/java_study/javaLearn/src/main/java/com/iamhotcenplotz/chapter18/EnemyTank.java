@@ -36,14 +36,34 @@ public class EnemyTank extends Tank implements Runnable {
     public void run() {
 
         while (true) {
+            // 判断是否还有子弹,如果没有再建一个
+            if (shorts.size() < 1 && isAlive) {
+                Short s = null;
+                switch (getDirect()) {
+                    case 0:
+                        s = new Short(getX() + 20, getY(), 0);
+                        break;
+                    case 1:
+                        s = new Short(getX() + 60, getY() + 20, 1);
+                        break;
+                    case 2:
+                        s = new Short(getX() + 20, getY() + 60, 2);
+                        break;
+                    case 3:
+                        s = new Short(getX(), getY() + 20, 3);
+                        break;
+                }
+                shorts.add(s);
+                new Thread(s).start();
+            }
+
+
             // 根据坦克方向继续移动
             switch (getDirect()) {
                 case 0:
                     for (int i = 0; i < 30; i++) {
-                        if (getY() > 0) {
+                        if (getY() > 10) {
                             moveUp();
-                        } else {
-                            moveDown();
                         }
                         try {
                             Thread.sleep(100);
@@ -54,10 +74,8 @@ public class EnemyTank extends Tank implements Runnable {
                     break;
                 case 1:
                     for (int i = 0; i < 30; i++) {
-                        if (getX() + 60 < 1000) {
+                        if (getX() + 60 < 990) {
                             moveRight();
-                        } else {
-                            moveLeft();
                         }
                         try {
                             Thread.sleep(100);
@@ -68,10 +86,8 @@ public class EnemyTank extends Tank implements Runnable {
                     break;
                 case 2:
                     for (int i = 0; i < 30; i++) {
-                        if (getY() + 60 < 750) {
+                        if (getY() + 60 < 740) {
                             moveDown();
-                        } else {
-                            moveUp();
                         }
 
                         try {
@@ -84,10 +100,8 @@ public class EnemyTank extends Tank implements Runnable {
                 case 3:
                     for (int i = 0; i < 30; i++) {
 
-                        if (getX() > 0) {
+                        if (getX() > 10) {
                             moveLeft();
-                        } else {
-                            moveRight();
                         }
                         try {
                             Thread.sleep(100);
