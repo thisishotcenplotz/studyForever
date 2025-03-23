@@ -18,6 +18,8 @@ public class TankGame extends JFrame {
 
     public TankGame() throws HeadlessException {
         mp = new MyPanel();
+        Thread thread = new Thread(mp);
+        thread.start();
 
         this.add(mp);
         this.setSize(1000, 750);

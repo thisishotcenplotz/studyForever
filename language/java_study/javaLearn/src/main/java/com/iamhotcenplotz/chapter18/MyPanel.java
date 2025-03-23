@@ -10,7 +10,9 @@ import java.util.Vector;
  * @author Der Hotcenplotz
  * @version 1.0
  */
-public class MyPanel extends JPanel implements KeyListener {
+
+// 为了让Panel不停地重绘子弹，需要将Panel实现Runnable接口，当做一个线程使用
+public class MyPanel extends JPanel implements KeyListener, Runnable {
 
     // define tank
     Hero hero = null;
@@ -23,8 +25,18 @@ public class MyPanel extends JPanel implements KeyListener {
         hero = new Hero(240, 400);
 
         // enemy tanks
-        for (int i = 0; i< enemySize; i++){
-            enemyTanks.add(new EnemyTank(120 * (i + 1),0));
+        for (int i = 0; i < enemySize; i++) {
+            EnemyTank enemyTank = new EnemyTank(120 * (i + 1), 0);
+            enemyTank.setDirect(2);
+
+
+            Short aShort = new Short(enemyTank.getX() + 20, enemyTank.getY() + 60, enemyTank.getDirect());
+            enemyTank.shorts.add(aShort);
+            new Thread(aShort).start();
+
+
+            enemyTanks.add(enemyTank);
+
         }
 
 
@@ -35,6 +47,7 @@ public class MyPanel extends JPanel implements KeyListener {
         this.setBackground(Color.LIGHT_GRAY);
         this.setFocusable(true);
         this.addKeyListener(this);
+        this.requestFocusInWindow();
     }
 
 
@@ -45,13 +58,27 @@ public class MyPanel extends JPanel implements KeyListener {
         // draw tank
         drawTank(hero.getX(), hero.getY(), g, hero.getDirect(), 1);
 
-        for (EnemyTank e : enemyTanks){
+        // enemy tank
+        for (EnemyTank e : enemyTanks) {
             drawTank(e.getX(), e.getY(), g, 2, 0);
+
+            // 画出所有子弹
+            for (int j = 0; j < e.shorts.size(); j++) {
+                Short aShort = e.shorts.get(j);
+
+                // 绘制子弹
+                if(aShort.isAlive()){
+                    g.fill3DRect(aShort.getX(),aShort.getY(),5,5,false);
+                } else {
+                    e.shorts.remove(j);
+                }
+            }
         }
 
-//        drawTank(hero.getX()+120, hero.getY(), g, hero.getDirect(), 1);
-//        drawTank(hero.getX()+240, hero.getY(), g, hero.getDirect(), 0);
-//        drawTank(hero.getX()+360, hero.getY(), g, hero.getDirect(), 1);
+        //draw hero bullet
+        if (hero.getShot() != null && hero.getShot().isAlive()) {
+            g.fill3DRect(hero.getShot().getX(), hero.getShot().getY(), 5, 5, false);
+        }
 
     }
 
@@ -97,7 +124,7 @@ public class MyPanel extends JPanel implements KeyListener {
                 g.fill3DRect(x + 30, y, 10, 60, false);
                 g.fill3DRect(x + 10, y + 10, 20, 40, false);
                 g.fillOval(x + 10, y + 20, 20, 20);
-                g.drawLine(x + 20, y + 20, x + 20, y+60);
+                g.drawLine(x + 20, y + 20, x + 20, y + 60);
                 break;
             case 3: // left
                 g.fill3DRect(x, y, 60, 10, false); // 上轮
@@ -114,13 +141,13 @@ public class MyPanel extends JPanel implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        
+
     }
 
     // 处理 wsad  -> up down left right
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_W) {
+        if (e.getKeyCode() == KeyEvent.VK_W) {
             //修改方向
             hero.setDirect(0);
             hero.moveUp();
@@ -135,7 +162,7 @@ public class MyPanel extends JPanel implements KeyListener {
             hero.moveRight();
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_J) {
+        if (e.getKeyCode() == KeyEvent.VK_J) {
             System.out.println("Shoot enemy tank ...");
             hero.shootEnemyTank();
         }
@@ -145,6 +172,19 @@ public class MyPanel extends JPanel implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+            this.repaint();
+        }
 
     }
 }
