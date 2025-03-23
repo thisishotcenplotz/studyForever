@@ -2014,3 +2014,51 @@ public class Test {
 - 流：数据在文件源（文件）和程序（内存）之间经历的路径
 - 输入流：数据从文件源（文件）到程序（内存）的路径
 - 输出流：文件从程序（内存）到数据源（文件）的路径
+
+##### 常用的文件操作
+
+- 创建文件对象相关构造器和方法
+  - new File(String pathname)
+  - new File(File parent, String child)
+  - new File(String parent, String child)
+- 获取文件的相关信息
+  - getName
+  - getAbsolutePath
+  - getParent
+  - length
+  - exists
+  - isFile
+  - isDirectory
+- 目录的操作和文件的删除
+  - mkdir() 创建一级目录
+  - mkdirs() 创建多级目录
+- Java IO流原理
+  - I/O是Input/Output的缩写，IO技术是非常实用的技术，用于处理数据传输。如读写文件，网络通讯等。
+  - Java中，对于数据的输入\输出操作以 “流（Stream）” 的方式进行。
+  - java.io 包下提供了各种 “流” 类和接口，用以获取不同种类的数据，并通过方法输入和输出数据。
+- 流的分类
+  - 按操作数据单位不同分为：字节流（8bit，擅长二进制文件），字符流（按字符，擅长文本文件）
+  - 按数据流的流向分为：输入流、输出流
+  - 按流的角色的不同分为：节点流、处理流\包装流
+    - |----|----|----|
+    - |抽象基类|字节流|字符流|
+    - |输入流|InputStream|Reader|
+    - |输出流|OutputStream|Writer|
+
+
+##### InputStream：字节输入流
+
+InputStream抽象类是所有类字节输入流的超类，它的子类有：
+- FileInputStream
+- BufferedInputStream：缓冲字节输入流
+- ObjectInputStream：对象字节输入流
+
+##### FileReader & FileWriter
+- FileReader 和 FileWriter 是字符流，即按照字符来操作IO
+- FileReader相关方法：
+  - new FileReader(File/String)
+  - read:每次读取单个字符，返回该字符串，如果到文件末尾返回-1
+  - read(char[]) :批量读取多个字符串到数组，返回读取到的字符数，如果到文件末尾返回-1
+  - 相关API：
+    - new String(char[]):将char[] 转换成String
+    - new String(char[],off,len): 将char[] 的指定部分转换成String
