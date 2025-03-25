@@ -2062,3 +2062,8 @@ InputStream抽象类是所有类字节输入流的超类，它的子类有：
   - 相关API：
     - new String(char[]):将char[] 转换成String
     - new String(char[],off,len): 将char[] 的指定部分转换成String
+
+##### 节点流和处理流
+
+1. 节点流可以从一个特定的数据源读写数据，如FileReader、FileWriter
+2. 处理流（也叫包装流）是 “链接” 在已存在的流（节点流或处理流）之上，为程序提供更为强大的读写功能，如BufferedReader、BufferedWriter。

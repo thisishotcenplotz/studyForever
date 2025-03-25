@@ -28,6 +28,9 @@ public class FileWriter_ {
             // 3. write String
             fw.write(new String("helllo world"));
 
+            // 4. write string
+            fw.write("dddsdfsdfs",0,3);
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         } finally {
