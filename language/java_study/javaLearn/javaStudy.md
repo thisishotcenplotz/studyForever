@@ -2076,3 +2076,28 @@ InputStream抽象类是所有类字节输入流的超类，它的子类有：
 处理流的功能主要体现在一下两个方面：
 1. 性能的提高：主要以增加缓冲的方式来提高输入输出效率
 2. 操作的便捷：处理流可能提供了一系列便捷的方式来一次输入输出大批量的数据，使用更加灵活
+
+
+##### 对象流-ObjectInputStream 和 ObjectOutputStream
+
+序列化和反序列化：
+- 序列化就是在保存数据时，保存数据的值和数据类型
+- 反序列化就是在回复数据时，回复数据的值和数据类型
+- 需要让某个对象支持序列化机制，则必须让其类是可序列化的，即实现 Serializable 或 Exernalizable 接口。
+  - 一般来说使用Serializable
+
+
+注意事项：
+1. 读写顺序要一致
+2. 要求实现序列化或反序列化对象，需要实现 Serializable
+3. 序列化的类中建议添加SerialVersionUID，为了提高版本的兼容性
+4. 序列化对象时，默认将里面的所有属性都进行序列化，但除了static 或 transient修饰的成员
+5. 序列化对象时，要求里面属性的类型也需要实现序列化接口
+6. 序列化具备可继承性，也就是如果某类实现了序列化，则它的所有子类都已经默认实现了序列化
+
+
+##### 转换流-InputStreamReader 和 OutputStreamWriter
+1. InputStreamReader: Reader子类，可以将InputStream(字节流)包装成Reader(字符流)
+2. OutputStreamWriter:Writer子类，实现将OutputStream(字节流)包装成Writer(字符流)
+3. 当处理纯文本数据时，如果使用字符流效率更高，并且可以有效解决中文问题，所以建议将字节流转换成字符流
+4. 可以在使用时指定编码格式（如：utf-8, gbk, gbk2312,ISO88859-1 等）
