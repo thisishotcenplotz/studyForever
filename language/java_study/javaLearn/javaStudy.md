@@ -2101,3 +2101,12 @@ InputStream抽象类是所有类字节输入流的超类，它的子类有：
 2. OutputStreamWriter:Writer子类，实现将OutputStream(字节流)包装成Writer(字符流)
 3. 当处理纯文本数据时，如果使用字符流效率更高，并且可以有效解决中文问题，所以建议将字节流转换成字符流
 4. 可以在使用时指定编码格式（如：utf-8, gbk, gbk2312,ISO88859-1 等）
+
+##### Properties
+
+常用方法：
+1. load：加载配置文件的kv到Properties对象
+2. list：将数据显示到指定设备
+3. getProperty(k):获取对应的值
+4. setProperty(k,v) 设置kv到Properties对象
+5. store：将Properties中的键值对信息保存到配置文件，在idea中，保存信息到配置文件中，如果含有中文，则会存储为unicode
