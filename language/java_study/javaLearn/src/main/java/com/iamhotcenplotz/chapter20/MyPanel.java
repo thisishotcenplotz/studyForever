@@ -67,9 +67,16 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     }
 
 
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        // 填充矩形，默认黑色
+        g.fillRect(0,0,990,740);
+
+        // show info
+        showInfo(g);
 
         // draw hero tank
         if(hero.isAlive()){
@@ -131,6 +138,24 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
         }
 
     }
+
+    /**
+     * 编写方法，显示我方击毁敌方坦克的信息
+     * */
+    public void showInfo(Graphics g){
+        // 设置字体
+        g.setColor(Color.BLACK);
+        Font font = new Font("宋体", Font.BOLD, 25);
+        g.setFont(font);
+
+        g.drawString("累计击毁的敌方坦克",1030,30);
+        drawTank(1030,60,g,0,0);
+
+        g.setColor(Color.BLACK);
+        g.drawString(Recorder.getAllEnemyTankCount() + "",1180,100);
+
+    }
+
 
     /**
      * @param x
@@ -205,6 +230,9 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
                     s.dead();
                     tank.dead();
 
+                    // Record ++
+                    if(tank instanceof EnemyTank) Recorder.hitEnemy();
+
                     // 创建bomb
                     bombs.add(new Bomb(tank.getX(), tank.getY()));
                 }
@@ -218,6 +246,9 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
                 ){
                     s.dead();
                     tank.dead();
+
+                    // Record ++
+                    if(tank instanceof EnemyTank) Recorder.hitEnemy();
 
                     // 创建bomb
                     bombs.add(new Bomb(tank.getX(), tank.getY()));
