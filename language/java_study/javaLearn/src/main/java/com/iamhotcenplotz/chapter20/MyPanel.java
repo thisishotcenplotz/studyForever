@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -20,6 +22,7 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
 
     int enemySize = 10;
     Vector<EnemyTank> enemyTanks = new Vector<>();
+    Vector<Node> nodes = new Vector<>();
 
     // define a vector for store bombs...
     Vector<Bomb> bombs = new Vector<>();
@@ -27,33 +30,81 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     // define three stages of explosion.
 
 
-    public MyPanel() {
+    public MyPanel(String key) throws IOException {
+        File file = new File(Recorder.getRecordPath());
+        if(! file.exists()){
+            System.out.println("No previous record found, start new game...");
+            key = "1";
+        } else {
+
+            // recover
+            nodes = Recorder.getNodesAndEnemyTankRec();
+        }
+
+
+
         //tank initial position
         hero = new Hero(240, 400);
 
-        // enemy tanks
-        for (int i = 0; i < enemySize; i++) {
-            // 创建敌人坦克
-            EnemyTank enemyTank = new EnemyTank(60 * (i + 1), 0);
+        switch (key){
+            case "1":
+                // enemy tanks
+                for (int i = 0; i < enemySize; i++) {
+                    // 创建敌人坦克
+                    EnemyTank enemyTank = new EnemyTank(60 * (i + 1), 0);
 
-            // 将enemyTanks 设置给enemyTank
-            enemyTank.setEnemyTanks(enemyTanks);
+                    // 将enemyTanks 设置给enemyTank
+                    enemyTank.setEnemyTanks(enemyTanks);
 
-            // 设置方向
-            enemyTank.setDirect(2);
+                    // 设置方向
+                    enemyTank.setDirect(2);
 
-            // 启动
-            new Thread(enemyTank).start();
-
-
-            Short aShort = new Short(enemyTank.getX() + 20, enemyTank.getY() + 60, enemyTank.getDirect());
-            enemyTank.shorts.add(aShort);
-            new Thread(aShort).start();
+                    // 启动
+                    new Thread(enemyTank).start();
 
 
-            enemyTanks.add(enemyTank);
+                    Short aShort = new Short(enemyTank.getX() + 20, enemyTank.getY() + 60, enemyTank.getDirect());
+                    enemyTank.shorts.add(aShort);
+                    new Thread(aShort).start();
 
+
+                    enemyTanks.add(enemyTank);
+
+                }
+                break;
+            case "2":   // 继续上局游戏
+                for (int i = 0; i < nodes.size(); i++) {
+                    Node node = nodes.get(i);
+
+                    // 创建敌人坦克
+                    EnemyTank enemyTank = new EnemyTank(node.getX(), node.getY());
+
+                    // 将enemyTanks 设置给enemyTank
+                    enemyTank.setEnemyTanks(enemyTanks);
+
+                    // 设置方向
+                    enemyTank.setDirect(node.getDirection());
+
+                    // 启动
+                    new Thread(enemyTank).start();
+
+
+                    Short aShort = new Short(enemyTank.getX() + 20, enemyTank.getY() + 60, enemyTank.getDirect());
+                    enemyTank.shorts.add(aShort);
+                    new Thread(aShort).start();
+
+
+                    enemyTanks.add(enemyTank);
+
+                }
+                break;
+            default:
+                System.out.println("Oops~~~ Something wrong...");
         }
+
+
+        // assign enemy tanks to Recorder
+        Recorder.setEnemyTanks(enemyTanks);
 
 
         // tank moving speed

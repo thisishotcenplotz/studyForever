@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * @author Der Hotcenplotz
@@ -14,13 +15,16 @@ public class TankGame extends JFrame {
 
     MyPanel mp = null;
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
         TankGame tankGame01 = new TankGame();
     }
 
-    public TankGame() throws HeadlessException {
-        mp = new MyPanel();
+    public TankGame() throws HeadlessException, IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请选择：1->开始新游戏； 2-> 继续上一局游戏");
+        String key  = scanner.next();
+
+        mp = new MyPanel(key);
         Thread thread = new Thread(mp);
         thread.start();
 
