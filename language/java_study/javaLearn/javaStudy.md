@@ -2208,3 +2208,18 @@ TCP 和 UDP 协议
 
 1. 基于客户端 <-> 服务端 的网络通信
 2. 底层使用TCP/IP 协议
+
+##### UDP网络通信编程
+
+1. 类DatagramSocket 和 DatagramPacket 实现了基于UDP网络程序。
+2. UDP数据报通过数据报套接字 DatagramSocket 发送和接受，系统不保证UDP数据报一定能够安全送到目的地，也不能确定什么时候可以抵达。
+3. DatagramPacket对象封装了UDP数据包，在数据报中包含了发送端的IP和端口以及接收端的IP和端口。
+4. UDP协议中每个数据报都给出了完整的地址信息，因此无需建立发送方和接收方的链接。 
+
+
+基本流程
+- 核心的两个类/对象 DatagramSocket 与 DatagramPacket
+- 建立发送端，接收端
+- 建立数据包
+- 调用DatagramSocket的发送、接收方法
+- 关闭DatagramSocket

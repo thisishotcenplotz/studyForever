@@ -38,15 +38,10 @@ public class TCPFileUploadClient {
         // 释放资源
         inputStream.close();
 
-
         // 关闭
         bufferedInputStream.close();
         bufferedOutputStream.close();
         socket.close();
-
-
-
-
 
     }
 }
