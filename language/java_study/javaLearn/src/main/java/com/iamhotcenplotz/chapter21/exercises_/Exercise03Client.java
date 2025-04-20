@@ -49,7 +49,7 @@ public class Exercise03Client {
         byte[] receiveBuffered = streamToByteArray(bis);
 
         // TODO
-        //  4. 将收到的字节信息罗盘
+        //  4. 将收到的字节信息落盘
         BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("./receive" + userInput));
         bos.write(receiveBuffered);
 
