@@ -57,6 +57,7 @@ public class View {
                                 case "4":
                                     break;
                                 case "9":
+                                    userClient.logout();
                                     loop = false;
                                     break;
                             }

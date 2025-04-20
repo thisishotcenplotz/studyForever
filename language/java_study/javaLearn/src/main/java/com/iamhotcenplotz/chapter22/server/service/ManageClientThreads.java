@@ -29,4 +29,8 @@ public class ManageClientThreads {
         }
         return onlineUsers.toString();
     }
+
+    public static void remove(String userId) {
+        hm.remove(userId);
+    }
 }

@@ -1,6 +1,5 @@
 package com.iamhotcenplotz.chapter22.server.service;
 
-import com.iamhotcenplotz.chapter22.client.service.ManageClientConnectServerThread;
 import com.iamhotcenplotz.chapter22.common.Message;
 import com.iamhotcenplotz.chapter22.common.MessageType;
 
@@ -33,7 +32,22 @@ public class ServerConnectClientThread extends Thread {
                 Message message = (Message)ois.readObject();
 
                 // 根据Message的类型来处理
-                // 1. 获取在线好友列表
+                // 1. user 退出
+                if(message.getMessageType().equals(MessageType.MESSAGE_CLIENT_EXIT)){
+                    System.out.println(message.getSender() + " 退出");
+
+                    // 将客户端对应的线程从集合中删除
+                    ManageClientThreads.remove(message.getSender());
+
+                    // 关闭socket
+                    socket.close();
+
+                    // 退出循环
+                    break;
+
+                }
+
+                // 2. 获取在线好友列表
                 if(message.getMessageType().equals(MessageType.MESSAGE_GET_ONLINE_FRIEND)){
                     System.out.println(message.getSender() + " 要在线用户列表");
                     String onlineUsers = ManageClientThreads.getOnlineUsers();
@@ -48,6 +62,8 @@ public class ServerConnectClientThread extends Thread {
                     ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
                     oos.writeObject(returnMessage);
                 }
+
+
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println(e.getMessage());
             }

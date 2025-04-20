@@ -20,6 +20,4 @@ public class ManageClientConnectServerThread extends Thread {
         return hm.get(userId);
     }
 
-    // 删除client
-
 }

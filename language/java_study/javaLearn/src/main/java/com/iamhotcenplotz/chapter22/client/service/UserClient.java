@@ -4,6 +4,7 @@ import com.iamhotcenplotz.chapter22.common.Message;
 import com.iamhotcenplotz.chapter22.common.MessageType;
 import com.iamhotcenplotz.chapter22.common.User;
 
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -75,5 +76,19 @@ public class UserClient {
 
         ObjectOutputStream oos = new ObjectOutputStream(outputStream);
         oos.writeObject(message);
+    }
+
+    //退出
+    public void logout() throws IOException {
+        Message message = new Message();
+        message.setMessageType(MessageType.MESSAGE_CLIENT_EXIT);
+        message.setSender(u.getUserID());
+
+        // 发送
+        ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+        oos.writeObject(message);
+
+        System.out.println(u.getUserID() + " 退出了系统...");
+        System.exit(0); // 结束进程
     }
 }
