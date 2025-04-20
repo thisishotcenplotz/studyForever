@@ -1,6 +1,7 @@
 package com.iamhotcenplotz.chapter22.server.service;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * @author Der Hotcenplotz
@@ -18,5 +19,14 @@ public class ManageClientThreads {
     // 获取
     public static ServerConnectClientThread getServerConnectClientThread(String userId) {
         return hm.get(userId);
+    }
+
+    // 返回在线用户列表
+    public static String getOnlineUsers(){
+        StringBuilder onlineUsers = new StringBuilder();
+        for (String s : hm.keySet()) {
+            onlineUsers.append(s).append(" ");
+        }
+        return onlineUsers.toString();
     }
 }

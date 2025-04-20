@@ -9,6 +9,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Der Hotcenplotz
@@ -17,6 +19,32 @@ import java.net.Socket;
  */
 public class Server {
     private ServerSocket ss = null;
+
+    //创建一个集合，存放多个用户，模拟数据库来用
+    private static ConcurrentHashMap<String, User> validUsers = new ConcurrentHashMap<>();
+
+    // 使用静态代码块来初始化合法用户
+    static {
+        validUsers.put("100",new User("100","123456"));
+        validUsers.put("200",new User("200","123456"));
+        validUsers.put("300",new User("300","123456"));
+        validUsers.put("至尊宝",new User("至尊宝","123456"));
+        validUsers.put("紫霞仙子",new User("紫霞仙子","123456"));
+        validUsers.put("菩提老祖",new User("菩提老祖","123456"));
+    }
+
+    private boolean checkUser(String userId,String pwd) {
+        User user = validUsers.get(userId);
+
+        if(user == null) {
+            return false;
+        }
+
+        if(!user.getPasswd().equals(pwd)){
+            return false;
+        }
+        return true;
+    }
 
     public Server() throws IOException, ClassNotFoundException {
         try {
@@ -37,7 +65,7 @@ public class Server {
                 Message message = new Message();
 
                 // 验证用户名密码
-                if (u.getUserID().equals("100") && u.getPasswd().equals("123456")) {
+                if (checkUser(u.getUserID(),u.getPasswd())) {
                     message.setMessageType(MessageType.MESSAGE_LOGIN_SUCCEED);
                     // 回复客户端
                     oos.writeObject(message);

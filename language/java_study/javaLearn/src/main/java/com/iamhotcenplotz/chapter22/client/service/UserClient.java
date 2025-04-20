@@ -7,6 +7,7 @@ import com.iamhotcenplotz.chapter22.common.User;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 
@@ -58,5 +59,21 @@ public class UserClient {
         }
 
         return result;
+    }
+
+    // 向服务器请求在线用户列表
+    public void onlineFriendList() throws IOException {
+        // 构建一个Message
+        Message message = new Message();
+        message.setSender(u.getUserID());
+        message.setMessageType(MessageType.MESSAGE_GET_ONLINE_FRIEND);
+
+        // 发送给服务器
+        OutputStream outputStream = ManageClientConnectServerThread.getClientConnectServerThread(
+            u.getUserID()
+        ).getSocket().getOutputStream();
+
+        ObjectOutputStream oos = new ObjectOutputStream(outputStream);
+        oos.writeObject(message);
     }
 }

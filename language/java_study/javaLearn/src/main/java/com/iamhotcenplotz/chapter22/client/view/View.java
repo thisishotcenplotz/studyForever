@@ -16,7 +16,7 @@ public class View {
     private UserClient userClient = new UserClient(); // 用于登录服务器 或 注册用户
 
     // 主菜单
-    private void mainMenu() throws IOException, ClassNotFoundException {
+    public void mainMenu() throws IOException, ClassNotFoundException {
         while (loop) {
             System.out.println("++++++++++欢迎登录网络通信系统++++++++++");
             System.out.println("\t\t  1 登录系统");
@@ -48,6 +48,7 @@ public class View {
                             String key = Utility.readString(1);
                             switch (key) {
                                 case "1":
+                                    userClient.onlineFriendList();
                                     break;
                                 case "2":
                                     break;
@@ -71,8 +72,4 @@ public class View {
         }
     }
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        new View().mainMenu();
-        System.out.println("退出..");
-    }
 }

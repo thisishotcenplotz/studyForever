@@ -1,6 +1,7 @@
 package com.iamhotcenplotz.chapter22.client.service;
 
 import com.iamhotcenplotz.chapter22.common.Message;
+import com.iamhotcenplotz.chapter22.common.MessageType;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -35,6 +36,16 @@ public class ClientConnectServerThread extends Thread {
 
                 ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
                 Message message = (Message) ois.readObject(); // 如果服务器没法信息，线程会阻塞在这里。
+
+                // 判断message类型，做相应业务处理
+                // 1. 返回在线用户列表
+                if(message.getMessageType().equals(MessageType.MESSAGE_RETURN_ONLINE_FRIEND)){
+                    String[] onlineUsers = message.getContent().split(" ");
+                    System.out.println("\n++++++++++当前在线用户列表++++++++++");
+                    for (String user : onlineUsers) {
+                        System.out.println("+ " + user);
+                    }
+                }
 
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println(e.getMessage());
