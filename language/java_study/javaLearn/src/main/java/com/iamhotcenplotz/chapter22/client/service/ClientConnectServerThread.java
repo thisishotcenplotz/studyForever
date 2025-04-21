@@ -47,6 +47,21 @@ public class ClientConnectServerThread extends Thread {
                     }
                 }
 
+                // 2. 接收私聊消息
+                if(message.getMessageType().equals(MessageType.MESSAGE_COMM_MSG)){
+                    //把从服务器端转发的消息，显示到控制台即可
+                    System.out.println(
+                        "\n" + message.getSender() + " 对你说:" + message.getContent()
+                    );
+                }
+
+                // 3. 接收群聊
+                if(message.getMessageType().equals(MessageType.MESSAGE_TO_ALL_MSG)){
+                    System.out.println(
+                        "\n【" + message.getSender() + "】 对所有人说:" + message.getContent()
+                    );
+                }
+
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println(e.getMessage());
             }

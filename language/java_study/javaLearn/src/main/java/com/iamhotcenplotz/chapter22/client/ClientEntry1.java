@@ -12,5 +12,6 @@ public class ClientEntry1 {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         new View().mainMenu();
         System.out.println("退出..");
+
     }
 }

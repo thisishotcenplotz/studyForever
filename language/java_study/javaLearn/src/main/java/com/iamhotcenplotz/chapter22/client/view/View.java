@@ -1,5 +1,6 @@
 package com.iamhotcenplotz.chapter22.client.view;
 
+import com.iamhotcenplotz.chapter22.client.service.MessageClientService;
 import com.iamhotcenplotz.chapter22.client.service.UserClient;
 import com.iamhotcenplotz.chapter22.client.utils.Utility;
 
@@ -14,7 +15,7 @@ public class View {
     private boolean loop = true; //控制是否显示菜单
     private String key = ""; // 接收用户的键盘输入
     private UserClient userClient = new UserClient(); // 用于登录服务器 或 注册用户
-
+    private MessageClientService messageClientService = new MessageClientService(); // 用于私聊或群聊
     // 主菜单
     public void mainMenu() throws IOException, ClassNotFoundException {
         while (loop) {
@@ -51,8 +52,16 @@ public class View {
                                     userClient.onlineFriendList();
                                     break;
                                 case "2":
+                                    System.out.print("请输入想对大家说的话:");
+                                    String contentGroup = Utility.readString(100);
+                                    messageClientService.sendMessageToAll(contentGroup,userId);
                                     break;
                                 case "3":
+                                    System.out.print("请输入想聊的用户号(在线):");
+                                    String receiver = Utility.readString(50);
+                                    System.out.print("请输入想说的话:");
+                                    String content = Utility.readString(100);
+                                    messageClientService.sendMessageToOne(content,userId,receiver);
                                     break;
                                 case "4":
                                     break;

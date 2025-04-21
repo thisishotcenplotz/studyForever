@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * @author Der Hotcenplotz
@@ -20,6 +22,10 @@ public class ServerConnectClientThread extends Thread {
     public ServerConnectClientThread(Socket socket, String userId) {
         this.socket = socket;
         this.userId = userId;
+    }
+
+    public Socket getSocket() {
+        return socket;
     }
 
     @Override
@@ -63,6 +69,36 @@ public class ServerConnectClientThread extends Thread {
                     oos.writeObject(returnMessage);
                 }
 
+                // 3. 私聊转发
+                if(message.getMessageType().equals(MessageType.MESSAGE_COMM_MSG)){
+                    //根据message 获取receiver，然后再得到对应的线程
+                    ServerConnectClientThread receiverThread = ManageClientThreads.getServerConnectClientThread(message.getReceiver());
+                    //得到对应的socket对象输出流，将message对象转发给指定用户
+                    ObjectOutputStream oos = new ObjectOutputStream(receiverThread.getSocket().getOutputStream());
+                    oos.writeObject(message); // 转发，如果客户不在线，可以保存到数据库，实现离线留言。
+
+                }
+
+                // 4. 群聊转发
+                if(message.getMessageType().equals(MessageType.MESSAGE_TO_ALL_MSG)){
+                    //遍历所有线程，把消息转发
+                    HashMap<String, ServerConnectClientThread> hm = ManageClientThreads.getHm();
+                    Iterator<String> iterator = hm.keySet().iterator();
+
+                    while(iterator.hasNext()){
+                        String onlineUserId = iterator.next();
+
+                        if(!onlineUserId.equals(message.getSender())){
+                            ServerConnectClientThread receiverThread = hm.get(onlineUserId);
+                            ObjectOutputStream oos = new ObjectOutputStream(
+                                receiverThread
+                                .getSocket()
+                                .getOutputStream()
+                            );
+                            oos.writeObject(message);
+                        }
+                    }
+                }
 
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println(e.getMessage());
