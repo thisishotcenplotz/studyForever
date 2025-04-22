@@ -3,6 +3,8 @@ package com.iamhotcenplotz.chapter22.client.service;
 import com.iamhotcenplotz.chapter22.common.Message;
 import com.iamhotcenplotz.chapter22.common.MessageType;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
@@ -60,6 +62,21 @@ public class ClientConnectServerThread extends Thread {
                     System.out.println(
                         "\n【" + message.getSender() + "】 对所有人说:" + message.getContent()
                     );
+                }
+
+                // 接收文件
+                if(message.getMessageType().equals(MessageType.MESSAGE_FILE_MSG)){
+                    System.out.println(
+                        "\n" + message.getSender() + " 给 " + message.getReceiver() + " 发送文件到"
+                        + message.getFileDest()
+                    );
+
+                    // 取出文件字节数组，并写入到指定位置
+                    FileOutputStream fos = new FileOutputStream(message.getFileDest());
+                    fos.write(message.getFileBytes());
+                    fos.close();
+                    System.out.println("\n文件保存成功");
+
                 }
 
             } catch (IOException | ClassNotFoundException e) {

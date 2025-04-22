@@ -1,5 +1,6 @@
 package com.iamhotcenplotz.chapter22.client.view;
 
+import com.iamhotcenplotz.chapter22.client.service.FileClientService;
 import com.iamhotcenplotz.chapter22.client.service.MessageClientService;
 import com.iamhotcenplotz.chapter22.client.service.UserClient;
 import com.iamhotcenplotz.chapter22.client.utils.Utility;
@@ -16,6 +17,8 @@ public class View {
     private String key = ""; // 接收用户的键盘输入
     private UserClient userClient = new UserClient(); // 用于登录服务器 或 注册用户
     private MessageClientService messageClientService = new MessageClientService(); // 用于私聊或群聊
+    private FileClientService fileClientService = new FileClientService(); // 用于传输文件
+
     // 主菜单
     public void mainMenu() throws IOException, ClassNotFoundException {
         while (loop) {
@@ -64,6 +67,13 @@ public class View {
                                     messageClientService.sendMessageToOne(content,userId,receiver);
                                     break;
                                 case "4":
+                                    System.out.print("请输入想发送文件的用户：");
+                                    String r = Utility.readString(50);
+                                    System.out.print("请输入发送文件的路径：");
+                                    String srcPath = Utility.readString(100);
+                                    System.out.print("请输入对方要保存的路径：");
+                                    String desPath = Utility.readString(100);
+                                    fileClientService.sendFileToOne(srcPath,desPath,userId,r);
                                     break;
                                 case "9":
                                     userClient.logout();

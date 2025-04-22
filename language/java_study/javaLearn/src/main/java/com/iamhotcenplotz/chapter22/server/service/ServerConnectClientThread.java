@@ -100,6 +100,14 @@ public class ServerConnectClientThread extends Thread {
                     }
                 }
 
+                // 5. 文件转发
+                if(message.getMessageType().equals(MessageType.MESSAGE_FILE_MSG)){
+                    // 根据receiver 获得对应线程，然后转发即可
+                    ServerConnectClientThread receiverThread = ManageClientThreads.getServerConnectClientThread(message.getReceiver());
+                    ObjectOutputStream oos = new ObjectOutputStream(receiverThread.getSocket().getOutputStream());
+                    oos.writeObject(message);
+                }
+
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println(e.getMessage());
             }

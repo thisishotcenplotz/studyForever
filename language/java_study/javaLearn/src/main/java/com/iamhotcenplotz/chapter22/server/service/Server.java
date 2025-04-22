@@ -52,6 +52,8 @@ public class Server {
 
             ss = new ServerSocket(9999); // 端口可以写在配置文件中
 
+            new Thread(new SendNewsToAll()).start();
+
             while (true) {
                 Socket socket = ss.accept();
 
