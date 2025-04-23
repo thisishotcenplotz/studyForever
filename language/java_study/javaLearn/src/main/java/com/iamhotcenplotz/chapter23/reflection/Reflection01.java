@@ -33,7 +33,8 @@ public class Reflection01 {
         Object obj = cls.getDeclaredConstructor().newInstance();
         Method hi = cls.getMethod("hi");
 
-        // 优化
+        // 优化： 关闭访问检测，可以稍微提高一点效率
+        // 取消在反射调用方法时，取消访问检测
         hi.setAccessible(true);
 
         // 执行
