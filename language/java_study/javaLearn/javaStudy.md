@@ -2290,3 +2290,69 @@ TCP 和 UDP 协议
 5. annotation
 6. 基本数据类型
 7. void
+
+##### 类加载
+
+反射机制是 java实现动态语言的关键，也就是通过反射实现类动态加载。
+
+1. 静态加载：编译时加载相关的类，如果没有则报错，依赖性太强
+2. 动态加载：运行时加载需要的类，如果运行时不用改类，则不报错，降低了依赖性
+
+类加载时机：
+1. 当创建对象时（new）
+2. 当子类被加载时
+3. 调用类中的静态成员时
+4. 通过反射
+
+类加载各阶段要完成的任务
+
+- 第一阶段：类加载(loading):将类的class文件读入内存，并为之创建一个java.lang.Class对象。此过程由类加载器完成。
+  - JVM 在该阶段的主要目的是将字节码从不同的数据源（可能是class文件，也可能是jar包，甚至网络）转化为二进制字节流加载到内存中，并生成一个代表该类的java.lang.Class对象
+- 第二阶段：链接(linking):将类的二进制数据合并到JRE中
+  - 一：验证(verification)：对文件安全进行校验
+    - 目的是为了确保Class文件的付节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。
+    - 包括：文件格式验证（是否以魔数oxcafebabe开头）、元数据验证、字节码验证和符号引用验证
+    - 可以考虑使用 -Xverify:none 参数来关系大部分的类验证措施，缩短虚拟机类的加载事件
+  - 二：准备(preparation)：对静态变量进行默认初始化，并分配内存空间
+    - JVM会在该阶段对静态变量，分配内存并初始化（对应数据类型的默认初始值，如0,0L,null,false等)。这些变量所使用的内存都将在方法区中进行分配。
+  - 三：解析(resolution)：把符号引用转成直接引用
+    - 虚拟机将常量池内的符号引用替换为直接引用的过程
+- 第三阶段：初始化(initialization)：JVM负责对类进行初始化，这里主要是指静态成员。
+  - 一：到初始化阶段，才真正开始执行类中定义的Java程序代码，此阶段是执行 <clinit>() 方法过程。
+  - 二：<clinit>() 方法时由编译器按语句在源文件中出现的顺序，依次自动收集类中的所有静态变量的赋值动作和静态代码块中的语句，并进行合并。
+  - 虚拟机会保证一个类的<clinit>()方法在多线程环境中被正确的加锁、同步，如果多个线程同时去初始化一个类，那么只会有一个线程去执行这个类的<clinit>()方法，其他线程都需要阻塞等待，直到活动线程执行<clinit>()方法完毕。
+
+
+
+##### 通过反射获取类的结构信息
+
+第一组：java.lang.Class
+1. getName: 获取全类名
+2. getSimpleName: 获取简单类名
+3. getFields: 获取所有public修饰的属性，包含本类以及父类
+4. getDeclaredFields: 获取本类中所有的属性
+5. getMethods: 获取所有public修饰的方法，包含本类以及父类
+6. getDeclaredMethods: 获取本类中所有的方法
+7. getConstructors: 获取所有public修饰的构造器，只有本类
+8. getDeclaredConstructors: 获取本类中所有构造器
+9. getPackage: 以Package形式返回包信息
+10. getSuperClass: 以Class形式返回父类信息
+11. getInterfaces: 以Class[]形式返回所有接口信息
+12. getAnnotations: 以Annotation[] 形式返回所有注解信息
+
+第二组：java.lang.reflect.Field
+1. getModifiers:以int形式返回修饰符[说明：默认修饰符是0，public 是1，private 是 2，protected 是4，static 是 8，final 是16]
+2. getType:以Class形式返回类型
+3. getName:返回属性名
+
+第三组：java.lang.reflect.Methods
+1. getModifiers:以int形式返回修饰符[说明：默认修饰符是0，public 是1，private 是 2，protected 是4，static 是 8，final 是16]
+2. getReturnType:以Class形式返回类型
+3. getName:返回属性名
+4. getParameterTypes: 以Class[] 返回参数类型数组
+
+
+第四组：java.lang.reflect.Constructor
+1. getModifiers:以int形式返回修饰符[说明：默认修饰符是0，public 是1，private 是 2，protected 是4，static 是 8，final 是16]
+2. getName:返回属性名
+3. getParameterTypes: 以Class[] 返回参数类型数组
