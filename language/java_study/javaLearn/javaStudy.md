@@ -2280,3 +2280,13 @@ TCP 和 UDP 协议
     - ```Class clazz4 = cl.loadClass("全类名")```
 5. 基本数据类型（int,char,boolean,float,double,byte,long,shot）```Class cls = 基本数据类型.class```
 6. 基本数据类型对应的包装类，可以通过 **.type** 来得到Class对象 ```Class cls = 包装类.TYPE```
+
+
+##### 如下类型有CLass对象
+1. 外部类，成员内部类，静态内部类，局部内部类，匿名内部类
+2. interface
+3. 数组
+4. enum
+5. annotation
+6. 基本数据类型
+7. void
