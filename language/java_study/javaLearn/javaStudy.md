@@ -2356,3 +2356,14 @@ TCP 和 UDP 协议
 1. getModifiers:以int形式返回修饰符[说明：默认修饰符是0，public 是1，private 是 2，protected 是4，static 是 8，final 是16]
 2. getName:返回属性名
 3. getParameterTypes: 以Class[] 返回参数类型数组
+
+##### 通过反射创建对象
+1. 方式一：调用类中的public修饰的无参构造器
+2. 方式二：调用类中指定构造器
+3. Class类相关方法
+    - newInstance: 调用类中的无参构造器
+    - getConstructor: 根据参数列表，获取对应的构造对象
+    - getDeclaredConstructor: 根据参数列表，获取对应的构造器对象
+4. Constructor类相关方法
+    - setAccessible: 爆破
+    - newInstance(Object...obj): 调用构造器
