@@ -2,8 +2,10 @@ package com.iamhotcenplotz.chapter26.restaurant.view;
 
 import com.iamhotcenplotz.chapter26.restaurant.bean.DiningTable;
 import com.iamhotcenplotz.chapter26.restaurant.bean.Employee;
+import com.iamhotcenplotz.chapter26.restaurant.bean.Menu;
 import com.iamhotcenplotz.chapter26.restaurant.service.DiningTableService;
 import com.iamhotcenplotz.chapter26.restaurant.service.EmployeeService;
+import com.iamhotcenplotz.chapter26.restaurant.service.MenuService;
 import com.iamhotcenplotz.chapter26.restaurant.utils.Utility;
 import org.junit.jupiter.api.Test;
 
@@ -30,6 +32,8 @@ public class View {
 
     // Dining Table Service
     private DiningTableService diningTableService = new DiningTableService();
+
+    private MenuService menuService = new MenuService();
 
     // 显示主菜单
     public void mainMenu() throws Exception {
@@ -93,6 +97,7 @@ public class View {
                     reservation();
                     break;
                 case "3":
+                    showMenu();
                     break;
                 case "4":
                     break;
@@ -157,10 +162,22 @@ public class View {
         } else {
             return;
         }
-
-
-
-
     }
+
+    public void showMenu() throws Exception {
+        List<Menu> list = menuService.list();
+
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.printf("+ %-6s %-4s %-16s %-12s+\n", "编号", "菜名", "类别", "价格");
+        for (Menu menu : list) {
+            System.out.printf("+ %-6d [%-4s] %-16s %-12.2f+\n",
+                    menu.getId(),
+                    menu.getName(),
+                    menu.getType(),
+                    menu.getPrice());
+        }
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    }
+
 
 }
