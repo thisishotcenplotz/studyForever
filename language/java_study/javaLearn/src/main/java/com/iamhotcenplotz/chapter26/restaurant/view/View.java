@@ -1,15 +1,15 @@
 package com.iamhotcenplotz.chapter26.restaurant.view;
 
+import com.iamhotcenplotz.chapter26.restaurant.bean.Bill;
 import com.iamhotcenplotz.chapter26.restaurant.bean.DiningTable;
 import com.iamhotcenplotz.chapter26.restaurant.bean.Employee;
 import com.iamhotcenplotz.chapter26.restaurant.bean.Menu;
+import com.iamhotcenplotz.chapter26.restaurant.service.BillService;
 import com.iamhotcenplotz.chapter26.restaurant.service.DiningTableService;
 import com.iamhotcenplotz.chapter26.restaurant.service.EmployeeService;
 import com.iamhotcenplotz.chapter26.restaurant.service.MenuService;
 import com.iamhotcenplotz.chapter26.restaurant.utils.Utility;
-import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -34,6 +34,8 @@ public class View {
     private DiningTableService diningTableService = new DiningTableService();
 
     private MenuService menuService = new MenuService();
+
+    private BillService billService = new BillService();
 
     // 显示主菜单
     public void mainMenu() throws Exception {
@@ -100,10 +102,13 @@ public class View {
                     showMenu();
                     break;
                 case "4":
+                    order();
                     break;
                 case "5":
+                    listBill();
                     break;
                 case "6":
+                    checkout();
                     break;
                 case "9":
                     loop = false;
@@ -124,7 +129,7 @@ public class View {
         System.out.println("+++++++++++++++++++++++++++++++");
         System.out.println("+ [餐桌编号] --- [餐桌状态]");
         for (DiningTable diningTable : list) {
-            System.out.println("+ "+ diningTable.getId() + "         ---   " + diningTable.getStatus());
+            System.out.println("+ " + diningTable.getId() + "         ---   " + diningTable.getStatus());
         }
         System.out.println("+++++++++++++++++++++++++++++++");
     }
@@ -140,13 +145,13 @@ public class View {
 
         char confirm = Utility.readConfirmSelection();
 
-        if(confirm == 'Y'){
+        if (confirm == 'Y') {
             DiningTable table = diningTableService.getTable(id);
             if (table == null) {
                 System.out.println("餐桌：" + id + " 不存在");
                 return;
             }
-            if(!"空".equals(table.getStatus())){
+            if (!"空".equals(table.getStatus())) {
                 System.out.println("餐桌忙~ 预定失败");
                 return;
             }
@@ -179,5 +184,80 @@ public class View {
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 
+    public void order() throws Exception {
+        System.out.println("+++++++++++++++ 开始点餐 +++++++++++++++");
+        System.out.print("请输入点餐的桌号(-1退出):");
+        int tableId = Utility.readInt();
+        if (tableId == -1) {
+            System.out.println("+++++++++++++++ 取消点餐 +++++++++++++++");
+            return;
+        }
+        System.out.print("请输入点餐的菜品号(-1退出):");
+        int menuId = Utility.readInt();
+        if (menuId == -1) {
+            System.out.println("+++++++++++++++ 取消点餐 +++++++++++++++");
+            return;
+        }
+        System.out.print("请输入点餐的数量(-1退出)：");
+        int quantity = Utility.readInt();
+        if (quantity == -1) {
+            System.out.println("+++++++++++++++ 取消点餐 +++++++++++++++");
+            return;
+        }
 
+        DiningTable table = diningTableService.getTable(tableId);
+        if (table == null) {
+            System.out.println("餐桌不存在");
+            return;
+        }
+
+        Menu menu = menuService.get(menuId);
+        if (menu == null) {
+            System.out.println("菜品不存在");
+            return;
+        }
+
+        boolean orderStatus = billService.order(menuId, quantity, tableId);
+        System.out.println(orderStatus ? "点餐成功" : "点菜失败");
+    }
+
+    public void listBill() throws Exception {
+        List<Bill> list = billService.list();
+        System.out.println("++++++++++++++++++++++++++++++++++");
+        System.out.println("+ 编号\t\t菜品号\t\t数量\t\t金额\t\t餐桌号\t\t日期\t\t\t\t\t\t\t状态");
+        for (Bill bill : list) {
+            System.out.println(
+                "+ " +bill.getId() +"\t\t\t" +
+                bill.getMenu_id() +"\t\t\t" +
+                bill.getQuantity() +"\t\t" +
+                bill.getUnit_price()+"\t" +
+                bill.getTable_id() +"\t\t\t" +
+                bill.getBill_date() +"\t\t\t" +
+                bill.getPayment_status() +"\t\t"
+            );
+        }
+        System.out.println("++++++++++++++++++++++++++++++++++");
+    }
+
+    public void checkout() throws Exception {
+        System.out.println("++++++++++ 结账服务 ++++++++++");
+        System.out.print("请输入要结账的餐桌编号(-1退出):");
+        int tableId = Utility.readInt();
+
+        DiningTable tableStatus = diningTableService.getTable(tableId);
+        if (tableStatus == null) {
+            System.out.println("结账的餐桌不存在");
+            return;
+        }
+
+        boolean paidStatus = billService.isPaid(tableId);
+        if(paidStatus) {
+            System.out.println("没有未结的账单");
+            return;
+        }
+
+        billService.paid(tableId);
+        System.out.println("结账成功");
+    }
 }
+

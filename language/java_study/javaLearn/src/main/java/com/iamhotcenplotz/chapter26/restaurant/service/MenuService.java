@@ -23,4 +23,12 @@ public class MenuService {
                 ,1
         );
     }
+
+    public Menu get(int id) throws Exception {
+        return menuDAO.query(
+        "select * from restaurant.menu where id = ?"
+            ,Menu.class
+            ,id
+        );
+    }
 }

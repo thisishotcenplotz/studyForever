@@ -44,4 +44,20 @@ public class DiningTableService {
         return result > 0;
     }
 
+    public boolean updateTableStatus(Integer id, String status) throws Exception {
+        int updateStatus = diningTableDAO.update(
+                "update restaurant.dining_table set status = ? where id = ?"
+                , status, id
+        );
+        return updateStatus > 0;
+    }
+
+    public boolean resetTable(Integer id) throws Exception {
+        int result = diningTableDAO.update(
+            "update restaurant.dining_table set order_name = '', order_tel = '' where id = ?"
+            ,id
+        );
+        return result > 0;
+    }
+
 }

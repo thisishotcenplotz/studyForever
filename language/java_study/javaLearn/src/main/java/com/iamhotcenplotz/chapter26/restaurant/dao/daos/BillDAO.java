@@ -12,4 +12,5 @@ import com.iamhotcenplotz.chapter26.restaurant.dao.BasicDao;
 
 
 public class BillDAO extends BasicDao<Bill> {
+
 }
