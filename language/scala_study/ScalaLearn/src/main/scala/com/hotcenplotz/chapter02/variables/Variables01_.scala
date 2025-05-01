@@ -1,4 +1,4 @@
-package com.hotcenplotz.chapter02
+package com.hotcenplotz.chapter02.variables
 
 /**
  * @author: Der Hotcenplotz

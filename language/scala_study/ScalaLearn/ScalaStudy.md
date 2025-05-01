@@ -60,3 +60,39 @@ val name:String = "zhang san"
 - 类型确定后，就不能修改，说明Scala是强数据类型语言
 - 在声明一个变量时，可以使用var或者val来修饰，var修饰可变变量，val修饰不可变变量
 - val修饰的变量在编译后，等同于加上了final
+- 变量声明时，需要初始值。这里与Java不同。
+
+
+##### 数据类型
+- Scala 与 Java 有着相同的数据类型，在Scala中数据类型都是对象，也就是说Scala中没有Java中的原生类型
+- Scala数据类型分为两大类，他俩都是对象
+  - AnyVal （值类型）
+  - AnyRef  (引用类型)
+- 相对于java的类型系统，Scala更复杂，也正是这复杂多变的类型系统才让面向对象和函数式完美的融合在了一起
+
+
+Scala数据类型
+Any <-> Nothing
+- AnyVal
+  - Unit
+  - StringOps
+  - Char
+  - Boolean
+  - Byte
+  - Short
+  - Int
+  - Long
+  - Float
+  - Double
+- AnyRef <-> Null <- Nothing
+  - Scala collections
+  - all java classes
+  - Other Scala classes
+
+
+小结：
+- 在Scala中有一个根类型Any，他是所有类的父类
+- Scala中一切皆为对象，分为两大类 AnyVal(值类型)，AnyRef(引用类型)，它们都是Any的子类
+- Null 是scala的特别类型，它只有一个值 null，它是是一个bottom class，是所有AnyRef的类型的子类
+- Nothing 类也是 bottom class， 它是所有类的子类，在开发中通常可以将Nothing类型的值返回给任意变量或者函数，是抛异常时使用较多。
+- 在Scala中仍然遵守，低精度向高精度自动转换（implicit conversion 隐式转换）
