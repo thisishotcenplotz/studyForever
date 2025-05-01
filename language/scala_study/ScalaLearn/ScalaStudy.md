@@ -1,0 +1,62 @@
+# Scala 介绍
+
+##### Scala语言的特点
+
+Scala是一门以JVM为运行环境并将**面向对象**和**函数式编程**的最佳特性结合在一起的静态类型编程语言。
+1. Scala是一门多范式(multi-paradigm)的编程语言，Scala支持面向对象和函数式编程。
+2. Scala源代码会被编译成java字节码，然后运行与JVM之上，并可以调用现有的Java类库，实现两种语言的无缝对接。
+3. Scala在设计时，作者是参考了Java的设计思想，可以说Scala源于Java，同时他也加入了自己的设计思想，将函数式编程语言的特点融合到Java中。
+
+# 第一章：注释
+
+单行注释
+```shell 
+// 
+```
+
+多行注释
+```shell 
+/* */
+```
+
+文档注释
+```shell 
+/**
+*/
+
+scaladoc -d target_path source.scala
+```
+
+# 第二章：变量
+
+```scala
+val a:Short = 1
+
+val b:Byte = 1
+
+val age:Int = 10
+
+val c:Long = 10
+
+// 在scala中，小数默认为double类型，整数默认为Int类型
+var score:Float = 99.9f
+
+val salary:Double = 10.0
+
+val isPass:Boolean = true
+
+val gender:Char = 'M'
+
+val name:String = "zhang san"
+```
+
+
+变量声明基本语法：
+- var | val 
+
+
+注意事项：
+- 声明变量时，类型可以省略（编译器自动推导，即类型推导）
+- 类型确定后，就不能修改，说明Scala是强数据类型语言
+- 在声明一个变量时，可以使用var或者val来修饰，var修饰可变变量，val修饰不可变变量
+- val修饰的变量在编译后，等同于加上了final
