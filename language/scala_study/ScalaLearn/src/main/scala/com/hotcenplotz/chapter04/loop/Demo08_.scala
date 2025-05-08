@@ -31,6 +31,5 @@ object Demo08_ {
             println(i)
             if (i == 5) loop = false
         }
-
     }
 }
