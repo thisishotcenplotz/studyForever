@@ -232,6 +232,34 @@ class 类名(形参列表){ // 主构造器
 2. 如果参数使用val关键字声明，那么Scala会将参数作为类的私有的只读属性使用
 3. 如果参数使用var关键字声明，那么Scala会将参数作为类的成员属性使用，并会提供属性对应的xxx()类似getter setter方法，即这时的成员属性是私有的，但是可以读写
 
+```scala
+// 如果主构造器的形参没有使用任何修饰符，
+// 那么这个参数就是一个局部变量，范围就是主构造器中。
+class ConstructorParamsDemo01(name: String) {
+
+}
+
+// 如果主构造器的形参用val修饰
+// 那么这个形参会成为这个类的只读的私有属性 即 private final String name
+// 实例化后可以直接访问这个属性
+class ConstructorParamsDemo02(val name: String) {
+
+}
+
+
+// 如果主构造器的形参用var修饰
+// 那么这个参数就是一个private 可读写的属性
+class ConstructorParamsDemo03(var name: String) {
+
+}
+
+// BeanProperty 会自动生成 类似Java 的 Getter Setter 方法
+class Car(
+  @BeanProperty val car: String,
+  @BeanProperty val color: String
+) { }
+```
+
 ##### Scala 创建对象的流程
 1. 加载类的信息（属性信息，方法信息）
 2. 在内存中（堆）开辟空间
@@ -258,3 +286,87 @@ Scala的包比Java更加强大且相对复杂一些
 注意事项：
 1. 每个包都可以有一个包对象。你需要在父包中定义它
 2. 包对象名称需要和包名一致，一般用来对包的功能补充
+
+##### 包的可见性
+1. 当属性访问权限为默认时，底层看是private的，但是提供了 xxx_$eq() 类似getter setter方法，因此从使用效果看任何地方都可以访问
+2. 当方法访问权限为默认时，默认为public访问权限
+3. private为私有权限，只在类的内部和伴生对象中使用
+4. protected 在Scala中比Java要严格，只能子类访问，同包无法访问
+5. 在Scala中没有public关键字，即不能用public显示的修饰属性和方法
+6. 包访问权限（表示属性有了限制。同时包也有了限制），这点和Java不同。
+```scala
+package visit
+
+class TestPerson {
+    // 这是限制了只有类内部和伴生对象中访问
+    private val name:String = "zhang san"
+    
+    // private[visit] : 此时 age 属性仍然是私有的，但是在visit包下也可以使用这个属性 
+    // 相当于扩大了访问烦我
+    private[visit] val age:Int = 10 
+    
+}
+
+class Test {
+  def main(args: Array[String]): Unit = {
+    val person: TestPerson = new TestPerson
+    println(person.age)
+  }
+}
+```
+
+##### 包的引入
+
+1. 在Scala中，import语句可以出现在任何地方，并不仅限于文件顶部。import语句的作用一致眼神到包含该语句块的末尾。这种语法的好处是：在需要时引入，缩小import的作用范围，提高效率
+2. 如果不想要某个包中的全部类，而是其中几个类，可以采用选择器 
+```scala
+import scala.collection.mutable.{HashMap,HashSet}
+```
+3. 如果引入多个包含有相同的类，那么可以将不需要的类进行重命名进行分区
+
+```scala
+import java.util.{HashMap => JavaHashMap}
+import scala.collection.mutable._
+
+var map = new HashMap() // scala HashMap
+var m1 = new JavaHashMap() // java HashMap
+```
+4. 如果某个冲突的类根本就不会用到，那么可以直接隐藏掉该类
+```scala
+import java.util.{ HashMap => _,_} // 含义为 引入java.util包的所有类，但忽略掉hashMap 这个类
+
+var map = new HashMap() // scala HashMap ,而且idea也不会提示有java HashMap
+```
+
+
+##### Scala 抽象
+把一类事物的共同属性和方法提取出来，形成一个屋里模型。这种研究问题的方法称为抽象
+
+举例：不管是工行还是Chase的银行账号，都应该有 [账号，余额，...] 等属性 以及 [存款，取款，...] 等方法
+
+
+##### Scala 继承
+
+当修改父类时，对应的子类就会继承想用的方法和属性，从而提高了扩展性和维护性。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
