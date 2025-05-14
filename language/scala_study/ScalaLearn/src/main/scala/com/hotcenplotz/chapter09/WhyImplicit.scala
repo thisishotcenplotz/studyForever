@@ -14,7 +14,9 @@ object WhyImplicit {
         
         // Double -> Int 的隐式转换函数
         implicit def intToDouble(d:Double):Int = d.toInt
+        implicit def floatToInt(f:Float):Int = f.toInt
         
         val num:Int = 3.5 // 这样就OK了。很方便，啥也不用操心。
+        val num2:Int = 3.5f
     }
 }

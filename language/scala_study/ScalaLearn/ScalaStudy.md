@@ -603,5 +603,34 @@ class Outer {
 
 # 第九章：隐式转换和隐式值
 
+##### 注意事项和细节
+1. 隐式转换函数的函数名可以任意取，隐式转换与函数名无关，只与函数签名（函数参数类型和返回值类型）有关。
+2. 隐式函数可以有多个（即：隐式函数列表），但是需要保证在当前环境下，只有一个隐式函数被识别。
 
+##### 隐式转换丰富类库功能
 
+如果需要为一个类增加一个方法，可以通过隐式转换来实现（动态增加功能）比如向为MySQL增加一个delete方法
+
+```scala
+class Demo01_ {
+    implicit def addDelete(m:MySQL):DB = new DB
+    
+    def main(args: Array[String]): Unit = {
+        val mysql: MySQL = new MySQL
+        mysql.insert()
+        mysql.delete()
+    }
+}
+
+class MySQL {
+    def insert():Unit = {}
+}
+
+class DB {
+    def delete():Unit = {}
+}
+```
+
+##### 隐式值
+
+隐式值也叫隐式变量，将某个形参标记为Implicit，所以编译器会在方法省略隐式参数的情况下去搜索作用域内的隐式值作为却省参数
