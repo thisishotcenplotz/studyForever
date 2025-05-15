@@ -634,3 +634,85 @@ class DB {
 ##### 隐式值
 
 隐式值也叫隐式变量，将某个形参标记为Implicit，所以编译器会在方法省略隐式参数的情况下去搜索作用域内的隐式值作为却省参数
+
+##### 隐式类
+隐式类非常强大，同样可以扩展类的功能，比 前面使用隐式转换丰富类库功能更加方便，在集合中隐式类会发挥重要作用。
+
+隐式类的几个特点：
+1. 其所带的构造参数有且值能有一个
+2. 隐式类必须定义在类 或 伴生对象 或 包对象里，即饮食类不能是顶级的
+3. 隐式类不能是case class
+4. 作用域内不能有与之相同名称的标识符
+
+# 第十章：集合
+
+1. Scala 同时支持`不可变集合` 和 `可变集合`，不可变集合可以安全的并发访问。
+2. Scala默认采用不可变集合，对于几乎所有的集合类，Scala都同时提供了可变和不可变的版本
+3. Scala集合有三大类 `序列Seq`, `集Set`,和 `映射Map`，所有的集合都扩展自 Iterable特质。
+
+##### 结构概览
+
+- Traversable
+  - Iterable
+    - Set
+      - HashSet
+      - SortedSet
+        - TreeSet
+      - BitSet
+      - LIstSet
+    - Map
+      - HashMap
+      - SortedMap
+        - TreeMap
+      - ListMap
+    - Seq
+      - IndexedSeq
+        - Vector
+        - NumericRange
+        - Array
+        - String
+        - Range
+      - LinearSeq
+        - List
+        - Stream
+        - Queue
+        - Stack
+
+
+##### 可变和不可变
+1. 不可变集合：Scala 不可变集合，就是这个集合本身不能动态变化。就是集合的长度不能变。
+2. 可变集合：可变集合，就是这个集合长度可以变化，能动态增长。
+
+java回顾
+```java
+public class JavaCollectionReview_ {
+    public static void main(String[] args) {
+        //不可变集合，类似于Java数组
+        int[] nums = new int[3];
+        nums[0] = 1;
+        String[] names = {"a","b"};
+        System.out.println(nums + " " + names);
+
+        // 可变集合举例
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("a");
+        strings.add("b");
+        strings.add("c");
+
+        System.out.println(strings + " " + strings.hashCode());
+    }
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
