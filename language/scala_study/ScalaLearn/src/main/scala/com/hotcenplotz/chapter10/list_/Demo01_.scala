@@ -33,5 +33,8 @@ object Demo01_ {
         val list4: List[Any] = list1 ::: list2 // List(1, 2, Hello, 3, Hello, 1, 2, Hello, 3)
         println(list4)
         
+        // 末尾加Nil,建一个新的List
+        val list5: List[Any] = 1 :: 2 :: 3 :: 4 :: "Hello" :: Nil
+        
     }
 }
