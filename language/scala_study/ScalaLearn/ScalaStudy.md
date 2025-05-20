@@ -716,6 +716,37 @@ public class JavaCollectionReview_ {
 
 在Scala中可以通过map映射操作，将集合中的没一个元素通过指定功能映射成新的结果集合，即将函数作为参数传递给另一个函数，这是函数式编程的特点。
 
+##### 流-Stream
+
+stream 是一个集合。这个集合，可以用于存放无穷多个元素，但是这无穷个元素并不会一次性生产出来，而是需要用到多大的区间，就会动态的产生，末尾元素遵循lazy规则
+1. Stream集合存放的数据类型Bigint
+2. numsForm是一个自定义的函数，函数名是程序指定的
+3. 创建的集合的第一个元素时n，后续元素生成的规则是n+1
+4. 后续元素生成的规则是可以程序员指定的，比如numsForm(n*4)
+
+##### 视图-View
+Stream的懒加载特性，也可以对其他集合应用view方法来得到类似效果，具有一下特点：
+1. view方法产出一个总是被懒执行的集合。
+2. view不会缓存数据，每次都要重新计算，比如重新遍历view时。
+
+##### 线程安全的集合
+1. SynchronizedBuffer
+2. synchronizedMap
+3. SynchronizedPriorityQueue
+4. SynchronizedQueue
+5. SynchronizedSet
+6. SynchronizedStack
+
+##### 并行集合
+1. Scala为了充分使用多核CPU，提供了并行集合，用于多核环境的并行计算
+2. 主要用到的算法有： Divide and conquer（分治算法），Scala通过splitters，combiners等抽象层来实现，
+主要原理是将计算工作分解很多任务，分发给一些处理器去完成，并将它们处理结果合并返回。
+Work stealin算法，主要用于任务调度负载均衡，通俗点完成自己的所有任务之后，发现其他人还有没干完的活，主动活被动帮他人一起干，这样达到今早干完的目的。
+
+# 第十二章：模式匹配
+
+模式匹配语法中，采用match关键字声明，每个分支采用case关键字进行声明，当需要匹配时，会从第一个case分支开始，如果匹配成功后，那么执行对应的逻辑代码，如果
+匹配不成功，会执行下一个分支进行判断。如果所有case都不匹配，那么会执行 case _ 这个默认分支。
 
 
 
