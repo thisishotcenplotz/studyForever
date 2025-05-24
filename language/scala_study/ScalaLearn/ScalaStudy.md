@@ -772,7 +772,7 @@ Work stealin算法，主要用于任务调度负载均衡，通俗点完成自�
 3. 偏函数在Scala中是一个特质PartialFunction
 
 ```scala
-// 结论：可以实现功能，但是太麻烦。由此引出偏函数
+
 val list: List[Any] = List(1, 2, 3, 4, 5, "abc")
 
 // 使用偏函数
@@ -838,3 +838,116 @@ println(f(5))
 1. 函数编程中，接受多个参数的函数都可以转化为接受单个参数的函数，这个转化过程就叫柯里化
 2. 柯里化就是证明了函数值需要一个参数而已。其实我们刚才的学习过程中，已经设计到了柯里化操作。
 3. 不用设立柯里化存在的意义这样的命题。柯里化就是以函数为主题这种思想发展的必然结果（即：柯里化是面向函数思想的必然结果）
+
+##### 抽象控制基本介绍
+
+控制抽象是这样的函数，满足如下条件：
+1. 参数是函数
+2. 函数参数没有输入值夜没有返回值
+
+```scala
+// 抽象控制demo
+
+// 1.输入是一个函数
+// 2. 输入的函数没有形参也没有返回值
+def myAbstractControlDemo(f: => Unit): Unit = {
+    new Thread {
+        override def run(): Unit = f
+    }.start()
+}
+
+// 这玩意跑多线程很不错。
+// 使用案例
+
+(1 to 200).foreach{ _ =>
+    myAbstractControlDemo {
+        println("Hello World...")
+        Thread.sleep(1000)
+        println("Rock the JVM...")
+    }
+}
+```
+
+高阶玩法
+
+```scala
+// 传统写法
+var x: Int = 10
+while (x > 0) {
+    x -= 1
+    println(s"x = $x")
+}
+
+// 控制抽象写法
+def myUntil(condition: => Boolean)(block: => Unit): Unit = {
+    if (condition) {
+        block
+        myUntil(condition)(block)
+    }
+}
+
+var y = 100
+myUntil(y > 0) {
+    y -= 1
+    println(s"y = $y")
+}
+```
+
+
+# 第十四章：使用递归去思考去编程
+Scala 是运行在JVM机之上，因此具有如下特点：
+1. 轻松实现和丰富的Java类库互联互通
+2. 它既支持面向对象，又支持函数式
+3. 它写出的程序像动态语言一样简洁，但事实上它确实严格意义上的静态语言。
+4. Scala就像一位武林中的集大成者，将过去几十年计算机语言发展历史中精粹集于一身，化繁为简。设计者老马，希望Scala是一门作为简洁、高效、令人愉快的语言。同时也在启发者使用者的编程思想。
+
+再说一下编程范式：
+1. 在所有的编程范式中，面向对象编程无疑是最大的赢家。
+2. 但其实面向对象编程并不是一种严格意义上的编程范式，严格意义上的编程范式分为：命令式编程（Imperative Programming）、函数式编程（Functional Programming）和 逻辑是编程 （Logic Programming）. 
+面相对象编程只是上述几种范式的一个较差产物，更多的还是继承了命令式编程的基因。
+3. 在传统语言设计中，只有命令式编程得到了强调，那就是程序员要告诉计算机应该怎么做。而递归则通过灵巧的函数定义，告诉计算机做什么。因此在使用命令式编程思维中，是现在多数人采用的编程方式，递归出镜率比较低， 
+而在函数式编程中，递归随处可见。
+
+来看一个案例：
+```scala
+ // 传统办法: 
+val now: Date = new Date()
+val dateFormat: SimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+val strNow: String = dateFormat.format(now)
+println(s"start time: $strNow")
+
+var res: BigInt = BigInt(0)
+var num: BigInt = BigInt(1)
+var maxVal = BigInt(100000000l)
+
+while (num <= maxVal) {
+    res += num
+    num += 1
+}
+val done: String = dateFormat.format(new Date())
+println(s"result: $res")
+println(s"completed at: $done")
+
+// 递归方式计算
+def mySum(num:BigInt,sum:BigInt):BigInt = {
+    if(num <= 100000000l) mySum(num+1,sum + num)
+    else sum
+}
+
+println(s"recursive start: ${dateFormat.format(new Date())}")
+mySum(BigInt(0),BigInt(1))
+println(s"recursive complete: ${dateFormat.format(new Date())}")
+```
+
+输出： 
+
+```text
+start time: 2025-05-24 10:48:19
+result: 5000000050000000
+completed at: 2025-05-24 10:48:19
+recursive start: 2025-05-24 10:48:19
+recursive complete: 2025-05-24 10:48:20
+```
+
+结论：
+函数式编程的重要思想就是尽量不要产生额外的影响，传统方式的代码不太符合函数式编程的思想。使用递归看起来在性能上并不比传统方式慢，但是要注意递归使用陷阱。
