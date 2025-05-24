@@ -17,8 +17,8 @@ object Temp {
             val mm: Int = ts.split(":")(1).toInt
             
             def add(another: Duration): Duration = {
-                val mmHandle = if ((another.mm + this.mm) > 60) (1, (another.mm + this.mm) % 60) else (0, (another.mm + this.mm))
-                val hhHandle = this.hh + another.hh + mmHandle._1
+                val mmHandle: (Int, Int) = if ((another.mm + this.mm) > 60) (1, (another.mm + this.mm) % 60) else (0, (another.mm + this.mm))
+                val hhHandle: BigInt = this.hh + another.hh + mmHandle._1
                 val newMM: String = mmHandle._2.toString.reverse.padTo(2, '0').reverse
                 
                 Duration(s"${hhHandle.toString}:${newMM}")
@@ -27,15 +27,15 @@ object Temp {
             override def toString: String = s"$hh:$mm"
         }
         val data: BufferedSource = Source.fromFile("src/main/scala/com/hotcenplotz/content.txt", "utf-8")
-        val results: Iterator[(String, String, String,Duration)] = data.getLines().map { line =>
+        val results: Iterator[(String, String, String, Duration)] = data.getLines().map { line =>
             val row: Array[String] = line.split("->")
             val index: String = row(0).strip()
             val name: String = row(1).strip()
             val duration: String = row(2).strip()
-            (index, name, duration,Duration(duration))
-        }.scanLeft(("Index", "Contest", "Duration",Duration("0:00")))((a, b) => (b._1, b._2, b._3,b._4.add(a._4)))
+            (index, name, duration, Duration(duration))
+        }.scanLeft(("Index", "Contest", "Duration", Duration("0:00")))((a, b) => (b._1, b._2, b._3, b._4.add(a._4)))
         
-        val output: FileOutputStream = new FileOutputStream(new File("course.txt"),true)
+        val output: FileOutputStream = new FileOutputStream(new File("course.txt"), true)
         
         results.foreach(line => output.write((line.toString() + "\n").getBytes))
         

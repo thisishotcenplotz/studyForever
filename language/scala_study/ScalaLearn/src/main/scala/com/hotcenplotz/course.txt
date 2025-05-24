@@ -1,4 +1,4 @@
-(Index,Contest,Duration,0:0)
+(Index,Contest,Duration,Cumulated Duration)
 (001,Scala概述(上),18:51,18:51)
 (001,Scala概述(下),26:53,45:44)
 (002,Scala读法说明,00:50,46:34)

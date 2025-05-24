@@ -943,11 +943,16 @@ println(s"recursive complete: ${dateFormat.format(new Date())}")
 
 ```text
 start time: 2025-05-24 10:48:19
-result: 5000000050000000
 completed at: 2025-05-24 10:48:19
+
 recursive start: 2025-05-24 10:48:19
 recursive complete: 2025-05-24 10:48:20
 ```
 
 结论：
 函数式编程的重要思想就是尽量不要产生额外的影响，传统方式的代码不太符合函数式编程的思想。使用递归看起来在性能上并不比传统方式慢，但是要注意递归使用陷阱。
+
+
+# 第十五章：练手项目实践
+
+一个简单的CRM
