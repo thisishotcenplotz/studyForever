@@ -956,3 +956,74 @@ recursive complete: 2025-05-24 10:48:20
 # 第十五章：练手项目实践
 
 一个简单的CRM
+
+# 第十六章：AKKA - 一个并发编程模型
+
+##### AKKA介绍
+1. Akka是JVM平台上构建高并发、分布式和容错应用的工具包和运行时，可以理解为：Akka是编写并发程序的框架
+2. Akka用Scala语言写成，同时提供了Scala和Java开发接口
+3. Akka主要解决的问题是：可以轻松的写出高效稳定的并发程序，程序员不再过多的考虑线程、锁和资源竞争的细节。
+
+
+##### Akka中的Actor模型以及用于解决什么问题：
+1. 处理并发问题关键是要保证共享数据的一致性和正确性，因为程序是多线程时，多个线程对同一个数据进行修改，若不加同步条件，势必会造成数据污染。但是当我们对关键代码加入同步条件synchronized
+后，实际上并发就会阻塞在这段代码，对程序效率有很大影响
+2. 若是用单线程处理，不会有数据一致性问题，但是系统的性能有不能保证。
+3. Actor模型的出现就解决了这个问题，简化并发编程，提高程序性能。可以这样理解：Actor模型是一种处理并发问题的解决方案。
+
+##### Actor模型说明：
+1. Akka处理并发的方法是基于Actor模型
+2. 在基于Actor的系统里，所有的事务都是Actor，就好像在面向对象设计里面所有的事务都是对象一样。
+3. Actor模型是作为一个并发模型设计和架构的。Actor与Actor之间只能通过消息通信。
+4. Actor与Actor之间只能通过消息进行通讯，当一个Actor给另一个Actor发消息时，消息是有序的，只需要将消息投寄响应邮箱即可。
+5. 怎么处理消息是由接收消息的Actor决定的，发送消息Actor可以等待回复，也可以异步处理。
+6. ActorSystem的职责是负责创建并管理其创建的Actor，ActorSystem是单例的，一个JVM进程中有一个即可，而Actor是可以有多个的。
+7. Actor模型是对并发模型进行了更高的抽象。
+8. Actor模型是异步、非阻塞、高性能的事件驱动编程模型。
+9. Actor模型是轻量级事件处理（1G内存可以容纳百万级别个Actor）因此处理大并发性能高。
+
+##### Actor 模型工作机制说明：
+1. ActorSystem创建Actor
+2. ActorRef：可以理解成Actor的代理或者引用。消息通过ActorRef来发送，而不能通过Actor发消息，通过哪个ActorRef发消息，就表示把消息发给哪个Actor
+3. 消息发送到Dispatcher Message（消息分发器），它得到消息后，会将消息进程分发到对应的Mailbox。（注：Dispatcher Message 可以理解成一个线程池，Mailbox可以理解成消息队列缓冲多个消息遵守FIFO）
+4. Actor可以通过receive方法来获取消息，然后进行处理。3
+
+##### Actor 间传递消息机制
+1. 每一个消息就是一个Message对象。Message继承了Runnable，因为Message就是线程类
+2. 从Actor模型工作机制看上去很麻烦，但是程序员编程时值需要编写成Actor就可以了，其它的交给Actor模型完成即可。
+3. A Actor要给B Actor发消息，那么 A Actor要先拿到（也称为持有）B Actor 的代理对象 ActorRef 才能发消息
+
+流程示意：
+
+A Actor 发消息给 B Actor
+
+ActorSystem -> A Actor -> A ActorRef B ActorRec -> Dispatcher Message(Thread pool) -> B Mailbox (a queue) -> B Actor
+
+
+##### 两个Actor的通讯机制
+1. 两个Actor通讯机制和Actor自身发送消息机制基本一样。只是需要注意如下。
+2. 如果A Actor 在需要给B Actor 发消息，则需要B Actor的 ActorRef，可以通过创建时传入B Actor的代理对象(ActorRef)
+3. 当B Actor 在receive 方法中收到消息，需要回复时，可以通过 sender() 获取到发送Actor的代理对象。
+
+##### 如何理解Actor的receive方法被调用
+1. 每个Actor对应Mailbox
+2. Mailbox 实现了Runnable接口，处于运行状态
+3. 当有消息发送到Mailbox，就会去调用Actor的receive方法，将消息推送给receiver
+
+##### Akka网络编程基本介绍：
+
+Akka支持面向大并发后端服务程序，发网络通信这块是服务端程序重要的一部分。
+
+网络编程有两种：
+1. TCP socket 编程，是网络程序的主流。之所以叫TCP socket编程，是因为底层是基于tcp/ip协议的。比如QQ聊天
+2. b/s 结构的 http编程，我们使用浏览器去访问服务器时，使用的就是http协议，而http底层依旧是tcp socket实现的。
+
+
+##### TCP/IP 三本书
+1. TCP/IP详解，卷1：协议
+2. TCP/IP详解，卷2：实现
+3. TCP/IP详解，卷3：TCP事务协议 
+
+作者：瑞查德 史蒂芬
+
+

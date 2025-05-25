@@ -14,7 +14,6 @@ import scala.io.StdIn
 class CustomerPageView {
     
     private var loop: Boolean = true
-    private var cusKey: String = _
     private val customerService: CustomerService = CustomerService.getInstance()
     
     
