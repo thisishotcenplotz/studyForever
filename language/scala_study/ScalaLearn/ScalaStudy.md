@@ -1026,4 +1026,11 @@ Akka支持面向大并发后端服务程序，发网络通信这块是服务端�
 
 作者：瑞查德 史蒂芬
 
+##### 简单模拟Spark
+1. Worker 注册到Master，Master完成注册，并回复Worker注册成功
+2. Worker定时发送心跳，并在Master能接受到
+3. Master接收到Worker心跳后，要更新该Worker的最近一次发送心跳的时间。
+4. 给Master启动定时任务，定时检测注册的Worker有哪些没有更新心跳，并将其从HashMap中删除
+5. Master、Worker进行分布式部署。
+
 
