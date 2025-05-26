@@ -64,6 +64,8 @@ object SparkMaster {
             sys.exit()
         }
         
+        println(args.mkString("; "))
+        
         val host: String = args(0)
         val port: String = args(1)
         val name: String = args(2)

@@ -20,7 +20,8 @@ class SparkWorker(
     lazy val id: String = java.util.UUID.randomUUID().toString
     
     override def preStart(): Unit = {
-        masterProxy = context.actorSelection(s"akka://$masterName@$masterHost:$masterPort/user/$masterName")
+//        masterProxy = context.actorSelection(s"akka://$masterName@$masterHost:$masterPort/user/$masterName")
+        masterProxy = context.actorSelection(s"akka://SparkMaster@$masterHost:$masterPort/user/$masterName")
     }
     
     override def receive: Receive = {
@@ -52,6 +53,8 @@ object SparkWorker {
             println(s"请输入 workerHost,workerPort,workerName,masterHost,masterPort,masterName")
             sys.exit()
         }
+        
+        println(args.mkString("; "))
         
         val workerHost: String = args(0)
         val workerPort: String = args(1)
