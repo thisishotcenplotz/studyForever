@@ -1033,4 +1033,97 @@ Akka支持面向大并发后端服务程序，发网络通信这块是服务端�
 4. 给Master启动定时任务，定时检测注册的Worker有哪些没有更新心跳，并将其从HashMap中删除
 5. Master、Worker进行分布式部署。
 
+# 第十七章：设计模式
 
+##### 设计模式的必要性
+1. 一些框架大量使用设计模式，不学读不懂
+2. 设计模式能能让专业人士交流方便
+3. 提高代码的维护性
+4. 设计模式是编程经验的总结，就好像对于一些应用场景的套路化（站在框架工程化层面思考）
+
+##### 掌握设计模式的层次
+1. 第一层：刚开始学编程不久，听说过什么是设计模式
+2. 第二层：有很长时间的编程经验，自己写了很多代码，其中用到了设计模式，但是自己却不知道
+3. 第三层：学过了设计模式，发现自己已经在使用了，并且发现了一些新的模式挺好用
+4. 第四层：阅读了很多别人写的原码和框架，在情况中看到别人设计模式，并且能够领会设计模式的精妙和带来的好处。
+5. 第五层：代码写着写着，自己都没意识到使用了设计模式，并且熟练的写了出来。
+
+##### 设计模式简介
+1. 设计模式是程序员面在面对同类软件工程设计问题所总结出来的有用经验，设计模式不是代码，而是某类问题的通用解决方案，设计模式代表了最佳实践。
+这些总结方案是众多开发人员经过相当长的一段时间的经验和错误的总结出来的
+2. 设计模式本质是提高软件的维护性，通用性和扩展性，并降低软件的复杂度
+3. <<设计模式>> 是经典的书，作者是Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides (俗称四人组)
+4. 设计模式并不局限于某种语言，其他语言也有设计模式
+
+##### 设计模式类型
+1. 创建型模式：单例模式、抽象工厂模式、建造者模式、工厂模式、原型模式
+2. 结构型模式：适配器模式、桥接模式、装饰模式、组合模式、外观模式、亨元模式、代理模式
+3. 行为型模式：模板方法模式、命令模式、迭代器模式、观察者模式、中介者模、备忘录模式、解释器模式、状态模式、策略模式、职责链模式、访问模式
+
+##### 简单工厂模式
+1. 简单工厂模式属于创建类型模式。简单工厂模式是由一个工厂对象决定创建出哪一类的实例。简单工厂模式是工厂模式家族中最简单实用的模式。
+2. 简单工厂模式：定义了一个类创建对象的类，由这个类来封装实例化对象的行为
+3. 当需要大量创建某种、某类、或者某批对象时，就会用到工厂模式。
+
+##### 工厂方法模式
+定义了一个创建对象的抽象方法，由子类决定实例化的类。即将具体如何实例化类的方法让子类重写。
+
+```scala
+abstract class OrderPizza(
+    var orderType: String = "", var pizza: pizza_.Pizza = null
+) {
+    breakable {
+        do {
+            print("请输入:")
+            orderType = StdIn.readLine()
+            
+            pizza = this.createPizza(orderType)
+            
+            pizza.prepare()
+            pizza.bake()
+            pizza.cut()
+            pizza.box()
+        } while (true)
+    }
+    
+    def createPizza(name:String):Pizza
+}
+
+class ShenzhenOrderPizza extends OrderPizza {
+
+  override def createPizza(name: String): Pizza = {
+    name.toLowerCase match {
+      case "greek" => new ShenzhenCheesePizza("greek")
+      case "pepper" => new ShenzhenPepperPizza("pepper")
+      case "cheese" => new ShenzhenCheesePizza("cheese")
+      case _ => throw new IllegalArgumentException(s"invalid pizza type $name")
+    }
+  }
+}
+
+class NewYorkOrderPizza extends OrderPizza {
+
+  override def createPizza(name: String): Pizza = {
+    name.toLowerCase match {
+      case "greek" => new NewYorkCheesePizza("greek")
+      case "pepper" => new NewYorkPepperPizza("pepper")
+      case "cheese" => new NewYorkCheesePizza("cheese")
+      case _ => throw new IllegalArgumentException(s"invalid pizza type $name")
+    }
+  }
+}
+
+```
+
+##### 抽象工厂模式
+1. 抽象工厂模式：定义了一个trait用于创建相关或有依赖关系的对象簇，而无需指明具体的类
+2. 抽象工厂模式可以将简单工厂模式和工厂方法模式进行整合。
+3. 从设计层面看，抽象工厂模式就是对简单工厂模式的改进
+4. 将工厂抽象成两层，absFactory(抽象工厂) 和 具体实现的工厂子类。程序员可以根据创建对象类型使用相应的工厂子类。这样将单个的简单工厂类变成了工厂簇，更利于代码的维护和扩展。
+
+小结：
+1. 工厂模式的意义在于，将实例化对象的代码提取出来，放到一个类中统一管理和维护，达到和主项目的依赖关系解耦。从而提高代码维护性
+2. 各种模式：
+   - 简单工厂：简单粗暴，要什么我给你new什么
+   - 工厂：要实例化哪个类，方法你自己实现，我只提供抽象方法名称
+   - 抽象工厂：构建抽象工厂，根据不同类型实构建多个不同类型的子工厂。用时候通过多态调用，不影响业务逻辑。
