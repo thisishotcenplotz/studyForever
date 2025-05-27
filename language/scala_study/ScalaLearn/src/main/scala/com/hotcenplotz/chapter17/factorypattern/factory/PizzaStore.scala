@@ -1,5 +1,7 @@
 package com.hotcenplotz.chapter17.factorypattern.factory
 
+import com.hotcenplotz.chapter17.factorypattern.absfac.order_.OrderPizza
+
 /**
  * @author: Der Hotcenplotz
  * @version： 1.0 
@@ -7,5 +9,5 @@ package com.hotcenplotz.chapter17.factorypattern.factory
  * @description:
  * */
 object PizzaStore extends App {
-    new order_.OrderPizza
+    new OrderPizza
 }

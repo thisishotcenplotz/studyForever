@@ -6,7 +6,7 @@ package com.hotcenplotz.chapter17.singletonpattern
  * @date: 2025-05-27 07:50 
  * @description:
  * */
-private class LazyInitialization private() {
+class LazyInitialization private() {
     
 }
 
