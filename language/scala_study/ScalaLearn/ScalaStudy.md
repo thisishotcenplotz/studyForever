@@ -1147,3 +1147,176 @@ class NewYorkOrderPizza extends OrderPizza {
 基本介绍
 1. 如果我们要求函数的参数可以接收任意类型。可以使用泛型，这个类型可以代表任意的数据类型
 2. 例如List，在创建时可以传入整形、字符串、浮点等类型。那是因为List在定义时引用了泛型。
+
+##### 泛型上下界
+泛型的上下界规定了当前类型是某类的子类类型或某类的父类类型
+
+```scala
+[A <: B] // A的类型是B的子类类型 
+[C >: D] // C的类型是D的父类类型
+```
+
+##### 视图界定: Scala 中那些奇怪的符号。
+
+视图界定其实就是泛型上下界带上了隐式转换。此法较前术更灵活。
+
+
+demo 1
+```scala
+object ViewDemo01 {
+    def main(args: Array[String]): Unit = {
+        // 这样可以跑通  因为使用了隐式转换
+        println(new ViewCompareDemo(1, 20).greater)
+    }
+}
+
+// 说明：
+// T <% Comparable[T] 与 T <: Comparable[T]  的区别是，前者支持隐式转换
+class ViewCompareDemo[T <% Comparable[T]](obj1: T, obj2: T) {
+    def greater = if (obj1.compareTo(obj2) > 0) obj1 else obj2
+}
+```
+
+demo2
+
+```scala
+object ViewDemo02_ {
+    def main(args: Array[String]): Unit = {
+        val zhangsan: Person = new Person("Zhangsan", 20)
+        val lisi: Person = new Person("Lisi", 30)
+        
+        println(new PersonCompare(zhangsan, lisi).greater)
+        
+        val aaabbbccc: Cat = new Cat("aaabbbccc")
+        val abc: Cat = new Cat("abc")
+        println(new PersonCompare(abc, aaabbbccc).greater2)
+    }
+}
+
+class Cat(val name:String) extends Ordered[Cat] {
+    override def compare(that: Cat): Int = this.name.length - that.name.length
+    
+    override def toString: String = this.name
+}
+
+
+class Person(val name:String,val age:Int) extends Ordered[Person] {
+    
+    override def compare(that: Person): Int = this.age - that.age
+    
+    override def toString: String = s"${this.name}   ${this.age}"
+}
+
+// 说明：
+// 1. T <% Ordered[T]  表示 T 是 Ordered 的子类型
+class PersonCompare[T <% Ordered[T]](zhangsan:T,lisi:T) {
+    def greater:T = if(zhangsan > lisi) zhangsan else lisi
+    def greater2:T = if(zhangsan.compareTo(lisi) > 0) zhangsan else lisi
+}
+```
+
+demo 3 
+
+```scala
+object ViewDemo03_ {
+    def main(args: Array[String]): Unit = {
+        import Implicit._
+        val zhangsan: PersonManual = new PersonManual("Zhangsan", 20)
+        val lisi: PersonManual = new PersonManual("Lisi", 30)
+        
+        println(new PersonCompareManual(zhangsan, lisi).greater)
+    }
+}
+
+object Implicit {
+  implicit def personToOrderedPerson(p:PersonManual): Ordered[PersonManual] = new Ordered[PersonManual] {
+    override def compare(that: PersonManual): Int = p.age - that.age
+  }
+}
+
+
+class PersonManual(val name:String,val age:Int){
+    
+    override def toString: String = s"${this.name}   ${this.age}"
+}
+
+// 说明：
+// 1. T <% Ordered[T]  表示 T 是 Ordered 的子类型
+class PersonCompareManual[T <% Ordered[T]](zhangsan:T,lisi:T) {
+    def greater:T = if(zhangsan > lisi) zhangsan else lisi
+    def greater2:T = if(zhangsan.compareTo(lisi) > 0) zhangsan else lisi
+}
+```
+
+
+##### 上下文界定 contest bound
+与view bounds 一样，contest bound 也是隐式参数的语法糖
+
+
+demo 
+```scala
+object ContextBoundDemo_ {
+    
+    // 定义两个person比较的隐式值
+    implicit val personCompare = new Ordering[Person] {
+        override def compare(x: Person, y: Person): Int = x.age - y.age
+    }
+    
+    
+    def main(args: Array[String]): Unit = {
+        val zhangsan: Person = new Person("zhangsan", 10)
+        val lisi: Person = new Person("lisi", 20)
+        
+        println(new CompareMethodOne(zhangsan, lisi).greater)
+        println(new CompareMethodTwo(zhangsan, lisi).greater)
+    }
+}
+
+class Person(val name: String, val age: Int) {
+    override def toString: String = this.name + " \t" + this.age
+}
+
+// 方式1
+// 说明：
+// 1. [T: Ordering] -> 这是泛型
+// 2. (a: T, b: T)  -> 这是形参
+// 3. (implicit comparator: Ordering[T]) -> 这是隐式参数
+// 4. 这种方法我最喜欢
+class CompareMethodOne[T: Ordering](a: T, b: T)(implicit comparator: Ordering[T]) {
+    def greater: T = if (comparator.compare(a, b) > 0) a else b
+    
+    def lower: T = if (comparator.compare(a, b) > 0) b else a
+}
+
+// 方式2
+// 将隐式值写到了类里头
+class CompareMethodTwo[T: Ordering](a: T, b: T) {
+    // looks bad...
+    def greater: T = {
+        def f1(implicit c: Ordering[T]): Int = c.compare(a, b)
+        
+        if (f1 > 0) a else b
+    }
+}
+
+// 方式3
+// 使用implicitly语法糖，最简单（推荐使用）
+class CompareMethodThree[T: Ordering](a: T, b: T) {
+    def greater: T = {
+        // 这句话会获取到上面的隐式值 personCompare
+        val comparator: Ordering[T] = implicitly[Ordering[T]]
+        
+        if (comparator.compare(a, b) > 0) a else b
+    }
+}
+```
+
+
+##### 协变、逆变、不变
+
+1. 在Scala中 协变(+) , 逆变(-); 协变covariant , 逆变contravariant, 不变invariant
+2. 对于一个带类型参数的类型，比如List[T], 如果对于类型A及其子类型B，满足List[B] 也符合 List[A]的子类型，那么就称为covariant(协变)；
+如果List[A] 是 List[B] 的子类型，即与原来的父子关系正相反，则称为contravariance (逆变);
+如果一个类型支持协变和逆变则称这个类型为variance（可变 或 变型）,否则称之为invariance (不变)
+3. 在Java中，泛型类型都是invariance. 比如 List<String> 并不是 List<Object> 的子类型。 而Scala支持，可以在定义类型时声明（用+表示协变，-表示逆变）。
+比如 trait List[+T] // 在类型定义时声明为协变，这样会把List[String] 作为 List[Any] 的子类型。
