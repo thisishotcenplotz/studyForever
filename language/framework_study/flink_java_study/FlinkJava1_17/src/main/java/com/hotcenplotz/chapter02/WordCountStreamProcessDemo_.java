@@ -27,36 +27,29 @@ public class WordCountStreamProcessDemo_ {
         StreamExecutionEnvironment flink = StreamExecutionEnvironment.getExecutionEnvironment();
         
         // TODO 2. 读取数据
-        FileSource<String> fileSource = FileSource.forRecordStreamFormat(
-            new TextLineInputFormat(),
-            new Path("input/wordcount.txt")
-        ).build();
+        FileSource<String> fileSource = FileSource.forRecordStreamFormat(new TextLineInputFormat(), new Path("input/wordcount.txt")).build();
         
         DataStreamSource<String> dataSource = flink.fromSource(fileSource, WatermarkStrategy.noWatermarks(), "word count");
         
         // TODO 3. 处理数据
-        SingleOutputStreamOperator<Tuple2<String, Integer>> result = dataSource.flatMap(
-                new FlatMapFunction<String, Tuple2<String, Integer>>() {
-                    @Override
-                    public void flatMap(
-                        String value,
-                        Collector<Tuple2<String, Integer>> out
-                    ) throws Exception {
-                        String[] words = value.split("\\s+");
-                        for (String word : words) {
-                            if (!word.isEmpty()) {
-                                out.collect(Tuple2.of(word, 1));
-                            }
-                        }
+        SingleOutputStreamOperator<Tuple2<String, Integer>> result = dataSource.flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
+            @Override
+            public void flatMap(
+                String value, Collector<Tuple2<String, Integer>> out
+            ) throws Exception {
+                String[] words = value.split("\\s+");
+                for (String word : words) {
+                    if (!word.isEmpty()) {
+                        out.collect(Tuple2.of(word, 1));
                     }
                 }
-            ).keyBy(new KeySelector<Tuple2<String, Integer>, String>() {
-                @Override
-                public String getKey(Tuple2<String, Integer> value) throws Exception {
-                    return value.f0;
-                }
-            })
-            .sum(1);
+            }
+        }).keyBy(new KeySelector<Tuple2<String, Integer>, String>() {
+            @Override
+            public String getKey(Tuple2<String, Integer> value) throws Exception {
+                return value.f0;
+            }
+        }).sum(1);
         
         // TODO 4. 输出数据
         result.print();

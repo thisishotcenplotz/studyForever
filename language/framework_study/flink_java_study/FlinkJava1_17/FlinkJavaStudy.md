@@ -51,4 +51,11 @@ Apache Flink 是一个分布式处理引擎，用于对无界和有界数据流�
 
 一个简单的word count
 
+# 第三章: 集群部署
+
+Flink 集群几个重要组件:
+
+1. Client: 代码由client获取并转换,之后提交给jobManager
+2. JobManager: 就是Flink集群里的"管事人",对作业进行中央调度管理;而它获取到要执行的作业后,就会进一步处理转换,然后分发给TaskManager.
+3. TaskManager: 就是真正"干活的人"人,数据的处理操作都是它们来做的.
 

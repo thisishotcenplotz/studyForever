@@ -31,38 +31,38 @@ public class WordCountBatchDemo {
         // TODO 1. Create Flink Execution Environment
         StreamExecutionEnvironment flink = StreamExecutionEnvironment.getExecutionEnvironment();
         flink.setRuntimeMode(RuntimeExecutionMode.BATCH);
-
+        
         // TODO 2. Read Source File
         FileSource<String> dataSource = FileSource.forRecordStreamFormat(new TextLineInputFormat(), new Path("input/wordcount.txt")).build();
         DataStreamSource<String> sourceData = flink.fromSource(dataSource, WatermarkStrategy.noWatermarks(), "wordcount");
-
+        
         // TODO 3. Data Segmentation and Transformation
         SingleOutputStreamOperator<Tuple2<String, Integer>> words = sourceData.flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
             @Override
             public void flatMap(String value, Collector<Tuple2<String, Integer>> collector) throws Exception {
                 String[] tokens = value.toLowerCase().split("\\s+");
                 for (String token : tokens) {
-                    if(!token.isEmpty()) {
+                    if (!token.isEmpty()) {
                         collector.collect(Tuple2.of(token, 1));
                     }
                 }
             }
         });
-
-
+        
+        
         // TODO 4. Grouping Data
         KeyedStream<Tuple2<String, Integer>, String> groupedData = words.keyBy(val -> val.f0);
-
-
+        
+        
         // TODO 5. Aggregate
         SingleOutputStreamOperator<Tuple2<String, Integer>> result = groupedData.sum(1); // 这里的1 是位置，表示第二个元素
-
+        
         // TODO 6. Output
         result.print();
-
+        
         // TODO 7. Execution
         flink.execute("Word Count Batch Demo");
-
-
+        
+        
     }
 }

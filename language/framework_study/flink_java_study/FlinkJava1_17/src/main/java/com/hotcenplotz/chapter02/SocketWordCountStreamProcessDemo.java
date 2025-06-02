@@ -24,14 +24,12 @@ public class SocketWordCountStreamProcessDemo {
         DataStreamSource<String> socketData = flink.socketTextStream("localhost", 10999);
         
         // TODO 3. 处理数据: 切分 转tuple 聚合
-        SingleOutputStreamOperator<Tuple2<String, Integer>> result = socketData.flatMap(
-                (String value, Collector<Tuple2<String, Integer>> out) -> {
-                    String[] words = value.split(" ");
-                    for (String word : words) {
-                        out.collect(new Tuple2<>(word, 1));
-                    }
+        SingleOutputStreamOperator<Tuple2<String, Integer>> result = socketData.flatMap((String value, Collector<Tuple2<String, Integer>> out) -> {
+                String[] words = value.split(" ");
+                for (String word : words) {
+                    out.collect(new Tuple2<>(word, 1));
                 }
-            ).returns(Types.TUPLE(Types.STRING, Types.INT))
+            }).returns(Types.TUPLE(Types.STRING, Types.INT))
             .keyBy(value -> value.f0)
             .sum(1);
         
