@@ -1320,3 +1320,51 @@ class CompareMethodThree[T: Ordering](a: T, b: T) {
 如果一个类型支持协变和逆变则称这个类型为variance（可变 或 变型）,否则称之为invariance (不变)
 3. 在Java中，泛型类型都是invariance. 比如 List<String> 并不是 List<Object> 的子类型。 而Scala支持，可以在定义类型时声明（用+表示协变，-表示逆变）。
 比如 trait List[+T] // 在类型定义时声明为协变，这样会把List[String] 作为 List[Any] 的子类型。
+
+举例：
+```scala
+C[+T] // 如果A是B的子类，那么C[A] 是 C[B] 的子类；协变
+C[-T] // 如果A是B的子类，那么C[B] 是 C[A] 的子类；逆变
+C[T] // 无论A和B是什么关系，C[A] 和 C[B] 没有从属关系
+```
+
+
+```scala
+object Demo01_ {
+    def main(args: Array[String]): Unit = {
+        // 不变：
+        val t1: Temp1[Sub] = new Temp1[Sub]("Hello") // ok
+        // val t2: Temp1[Sub] = new Temp1[Super]("Hello") // bad!!
+        // val t2: Temp1[Super] = new Temp1[Sub]("Hello") // bad!!
+        
+        
+        //协变：
+        val t2: Temp2[Super] = new Temp2[Sub]("Hello") // ok
+        
+        // 逆变：
+        val t3: Temp3[Sub] = new Temp3[Super]("Hello") // bad!!
+    }
+}
+
+// 不变
+class Temp1[A](title:String) {
+    override def toString: String = title
+}
+
+// 协变
+class Temp2[+A](title:String) {
+    override def toString: String = title
+}
+
+// 逆变
+class Temp3[-A](title:String) {
+    override def toString: String = title
+}
+
+// 父类
+class Super
+
+// 子类
+class Sub extends Super
+
+```
