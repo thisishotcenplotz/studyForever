@@ -73,3 +73,22 @@ Flink 集群几个重要组件:
 
 这三种模式的主要区别于，集群的声明周期以及资源的分配方式：以及应用的main方法到底在哪里执行 -- Client 还是 JobManager
 
+##### Flink 运行时架构
+
+客户端 <-> JobManager -> TaskManager
+
+1. JobManager: 是一个FLink集群中任务管理和核心的调度，是控制应用执行的主进程。也就是说，每个应用都应该被唯一的JobManager所控制执行。
+JobManager 又包含了3个不同的组件：
+    - JobMaster： 是JobManager中最核心的组件，负责处理单独的job。所以JobMaster和具体的Job是一一对应的，多个Job可以同时运行在一个Flink集群中，每个Job都有一个自己的JobMaster。
+                  提交作业时，JobMaster会先接收到要执行的应用。JobMaster会把JobGraph转换成一个屋里层面的数据流图，这个图被叫做ExecutionGraph,它包含了所有可以并发执行的任务。JobMaster会向资源管理器发出请求，申请执行任务必要的资源。一旦它获取到了足够的资源，就会将执行图分发到真正运行它们的TaskManager上。而在运行过程中，JobMaster会负责所有需要中央协调的操作，比如检查点协调等。
+    - ResourceManager：主要负责资源的分配和管理，在Flink集群中只有一个所谓的资源，只要指TaskManager的Slot。任务槽就是Flink急群众的资源调配单元，包含了机器用来执行计算的一组CPU和内存。每个任务Task都要分配到一个Slot上来执行。
+    - Dispatcher：分发器抓哟负责提供一个REST接口，用来提交应用，并且负责为每一个提交的作业启动一个新的JobMaster组件。Dispatcher也会启动一个WebUI，用来方便地展示和监控作业执行的信息。Dispatcher在架构中并不是必需的，在不同的模式下可能会被忽略掉。
+2. TaskManager：是Flink中的工作进程，数据的具体计算就是它来做。Flink集群中必须至少有一个TaskManager；每个TaskManager都包含了一定数量的Slot。Slot是自愿调度的最小单位，slot的数量限制了TaskManager能够并行处理的任务数量。启动之后，TaskManager会向资源管理器注册它的Slots；收到资源管理器的指令后，TaskManager就会将一个或多个slot提供给JobMaster调用，JobMaster就会分配任务来执行。在执行过程中，TaskManager可以缓冲数据，还可以跟其他运行同一TaskManager交换数据
+
+
+##### Parallelism
+
+1. 并行子任务和并行度： 
+当要处理的数据量非常大时，我们可以把一个算子操作，赋值多份到多个节点，数据来了之后就可以到其中任意一个执行。这样依赖，一个算子任务就被拆分成了多个并行的子任务，再将他们分发到不同节点
+实现真正的并行计算。
+在Flink执行过程中，每一个算子都包含了一个或多个子任务，这些子任务在不同的线程、不同的物理机或不同的容器中完全独立的执行。

@@ -2,6 +2,7 @@ package com.hotcenplotz.chapter02;
 
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -18,7 +19,8 @@ import org.apache.flink.util.Collector;
 public class SocketWordCountStreamProcessDemo {
     public static void main(String[] args) throws Exception {
         // TODO 1. 创建执行环境
-        StreamExecutionEnvironment flink = StreamExecutionEnvironment.getExecutionEnvironment();
+//        StreamExecutionEnvironment flink = StreamExecutionEnvironment.getExecutionEnvironment();
+        StreamExecutionEnvironment flink = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(new Configuration());
         
         // TODO 2. 读取数据 socket
         DataStreamSource<String> socketData = flink.socketTextStream("hadoop101", 10999);
@@ -29,7 +31,8 @@ public class SocketWordCountStreamProcessDemo {
                 for (String word : words) {
                     out.collect(new Tuple2<>(word, 1));
                 }
-            }).returns(Types.TUPLE(Types.STRING, Types.INT))
+            }).setParallelism(2)
+            .returns(Types.TUPLE(Types.STRING, Types.INT))
             .keyBy(value -> value.f0)
             .sum(1);
         
