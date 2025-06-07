@@ -106,3 +106,21 @@ JobManager 又包含了3个不同的组件：
 
 在这种模式下，数据流的分区会发生改变。比如图中的map和后面的keyBy/window 算子之间，以及keyBy/window算子和Sink算子之间，都是这样的关系。
 没一个算子的子任务，会根据数据传输的策略，把数据发送到不同的下游目标任务。这种传输方式都会引起重分区过程，类似于Spark中的shuffle。
+
+
+##### Task Slots
+
+1. 任务槽： Flink 中每一个TaskManager都是一个JVM进程，它可以启动多个独立的线程，来并行执行多个子任务；
+很显然，TaskManager的计算资源是有限的，并行的任务越多，每个线程的资源就会越少。那么一个TaskManager到底能并行处理多少个任务呢？为了控制并发量，我们需要在TaskManager上对每个任务运行时所占用的资源做出明确的划分，这就是所谓的task slog。
+每个task slot 其实表示了TaskManager拥有计算资源的一个固定大小的子集。这些资源就是用来独立执行一个子任务的。
+假如一个TaskManager有三个Slot，那么它会将管理的内存平均分成三份，每个slot独占一份。这样一来，我们在slot上执行一个子任务时，相当于划定了一块专用内存，就不需要跟其他作业去竞争资源了。所以如果有2个TaskManager，就可以并行跑5个子任务。
+2. 任务对slot的共享：
+在同一个作业中，不同任务节点的并行度子任务就可以放到同一个slot上执行。默认情况下，FLink是允许子任务共享slot的。如果我们保持sink任务并行度为1不变，
+而作业提交时设置全局并行度为6，那么前两个任务节点就会各自有6个并行子任务，整个流处理程序则有13个子任务。只要属于同一个作业，那么对于不同任务节点的并行子任务，就可以放到同一个slot上执行。所以对于第一个任务节点 source -> map,
+它的6个并行子任务必须分到6个不同的slot上，而第二个任务节点keyBy/window/apply的并行子任务却可以和第一个任务节点共享slot。
+3. 任务槽和并行度都是跟程序并行执行有关，但两者是完全不同的概念。简单来说任务槽是静态的概念，是只TaskManager具有的并发执行能力，可以通过参数taskmanager.numberOfTaskSlot进行配置；
+而并行度是动态概念，也就是TaskManager运行程序时实际使用的并发能力，可以通过参数parallelism.default进行配置。
+
+# 第五章：DataStream API
+DataStream API 是 Flink的核心层API。一个Flink程序，其实就是对DataStream的各种转换。具体来说，代码基本是由 Environment ->  Source ->  Transformation -> Sink -> execute
+这个几个部分组成
