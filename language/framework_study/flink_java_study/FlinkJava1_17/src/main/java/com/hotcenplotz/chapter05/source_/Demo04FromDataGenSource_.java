@@ -31,7 +31,7 @@ public class Demo04FromDataGenSource_ {
                 }
             }
             , Long.MAX_VALUE
-            , RateLimiterStrategy.perSecond(10)
+            , RateLimiterStrategy.perSecond(200)
             , Types.STRING
         );
         
