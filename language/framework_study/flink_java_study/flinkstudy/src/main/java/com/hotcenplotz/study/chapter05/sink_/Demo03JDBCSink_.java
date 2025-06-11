@@ -3,21 +3,29 @@ package com.hotcenplotz.study.chapter05.sink_;
 import com.hotcenplotz.study.chapter05.bean.WaterSensor;
 import org.apache.flink.api.common.functions.FlatMapFunction;
 
+import org.apache.flink.api.connector.sink2.Committer;
 import org.apache.flink.api.connector.sink2.SinkWriter;
-import org.apache.flink.connector.jdbc.JdbcConnectionOptions;
-import org.apache.flink.connector.jdbc.JdbcExecutionOptions;
-import org.apache.flink.connector.jdbc.JdbcStatementBuilder;
+import org.apache.flink.connector.base.DeliveryGuarantee;
+import org.apache.flink.connector.jdbc.*;
+import org.apache.flink.connector.jdbc.core.datastream.Jdbc;
+import org.apache.flink.connector.jdbc.core.datastream.sink.JdbcSinkBuilder;
+import org.apache.flink.connector.jdbc.core.datastream.sink.committer.JdbcCommitable;
+import org.apache.flink.connector.jdbc.datasource.connections.SimpleJdbcConnectionProvider;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.sink.legacy.SinkFunction;
 import org.apache.flink.streaming.api.operators.collect.CollectSinkFunction;
 import org.apache.flink.util.Collector;
+import org.apache.flink.util.Preconditions;
 
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.Random;
 import java.util.UUID;
 
@@ -49,31 +57,8 @@ public class Demo03JDBCSink_ {
             }
         });
         
-        
 
-//        waterSensor.addSink(
-//            JdbcSink.sink(
-//                "insert into flink.watersensor(id,ts,vc) values (?,?,?)",
-//                new JdbcStatementBuilder<WaterSensor>() {
-//                    @Override
-//                    public void accept(PreparedStatement preparedStatement, WaterSensor waterSensor) throws SQLException {
-//                        preparedStatement.setString(1, waterSensor.getId());
-//                        preparedStatement.setLong(2, waterSensor.getTs());
-//                        preparedStatement.setInt(3, waterSensor.getVc());
-//                    }
-//                },
-//                JdbcExecutionOptions.builder()
-//                    .withMaxRetries(3)
-//                    .withBatchIntervalMs(5000)
-//                    .withBatchSize(500)
-//                    .build(),
-//                new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
-//                    .withUrl("jdbc:mysql://localhost:3306/flink")
-//                    .withUsername("root")
-//                    .withPassword("123456")
-//                    .build()
-//            )
-//        );
+
 //        flink.execute();
     }
 }
