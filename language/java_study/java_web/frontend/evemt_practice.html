@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        table {
+            border: 1px solid black;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <caption>员工信息列表</caption>
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>职位等级</th>
+        <th>技术方向</th>
+        <th>薪资等级</th>
+        <th>武魂</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-label="张三">
+        <td data-label="姓名">张三</td>
+        <td data-label="职位等级">初级</td>
+        <td data-label="技术方向">前端</td>
+        <td data-label="薪资等级" class="salary-low">低</td>
+        <td data-label="武魂">本体武魂 指甲</td>
+    </tr>
+    <tr data-label="李四">
+        <td data-label="姓名">李四</td>
+        <td data-label="职位等级">中级</td>
+        <td data-label="技术方向">后端</td>
+        <td data-label="薪资等级" class="salary-medium">中</td>
+        <td data-label="武魂">i9</td>
+    </tr>
+    <tr data-label="王五">
+        <td data-label="姓名">王五</td>
+        <td data-label="职位等级">首席数据科学家</td>
+        <td data-label="技术方向">大数据/算法</td>
+        <td data-label="薪资等级" class="salary-high">顶级</td>
+        <td data-label="武魂">英伟达集群</td>
+    </tr>
+    </tbody>
+</table>
+
+<script>
+    let trs = document.querySelectorAll("tr")
+
+
+    for (let i = 0; i < trs.length; i++) {
+        trs[i].addEventListener('mouseenter',function () {
+            this.style.backgroundColor = '#f2e2e2'
+        });
+
+        trs[i].addEventListener('mouseleave', function () {
+            this.style.backgroundColor = '#fff';
+        });
+    }
+
+</script>
+</body>
+</html>

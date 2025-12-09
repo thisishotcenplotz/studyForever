@@ -1,0 +1,696 @@
+/* style/employee.css */
+
+/* 基础重置和全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'SF Pro Text', sans-serif;
+}
+
+body {
+    background-color: #f9fafb;
+    color: #374151;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 导航栏样式 */
+.navbar {
+    background-color: #ffffff;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.navbar h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    letter-spacing: -0.025em;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #6b7280;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 1.2rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.navbar a:hover {
+    background-color: #f3f4f6;
+    color: #374151;
+    border-color: #d1d5db;
+}
+
+/* 搜索/表单区域 */
+.search {
+    flex: 1;
+    padding: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+}
+
+/* 表单标签和输入框样式 */
+form br {
+    display: none;
+}
+
+form > *:not(br) {
+    display: block;
+    margin-bottom: 1.8rem;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #4b5563;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.01em;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #111827;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="datetime-local"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #9ca3af;
+    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.1);
+}
+
+/* 单选按钮和复选框样式 */
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.1);
+}
+
+/* 单选按钮和复选框的标签行内显示 */
+form > label[for^="gender"],
+form > label[for^="hobby"] {
+    display: inline-block;
+    margin-right: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+/* 性别和爱好的容器 */
+form > br + br {
+    margin-bottom: 1.8rem;
+}
+
+/* 性别选项容器 */
+form > label[for^="gender"]:first-of-type {
+    margin-top: 0.4rem;
+}
+
+/* 按钮样式 */
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    padding: 0.75rem 1.8rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+input[type="submit"] {
+    background-color: #111827;
+    color: white;
+}
+
+input[type="submit"]:hover {
+    background-color: #1f2937;
+    transform: translateY(-1px);
+}
+
+input[type="reset"] {
+    background-color: #f3f4f6;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+}
+
+input[type="reset"]:hover {
+    background-color: #e5e7eb;
+}
+
+input[type="button"] {
+    background-color: #ffffff;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+}
+
+input[type="button"]:hover {
+    background-color: #f9fafb;
+}
+
+/* 下拉选择框样式 */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2em;
+    padding-right: 3rem;
+}
+
+/* 文本区域样式 */
+textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+    line-height: 1.5;
+}
+
+/* 表单分组标题 */
+.form-section {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #111827;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .search {
+        padding: 1.5rem;
+    }
+
+    form {
+        padding: 1.5rem;
+    }
+
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"] {
+        width: 100%;
+        margin-bottom: 0.75rem;
+        margin-right: 0;
+    }
+}
+
+/* 表单字段聚焦时的微动画 */
+@keyframes subtlePulse {
+    0% { box-shadow: 0 0 0 0 rgba(156, 163, 175, 0.1); }
+    70% { box-shadow: 0 0 0 4px rgba(156, 163, 175, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(156, 163, 175, 0); }
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    animation: subtlePulse 0.3s ease;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* 表单字段验证样式 */
+input:valid {
+    border-color: #d1d5db;
+}
+
+input:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: #fca5a5;
+}
+
+
+/* 在现有employee.css文件末尾添加以下样式 */
+
+/* 表格区域样式 */
+.show-data {
+    flex: 1;
+    padding: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* 表格容器 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    margin-top: 2rem;
+}
+
+/* 表格标题样式 */
+table caption {
+    caption-side: top;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    text-align: left;
+    background-color: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* 表头样式 */
+thead {
+    background-color: #f9fafb;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+thead th {
+    padding: 1.2rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #4b5563;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+}
+
+/* 表头排序指示器 */
+thead th::after {
+    content: "";
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #9ca3af;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+thead th:hover::after {
+    opacity: 1;
+}
+
+/* 表格行样式 */
+tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* 表格单元格样式 */
+td {
+    padding: 1.2rem 1.5rem;
+    font-size: 0.95rem;
+    color: #374151;
+    vertical-align: middle;
+}
+
+/* 为特定列添加特殊样式 */
+td:nth-child(1) { /* 姓名列 */
+    font-weight: 500;
+    color: #111827;
+}
+
+td:nth-child(2), /* 职位等级列 */
+td:nth-child(3) { /* 技术方向列 */
+    color: #4b5563;
+}
+
+td:nth-child(4) { /* 薪资等级列 */
+    font-weight: 600;
+}
+
+/* 薪资等级特殊样式 */
+td:nth-child(4):contains("低") {
+    color: #ef4444;
+}
+
+td:nth-child(4):contains("中") {
+    color: #f59e0b;
+}
+
+td:nth-child(4):contains("顶级") {
+    color: #10b981;
+}
+
+td:nth-child(5) { /* 武魂列 */
+    font-style: italic;
+    color: #6b7280;
+}
+
+/* 职位等级徽章样式 */
+td:nth-child(2) {
+    position: relative;
+}
+
+/* 技术方向标签样式 */
+td:nth-child(3) {
+    position: relative;
+    padding-left: 2rem;
+}
+
+/* 为技术方向添加小图标 */
+td:nth-child(3):contains("前端")::before {
+    content: "🌐";
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+}
+
+td:nth-child(3):contains("后端")::before {
+    content: "⚙️";
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+}
+
+td:nth-child(3):contains("大数据/算法")::before {
+    content: "📊";
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+}
+
+/* 交互效果 - 行点击 */
+tbody tr {
+    cursor: pointer;
+    position: relative;
+}
+
+tbody tr::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover::after {
+    background-color: #d1d5db;
+}
+
+tbody tr:active {
+    transform: scale(0.995);
+}
+
+/* 空状态样式 */
+tbody tr.empty-row td {
+    text-align: center;
+    padding: 3rem;
+    color: #9ca3af;
+    font-style: italic;
+}
+
+/* 斑马条纹效果（可选） */
+tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+tbody tr:nth-child(even):hover {
+    background-color: #f3f4f6;
+}
+
+/* 表格操作列样式 */
+.action-cell {
+    text-align: right;
+}
+
+.action-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 0.5rem;
+}
+
+.action-button:hover {
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.action-button.edit {
+    color: #3b82f6;
+    border-color: #bfdbfe;
+}
+
+.action-button.delete {
+    color: #ef4444;
+    border-color: #fecaca;
+}
+
+/* 响应式表格设计 */
+@media (max-width: 768px) {
+    .show-data {
+        padding: 1.5rem;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 8px;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 1rem;
+    }
+
+    td {
+        display: block;
+        text-align: right;
+        padding: 0.75rem 1rem;
+        position: relative;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    td:last-child {
+        border-bottom: none;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 600;
+        color: #4b5563;
+        font-size: 0.85rem;
+        text-align: left;
+    }
+
+    td:nth-child(1)::before { content: "姓名："; }
+    td:nth-child(2)::before { content: "职位等级："; }
+    td:nth-child(3)::before { content: "技术方向："; }
+    td:nth-child(4)::before { content: "薪资等级："; }
+    td:nth-child(5)::before { content: "武魂："; }
+
+    /* 移除小图标在移动端的绝对定位 */
+    td:nth-child(3)::before {
+        content: "技术方向：";
+    }
+
+    td:nth-child(3) {
+        padding-left: 1rem;
+    }
+}
+
+/* 表格动画效果 */
+@keyframes fadeInRow {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+tbody tr {
+    animation: fadeInRow 0.3s ease-out;
+}
+
+tbody tr:nth-child(1) { animation-delay: 0.1s; }
+tbody tr:nth-child(2) { animation-delay: 0.2s; }
+tbody tr:nth-child(3) { animation-delay: 0.3s; }
+
+/* 表格筛选和排序控件 */
+.table-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.search-box {
+    flex: 1;
+    max-width: 300px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.export-btn,
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #374151;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.export-btn:hover,
+.filter-btn:hover {
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+/* 表格底部统计 */
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    border-radius: 0 0 12px 12px;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.page-btn {
+    padding: 0.25rem 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.page-btn:hover {
+    background-color: #f3f4f6;
+}
+
+.page-btn.active {
+    background-color: #111827;
+    color: #ffffff;
+    border-color: #111827;
+}

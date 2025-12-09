@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border: 1px solid black;
+        }
+        tr {
+            border: 1px solid black;
+        }
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="app">
+    <label for="name">Name</label>
+    <input type="text" id="name" v-model="search.name" placeholder="请输入姓名">
+    <label for="title">Title</label>
+    <input type="text" id="title" v-model="search.title" placeholder="请输入title">
+    <button type="button" @click="searchData">点我</button>
+    <button type="button" @click="clear">点我</button>
+    <table>
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>工种</th>
+            <th>入职日期</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(e,index) in empList" :key="e.id">
+                <td>{{ e.name }}</td>
+                <td>
+                    <span v-if="e.job == 1">魂师</span>
+                    <span v-else-if="e.job == 2">忍者</span>
+                    <span v-else-if="e.job == 3">魂兽</span>
+                    <span v-else-if="e.job == 4">通灵兽</span>
+                    <span v-else-if="e.job == 5">魂灵</span>
+                    <span v-else>其他</span>
+                </td>
+                <td>{{ e.job }}</td>
+                <td>{{ e.entrydate }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+<script type="module">
+    import {createApp, ref} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+    createApp({
+        data() {
+            return {
+                empList: [
+                    {"id": 1, "name": "张三", "gender": 1, "job": "1", "entrydate": "2025-12-09"},
+                    {"id": 2, "name": "李四", "gender": 1, "job": "2", "entrydate": "2025-12-09"},
+                    {"id": 3, "name": "王五", "gender": 1, "job": "3", "entrydate": "2025-12-09"},
+                    {"id": 3, "name": "赵六", "gender": 1, "job": "4", "entrydate": "2025-12-09"}
+                ],
+                search: {
+                    name:'',
+                    title:''
+                }
+            }
+        },
+        methods: {
+            searchData() {
+                console.log(this.search);
+            },
+            clear() {
+                this.search.name = '';
+                this.search.title = '';
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>
