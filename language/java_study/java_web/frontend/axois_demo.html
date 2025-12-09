@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <label for="b1">Bottom 1</label>
+    <button id="b1">点一下1</button>
+    <label for="b2">Bottom 2</label>
+    <button id="b2">点一下2</button>
+</body>
+<script>
+    document.querySelector("#b1").addEventListener('click', () => {
+        axios.get("https://www.baidu.com")
+            .then( (result) => {
+                console.log(result);
+            }).catch((err) => {
+                console.log(err);
+        })
+    })
+</script>
+</html>
