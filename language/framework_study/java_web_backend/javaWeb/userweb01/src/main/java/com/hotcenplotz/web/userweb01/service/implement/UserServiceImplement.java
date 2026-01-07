@@ -1,10 +1,11 @@
 package com.hotcenplotz.web.userweb01.service.implement;
 
-import com.hotcenplotz.web.userweb01.bean.User;
+import com.hotcenplotz.web.userweb01.dao.UserDAO;
+import com.hotcenplotz.web.userweb01.pojo.User;
 import com.hotcenplotz.web.userweb01.dao.implement.UserDaoImplement;
 import com.hotcenplotz.web.userweb01.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 
 
-@Component
+@Service
 public class UserServiceImplement implements UserService {
     
     @Autowired

@@ -1,4 +1,4 @@
-package com.hotcenplotz.web.userweb01.bean;
+package com.hotcenplotz.web.com.hotcenplotz.web.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,17 +9,14 @@ import java.time.LocalDateTime;
 /**
  * @author: Der Hotcenplotz
  * @version： 1.0
- * @date: 2025-12-14 10:50
+ * @date: 2026-01-07 07:10
  * @description:
  */
 
 
-/**
- * 用户信息
- */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Data    // 自动生成getter setter
+@NoArgsConstructor // 自动生成无参构造器
+@AllArgsConstructor // 自动生成全参构造器
 public class User {
     private Integer id;
     private String username;

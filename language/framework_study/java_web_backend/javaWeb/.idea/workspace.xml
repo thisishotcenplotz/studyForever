@@ -5,24 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c661d54-b640-461b-a8fe-8a9b2eef9523" name="Changes" comment="a">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpClient.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hellospringboot/src/main/java/com/hotcenplotz/web/hellospringboot/HelloController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hellospringboot/src/main/java/com/hotcenplotz/web/hellospringboot/RequestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hellospringboot/src/main/java/com/hotcenplotz/web/hellospringboot/ResponseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/bean/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/dao/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/dao/implement/UserDaoImplement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/service/implement/UserServiceImplement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/userweb01/src/main/resources/static/user.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/userweb01/src/main/resources/user.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jdbc-demo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jdbc-demo/src/main/java/com/hotcenplotz/web/com/hotcenplotz/web/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jdbc-demo/src/test/java/com/hotcenplotz/web/JdbcTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpClient.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mavenTutorial/src/main/java/com/hotcenplotz/web/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/mavenTutorial/src/main/java/com/hotcenplotz/web/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/pojo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/dao/implement/UserDaoImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/dao/implement/UserDaoImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/service/implement/UserServiceImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/service/implement/UserServiceImplement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,10 +40,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -68,58 +67,48 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HellospringbootApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.Userweb01Application.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "HTTP Request.javaWeb-endpoints | #1.executor": "Run",
-    "Maven.hellospringboot [clean].executor": "Run",
-    "Maven.mavenTutorial [clean].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.HellospringbootApplication.executor": "Run",
-    "Spring Boot.Userweb01Application.executor": "Run",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "17 (3)",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HellospringbootApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Userweb01Application.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;HTTP Request.javaWeb-endpoints | #1.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.JdbcTest.testQuery.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.JdbcTest.testUpdate.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.hellospringboot [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.mavenTutorial [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.userweb01 [clean].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.HellospringbootApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.Userweb01Application.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17 (3)&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.Userweb01Application">
+}</component>
+  <component name="RunManager" selected="JUnit.JdbcTest.testQuery">
     <configuration name="HellospringbootApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.hellospringboot.HellospringbootApplication" />
       <module name="hellospringboot" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.hotcenplotz.web.hellospringboot.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.Main" />
-      <module name="mavenTutorial" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hotcenplotz.web.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,6 +132,38 @@
     <configuration name="javaWeb-endpoints | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/javaWeb-endpoints.http" requestIdentifier="#1" runType="Run single request">
       <method v="2" />
     </configuration>
+    <configuration name="JdbcTest.testQuery" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jdbc-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hotcenplotz.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hotcenplotz.web" />
+      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.JdbcTest" />
+      <option name="METHOD_NAME" value="testQuery" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JdbcTest.testUpdate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jdbc-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hotcenplotz.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hotcenplotz.web" />
+      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.JdbcTest" />
+      <option name="METHOD_NAME" value="testUpdate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HellospringbootApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="hellospringboot" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hotcenplotz.web.hellospringboot.HellospringbootApplication" />
@@ -159,10 +180,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.JdbcTest.testQuery" />
+        <item itemvalue="JUnit.JdbcTest.testUpdate" />
         <item itemvalue="Application.Userweb01Application" />
         <item itemvalue="Application.HellospringbootApplication" />
         <item itemvalue="HTTP Request.javaWeb-endpoints | #1" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -183,7 +205,10 @@
       <option name="presentableId" value="Default" />
       <updated>1765620492031</updated>
       <workItem from="1765620493051" duration="1096000" />
-      <workItem from="1765671827827" duration="14319000" />
+      <workItem from="1765671827827" duration="19544000" />
+      <workItem from="1767738876045" duration="4867000" />
+      <workItem from="1767744288895" duration="238000" />
+      <workItem from="1767744534155" duration="24000" />
     </task>
     <servers />
   </component>

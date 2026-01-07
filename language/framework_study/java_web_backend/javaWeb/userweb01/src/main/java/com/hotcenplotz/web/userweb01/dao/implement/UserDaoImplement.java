@@ -2,6 +2,7 @@ package com.hotcenplotz.web.userweb01.dao.implement;
 
 import com.hotcenplotz.web.userweb01.dao.UserDAO;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -16,7 +17,7 @@ import java.util.stream.Stream;
  * @description:
  */
 
-@Component
+@Repository
 public class UserDaoImplement implements UserDAO {
     
     public List<String> findAll() {

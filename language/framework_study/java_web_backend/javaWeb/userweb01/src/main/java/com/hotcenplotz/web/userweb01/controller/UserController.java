@@ -1,6 +1,6 @@
 package com.hotcenplotz.web.userweb01.controller;
 
-import com.hotcenplotz.web.userweb01.bean.User;
+import com.hotcenplotz.web.userweb01.pojo.User;
 import com.hotcenplotz.web.userweb01.service.implement.UserServiceImplement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/mavenTutorial/pom.xml" />
         <option value="$PROJECT_DIR$/hellospringboot/pom.xml" />
         <option value="$PROJECT_DIR$/userweb01/pom.xml" />
+        <option value="$PROJECT_DIR$/jdbc-demo/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
