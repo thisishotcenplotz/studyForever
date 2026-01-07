@@ -5,23 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c661d54-b640-461b-a8fe-8a9b2eef9523" name="Changes" comment="a">
-      <change afterPath="$PROJECT_DIR$/jdbc-demo/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jdbc-demo/src/main/java/com/hotcenplotz/web/com/hotcenplotz/web/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jdbc-demo/src/test/java/com/hotcenplotz/web/JdbcTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/pojo/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpClient.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/dao/implement/UserDaoImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/dao/implement/UserDaoImplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/service/implement/UserServiceImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/userweb01/src/main/java/com/hotcenplotz/web/userweb01/service/implement/UserServiceImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprintboot-mybatis-demo/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprintboot-mybatis-demo/src/main/java/com/hotcenplotz/web/sprintbootmybatisdemo/SprintbootMybatisDemoApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprintboot-mybatis-demo/src/main/java/com/hotcenplotz/web/sprintbootmybatisdemo/pojo/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprintboot-mybatis-demo/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprintboot-mybatis-demo/src/test/java/com/hotcenplotz/web/sprintbootmybatisdemo/SprintbootMybatisDemoApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +27,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -67,71 +62,66 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HellospringbootApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Userweb01Application.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;HTTP Request.javaWeb-endpoints | #1.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.JdbcTest.testQuery.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.JdbcTest.testUpdate.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.hellospringboot [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.mavenTutorial [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.userweb01 [clean].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.HellospringbootApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.Userweb01Application.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17 (3)&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HellospringbootApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.Userweb01Application.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "HTTP Request.javaWeb-endpoints | #1.executor": "Run",
+    "JUnit.JdbcTest.testQuery.executor": "Run",
+    "JUnit.JdbcTest.testUpdate.executor": "Run",
+    "JUnit.SpringbootMybatisDemoApplicationTests (1).executor": "Run",
+    "JUnit.SpringbootMybatisDemoApplicationTests.contextLoads.executor": "Run",
+    "JUnit.SpringbootMybatisDemoApplicationTests.executor": "Run",
+    "JUnit.SpringbootMybatisDemoApplicationTests.testFindAll.executor": "Run",
+    "JUnit.SprintbootMybatisDemoApplicationTests.testFindAll.executor": "Run",
+    "Maven.hellospringboot [clean].executor": "Run",
+    "Maven.mavenTutorial [clean].executor": "Run",
+    "Maven.springboot-mybatis-demo [clean].executor": "Run",
+    "Maven.userweb01 [clean].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.HellospringbootApplication.executor": "Run",
+    "Spring Boot.SpringbootMybatisDemoApplication (1).executor": "Run",
+    "Spring Boot.SpringbootMybatisDemoApplication.executor": "Run",
+    "Spring Boot.Userweb01Application.executor": "Run",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "17 (3)",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
-}</component>
-  <component name="RunManager" selected="JUnit.JdbcTest.testQuery">
-    <configuration name="HellospringbootApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.hellospringboot.HellospringbootApplication" />
-      <module name="hellospringboot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hotcenplotz.web.hellospringboot.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Userweb01Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.userweb01.Userweb01Application" />
-      <module name="userweb01" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hotcenplotz.web.userweb01.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="javaWeb-endpoints | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/javaWeb-endpoints.http" requestIdentifier="#1" runType="Run single request">
-      <method v="2" />
-    </configuration>
+}]]></component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.SpringbootMybatisDemoApplicationTests.testFindAll">
     <configuration name="JdbcTest.testQuery" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="jdbc-demo" />
       <extension name="coverage">
@@ -148,17 +138,79 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JdbcTest.testUpdate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="jdbc-demo" />
+    <configuration name="SpringbootMybatisDemoApplicationTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot-mybatis-demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hotcenplotz.web.*" />
+          <option name="PATTERN" value="com.hotcenplotz.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.hotcenplotz.web" />
-      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.JdbcTest" />
-      <option name="METHOD_NAME" value="testUpdate" />
+      <option name="PACKAGE_NAME" value="com.hotcenplotz" />
+      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.SpringbootMybatisDemoApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootMybatisDemoApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="sprintboot-mybatis-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hotcenplotz.web.sprintbootmybatisdemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hotcenplotz.web.sprintbootmybatisdemo" />
+      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.sprintbootmybatisdemo.SpringbootMybatisDemoApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootMybatisDemoApplicationTests.testFindAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="sprintboot-mybatis-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hotcenplotz.web.sprintbootmybatisdemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hotcenplotz.web.sprintbootmybatisdemo" />
+      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.sprintbootmybatisdemo.SpringbootMybatisDemoApplicationTests" />
+      <option name="METHOD_NAME" value="testFindAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootMybatisDemoApplicationTests.testFindAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot-mybatis-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hotcenplotz.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hotcenplotz" />
+      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.SpringbootMybatisDemoApplicationTests" />
+      <option name="METHOD_NAME" value="testFindAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SprintbootMybatisDemoApplicationTests.testFindAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="sprintboot-mybatis-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hotcenplotz.web.sprintbootmybatisdemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hotcenplotz.web.sprintbootmybatisdemo" />
+      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.sprintbootmybatisdemo.SprintbootMybatisDemoApplicationTests" />
+      <option name="METHOD_NAME" value="testFindAll" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -167,6 +219,20 @@
     <configuration name="HellospringbootApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="hellospringboot" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hotcenplotz.web.hellospringboot.HellospringbootApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootMybatisDemoApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="springboot-mybatis-demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hotcenplotz.SpringbootMybatisDemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootMybatisDemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="sprintboot-mybatis-demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hotcenplotz.web.sprintbootmybatisdemo.SpringbootMybatisDemoApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -180,11 +246,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.JdbcTest.testQuery" />
-        <item itemvalue="JUnit.JdbcTest.testUpdate" />
-        <item itemvalue="Application.Userweb01Application" />
-        <item itemvalue="Application.HellospringbootApplication" />
-        <item itemvalue="HTTP Request.javaWeb-endpoints | #1" />
+        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testFindAll" />
+        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests (1)" />
+        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests" />
+        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testFindAll" />
+        <item itemvalue="JUnit.SprintbootMybatisDemoApplicationTests.testFindAll" />
       </list>
     </recent_temporary>
   </component>
@@ -209,6 +275,8 @@
       <workItem from="1767738876045" duration="4867000" />
       <workItem from="1767744288895" duration="238000" />
       <workItem from="1767744534155" duration="24000" />
+      <workItem from="1767744560457" duration="376000" />
+      <workItem from="1767789391204" duration="6295000" />
     </task>
     <servers />
   </component>

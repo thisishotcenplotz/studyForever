@@ -1,13 +1,13 @@
-package com.hotcenplotz.web.sprintbootmybatisdemo;
+package com.hotcenplotz;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SprintbootMybatisDemoApplication {
+public class SpringbootMybatisDemoApplication {
     
     public static void main(String[] args) {
-        SpringApplication.run(SprintbootMybatisDemoApplication.class, args);
+        SpringApplication.run(SpringbootMybatisDemoApplication.class, args);
     }
     
 }

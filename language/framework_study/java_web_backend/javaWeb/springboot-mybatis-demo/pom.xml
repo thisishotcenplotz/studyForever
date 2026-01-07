@@ -5,14 +5,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.1</version>
+        <version>3.5.9</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hotcenplotz.web</groupId>
-    <artifactId>sprintboot-mybatis-demo</artifactId>
+    <artifactId>springboot-mybatis-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sprintboot-mybatis-demo</name>
-    <description>sprintboot-mybatis-demo</description>
+    <name>springboot-mybatis-demo</name>
+    <description>springboot-mybatis-demo</description>
     <url/>
     <licenses>
         <license/>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>4.0.1</version>
+            <version>3.0.5</version>
         </dependency>
 
         <dependency>
@@ -54,9 +54,16 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter-test</artifactId>
-            <version>4.0.1</version>
+            <version>3.0.5</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.2.19</version>
+        </dependency>
+
     </dependencies>
 
     <build>
