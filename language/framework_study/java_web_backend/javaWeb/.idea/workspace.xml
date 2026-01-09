@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c661d54-b640-461b-a8fe-8a9b2eef9523" name="Changes" comment="a">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprintboot-mybatis-demo/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprintboot-mybatis-demo/src/main/java/com/hotcenplotz/web/sprintbootmybatisdemo/SprintbootMybatisDemoApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprintboot-mybatis-demo/src/main/java/com/hotcenplotz/web/sprintbootmybatisdemo/pojo/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprintboot-mybatis-demo/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprintboot-mybatis-demo/src/test/java/com/hotcenplotz/web/sprintbootmybatisdemo/SprintbootMybatisDemoApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/pojo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springboot-mybatis-demo/src/test/java/com/hotcenplotz/SpringbootMybatisDemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/test/java/com/hotcenplotz/SpringbootMybatisDemoApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +67,10 @@
     "JUnit.SpringbootMybatisDemoApplicationTests (1).executor": "Run",
     "JUnit.SpringbootMybatisDemoApplicationTests.contextLoads.executor": "Run",
     "JUnit.SpringbootMybatisDemoApplicationTests.executor": "Run",
+    "JUnit.SpringbootMybatisDemoApplicationTests.testAddUser.executor": "Run",
+    "JUnit.SpringbootMybatisDemoApplicationTests.testDeleteById.executor": "Run",
     "JUnit.SpringbootMybatisDemoApplicationTests.testFindAll.executor": "Run",
+    "JUnit.SpringbootMybatisDemoApplicationTests.testUpdateUserAge.executor": "Run",
     "JUnit.SprintbootMybatisDemoApplicationTests.testFindAll.executor": "Run",
     "Maven.hellospringboot [clean].executor": "Run",
     "Maven.mavenTutorial [clean].executor": "Run",
@@ -121,23 +117,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SpringbootMybatisDemoApplicationTests.testFindAll">
-    <configuration name="JdbcTest.testQuery" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="jdbc-demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hotcenplotz.web.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hotcenplotz.web" />
-      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.JdbcTest" />
-      <option name="METHOD_NAME" value="testQuery" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.SpringbootMybatisDemoApplicationTests.testUpdateUserAge">
     <configuration name="SpringbootMybatisDemoApplicationTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springboot-mybatis-demo" />
       <extension name="coverage">
@@ -153,17 +133,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpringbootMybatisDemoApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="sprintboot-mybatis-demo" />
+    <configuration name="SpringbootMybatisDemoApplicationTests.testAddUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot-mybatis-demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hotcenplotz.web.sprintbootmybatisdemo.*" />
+          <option name="PATTERN" value="com.hotcenplotz.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.hotcenplotz.web.sprintbootmybatisdemo" />
-      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.sprintbootmybatisdemo.SpringbootMybatisDemoApplicationTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.hotcenplotz" />
+      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.SpringbootMybatisDemoApplicationTests" />
+      <option name="METHOD_NAME" value="testAddUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootMybatisDemoApplicationTests.testDeleteById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot-mybatis-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hotcenplotz.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hotcenplotz" />
+      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.SpringbootMybatisDemoApplicationTests" />
+      <option name="METHOD_NAME" value="testDeleteById" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -200,17 +197,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SprintbootMybatisDemoApplicationTests.testFindAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="sprintboot-mybatis-demo" />
+    <configuration name="SpringbootMybatisDemoApplicationTests.testUpdateUserAge" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot-mybatis-demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hotcenplotz.web.sprintbootmybatisdemo.*" />
+          <option name="PATTERN" value="com.hotcenplotz.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.hotcenplotz.web.sprintbootmybatisdemo" />
-      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.sprintbootmybatisdemo.SprintbootMybatisDemoApplicationTests" />
-      <option name="METHOD_NAME" value="testFindAll" />
+      <option name="PACKAGE_NAME" value="com.hotcenplotz" />
+      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.SpringbootMybatisDemoApplicationTests" />
+      <option name="METHOD_NAME" value="testUpdateUserAge" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -246,11 +243,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testUpdateUserAge" />
+        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testAddUser" />
+        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testDeleteById" />
         <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testFindAll" />
         <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests (1)" />
-        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests" />
-        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testFindAll" />
-        <item itemvalue="JUnit.SprintbootMybatisDemoApplicationTests.testFindAll" />
       </list>
     </recent_temporary>
   </component>
@@ -276,7 +273,8 @@
       <workItem from="1767744288895" duration="238000" />
       <workItem from="1767744534155" duration="24000" />
       <workItem from="1767744560457" duration="376000" />
-      <workItem from="1767789391204" duration="6295000" />
+      <workItem from="1767789391204" duration="6714000" />
+      <workItem from="1767915279049" duration="1926000" />
     </task>
     <servers />
   </component>

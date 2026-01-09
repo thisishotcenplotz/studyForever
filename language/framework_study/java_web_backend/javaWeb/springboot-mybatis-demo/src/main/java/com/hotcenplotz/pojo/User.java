@@ -3,6 +3,7 @@ package com.hotcenplotz.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -22,8 +23,21 @@ public class User {
     private String username;
     private String password;
     private String name;
+    @Setter
     private Integer age;
     private LocalDateTime last_update;
+    
+    public User(Integer id, String username, String password, String name, Integer age) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.age = age;
+    }
+    
+    public void lastUpdateNow() {
+        this.last_update = LocalDateTime.now();
+    }
     
     @Override
     public String toString() {
