@@ -25,7 +25,7 @@ class SpringbootMybatisDemoApplicationTests {
     
     @Test
     public void testAddUser() {
-        User user = new User(11,"juechen_ji","dabaojian123","季绝尘",20);
+        User user = new User(11, "juechen_ji", "dabaojian123", "季绝尘", 20);
         user.lastUpdateNow();
         
         Integer save = userMapper.save(user);
@@ -35,9 +35,17 @@ class SpringbootMybatisDemoApplicationTests {
     
     @Test
     public void testUpdateUserAge() {
-        User user = new User(11,"juechen_ji","dabaojian123","季绝尘",19);
+        User user = new User(11, "juechen_ji", "dabaojian123", "季绝尘", 19);
         user.lastUpdateNow();
         
         userMapper.updateUserAge(user);
     }
+    
+    @Test
+    public void testFindUserNameAndPassword() {
+        User byNameAndPass = userMapper.findByNameAndPass("ma_xiaotao", "xiaotaoma");
+        System.out.println(byNameAndPass);
+        
+    }
+    
 }

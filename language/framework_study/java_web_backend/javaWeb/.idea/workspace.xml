@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c661d54-b640-461b-a8fe-8a9b2eef9523" name="Changes" comment="a">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/resources/com/hotcenplotz/mapper/UserMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/pojo/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springboot-mybatis-demo/src/test/java/com/hotcenplotz/SpringbootMybatisDemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/test/java/com/hotcenplotz/SpringbootMybatisDemoApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +68,9 @@
     "JUnit.SpringbootMybatisDemoApplicationTests.executor": "Run",
     "JUnit.SpringbootMybatisDemoApplicationTests.testAddUser.executor": "Run",
     "JUnit.SpringbootMybatisDemoApplicationTests.testDeleteById.executor": "Run",
+    "JUnit.SpringbootMybatisDemoApplicationTests.testFindAll (1).executor": "Run",
     "JUnit.SpringbootMybatisDemoApplicationTests.testFindAll.executor": "Run",
+    "JUnit.SpringbootMybatisDemoApplicationTests.testFindUserNameAndPassword.executor": "Run",
     "JUnit.SpringbootMybatisDemoApplicationTests.testUpdateUserAge.executor": "Run",
     "JUnit.SprintbootMybatisDemoApplicationTests.testFindAll.executor": "Run",
     "Maven.hellospringboot [clean].executor": "Run",
@@ -117,22 +118,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SpringbootMybatisDemoApplicationTests.testUpdateUserAge">
-    <configuration name="SpringbootMybatisDemoApplicationTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="springboot-mybatis-demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hotcenplotz.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hotcenplotz" />
-      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.SpringbootMybatisDemoApplicationTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.SpringbootMybatisDemoApplicationTests.testFindAll (1)">
     <configuration name="SpringbootMybatisDemoApplicationTests.testAddUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springboot-mybatis-demo" />
       <extension name="coverage">
@@ -165,16 +151,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpringbootMybatisDemoApplicationTests.testFindAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="sprintboot-mybatis-demo" />
+    <configuration name="SpringbootMybatisDemoApplicationTests.testFindAll (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot-mybatis-demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hotcenplotz.web.sprintbootmybatisdemo.*" />
+          <option name="PATTERN" value="com.hotcenplotz.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.hotcenplotz.web.sprintbootmybatisdemo" />
-      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.web.sprintbootmybatisdemo.SpringbootMybatisDemoApplicationTests" />
+      <option name="PACKAGE_NAME" value="com.hotcenplotz" />
+      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.SpringbootMybatisDemoApplicationTests" />
       <option name="METHOD_NAME" value="testFindAll" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -192,6 +178,22 @@
       <option name="PACKAGE_NAME" value="com.hotcenplotz" />
       <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.SpringbootMybatisDemoApplicationTests" />
       <option name="METHOD_NAME" value="testFindAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootMybatisDemoApplicationTests.testFindUserNameAndPassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot-mybatis-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hotcenplotz.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hotcenplotz" />
+      <option name="MAIN_CLASS_NAME" value="com.hotcenplotz.SpringbootMybatisDemoApplicationTests" />
+      <option name="METHOD_NAME" value="testFindUserNameAndPassword" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -243,11 +245,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testFindAll (1)" />
+        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testFindUserNameAndPassword" />
         <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testUpdateUserAge" />
         <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testAddUser" />
         <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testDeleteById" />
-        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testFindAll" />
-        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -274,7 +276,8 @@
       <workItem from="1767744534155" duration="24000" />
       <workItem from="1767744560457" duration="376000" />
       <workItem from="1767789391204" duration="6714000" />
-      <workItem from="1767915279049" duration="1926000" />
+      <workItem from="1767915279049" duration="2197000" />
+      <workItem from="1768949997906" duration="3043000" />
     </task>
     <servers />
   </component>
@@ -295,5 +298,25 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="a" />
     <option name="LAST_COMMIT_MESSAGE" value="a" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/springboot-mybatis-demo/src/test/java/com/hotcenplotz/SpringbootMybatisDemoApplicationTests.java</url>
+          <line>44</line>
+          <properties class="com.hotcenplotz.SpringbootMybatisDemoApplicationTests" method="testFindUserNameAndPassword">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/springboot-mybatis-demo/src/test/java/com/hotcenplotz/SpringbootMybatisDemoApplicationTests.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

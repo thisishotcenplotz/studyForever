@@ -20,11 +20,12 @@ public interface UserMapper {
     /**
      * 查询所有用户
      */
-    @Select("select id, username, password, name, age, last_update from the_db.user")
+//    @Select("select id, username, password, name, age, last_update from the_db.user")
     public List<User> findAll();
     
     /**
      * 根据ID删除user
+     *
      * @param id
      */
     @Delete("delete from the_db.user where id = #{id}")
@@ -43,5 +44,12 @@ public interface UserMapper {
     
     @Update("update the_db.user set age = #{age}, last_update = #{last_update} where id = #{id}")
     public Integer updateUserAge(User user);
+    
+    /**
+     * 根据用户名和密码查询用户信息
+     */
+    
+    @Select("select * from the_db.user where username = #{username} and password = #{password}")
+    public User findByNameAndPass(@Param("username") String username, @Param("password") String password);
     
 }
