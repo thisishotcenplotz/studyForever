@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c661d54-b640-461b-a8fe-8a9b2eef9523" name="Changes" comment="a">
-      <change afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/resources/com/hotcenplotz/mapper/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/resources/demo.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/java/com/hotcenplotz/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-mybatis-demo/src/test/java/com/hotcenplotz/SpringbootMybatisDemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/test/java/com/hotcenplotz/SpringbootMybatisDemoApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-mybatis-demo/src/main/resources/_backup_application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +90,7 @@
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "17 (3)",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/jiyu/Documents/Projects/study/language/framework_study/java_web_backend/javaWeb/springboot-mybatis-demo/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -108,6 +109,11 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/springboot-mybatis-demo/src/main/resources" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -118,7 +124,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SpringbootMybatisDemoApplicationTests.testFindAll (1)">
+  <component name="RunManager" selected="JUnit.SpringbootMybatisDemoApplicationTests.testFindAll">
     <configuration name="SpringbootMybatisDemoApplicationTests.testAddUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springboot-mybatis-demo" />
       <extension name="coverage">
@@ -245,11 +251,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testFindAll" />
         <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testFindAll (1)" />
         <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testFindUserNameAndPassword" />
         <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testUpdateUserAge" />
         <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testAddUser" />
-        <item itemvalue="JUnit.SpringbootMybatisDemoApplicationTests.testDeleteById" />
       </list>
     </recent_temporary>
   </component>
@@ -277,7 +283,8 @@
       <workItem from="1767744560457" duration="376000" />
       <workItem from="1767789391204" duration="6714000" />
       <workItem from="1767915279049" duration="2197000" />
-      <workItem from="1768949997906" duration="3043000" />
+      <workItem from="1768949997906" duration="4109000" />
+      <workItem from="1769039911278" duration="926000" />
     </task>
     <servers />
   </component>

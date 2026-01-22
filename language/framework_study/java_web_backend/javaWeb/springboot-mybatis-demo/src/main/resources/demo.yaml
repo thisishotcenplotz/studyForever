@@ -1,0 +1,15 @@
+# Map
+user:
+  name: Tom
+  age: 18
+  gender: M
+  pwd: '012345'
+
+
+
+#List/Set
+hobby:
+  - Scala
+  - Rust
+  - Golang
+  - Java
