@@ -1,0 +1,20 @@
+# Springboot Configuration
+spring:
+  application:
+    name: management
+
+  ### Database Connection
+  datasource:
+    url: jdbc:mysql://localhost:3306/tlias
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+
+
+
+# Mybatis
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    ### 开启驼峰命名映射
+    map-underscore-to-camel-case: true
