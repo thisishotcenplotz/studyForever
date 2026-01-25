@@ -15,18 +15,48 @@ import java.util.List;
 
 @Mapper
 public interface EmployeeMapper {
+    // -------------------------------------原始分页查询--------------------------
     
-    /**
-     * 总记录数
-     */
-    
-    @Select("select count(*) from tlias.employee")
-    Long count();
-    
-    
-    /**
-     * 分页查询方法
-     */
+//    /**
+//     * 总记录数
+//     */
+//
+//    @Select("select count(*) from tlias.employee")
+//    Long count();
+//
+//
+//    /**
+//     * 分页查询方法
+//     */
+//
+//    @Select("""
+//        select
+//            emp.id              as id,
+//            emp.username        as username,
+//            emp.password        as password,
+//            emp.name            as name,
+//            emp.gender          as gender,
+//            emp.phone           as phone,
+//            emp.job             as job,
+//            emp.salary          as salary,
+//            emp.image           as image,
+//            emp.entry_date      as entryDate,
+//            emp.created_at      as createdAt,
+//            emp.updated_at      as updatedAt,
+//            emp.department_id   as departmentId,
+//            dpt.name            as departmentName
+//        from employee emp
+//        left join department dpt on emp.department_id = dpt.id
+//        order by emp.updated_at desc
+//        limit #{start}, #{pageSize}
+//
+//    """)
+//    List<Employee> list(
+//        @Param("start") Integer start,
+//        @Param("pageSize") Integer pageSize
+//    );
+
+    // ------------------------ PageHelper 分页查询 ----------------------
     
     @Select("""
         select
@@ -47,12 +77,7 @@ public interface EmployeeMapper {
         from employee emp
         left join department dpt on emp.department_id = dpt.id
         order by emp.updated_at desc
-        limit #{start}, #{pageSize}
-
     """)
-    List<Employee> list(
-        @Param("start") Integer start,
-        @Param("pageSize") Integer pageSize
-    );
+    public List<Employee> list();
 
 }
