@@ -4,6 +4,8 @@ import com.hotcenplotz.pojo.Employee;
 import com.hotcenplotz.pojo.PageResult;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 /**
  * @author: Der Hotcenplotz
  * @version： 1.0
@@ -21,5 +23,7 @@ public interface EmployeeService {
      * @param pageSize 每页展示的记录数
      * @return
      */
-    PageResult<Employee> page(Integer page, Integer pageSize);
+    // PageResult<Employee> page(Integer page, Integer pageSize);
+    
+    PageResult<Employee> page(Integer page, Integer pageSize, String name, Integer gender, LocalDate begin, LocalDate end);
 }

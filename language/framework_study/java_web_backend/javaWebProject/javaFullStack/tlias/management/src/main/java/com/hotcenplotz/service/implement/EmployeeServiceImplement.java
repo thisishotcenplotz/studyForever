@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -46,19 +47,43 @@ public class EmployeeServiceImplement implements EmployeeService {
 //        return new PageResult<Employee>(count, rows);
 //    }
     
-    // ------------------------ PageHelper 分页查询 -------------------
+    
     @Override
-    public PageResult<Employee> page(Integer page, Integer pageSize) {
+    public PageResult<Employee> page(
+        Integer page,
+        Integer pageSize,
+        String name,
+        Integer gender,
+        LocalDate begin,
+        LocalDate end
+    ) {
         
-        // 1. 设置分页参数
-        PageHelper.startPage(page, pageSize);
+        // 1. 查询总记录数
+        Long count = employeeMapper.count();
+        System.out.println(count);
         
-        // 2. 执行查询
-        List<Employee> list = employeeMapper.list();
+        // 2. 查询结果列表
+        Integer _startPage = page >= 1 ? page : 1;
+        Integer start = (_startPage - 1) * pageSize;
+        log.info("start, pageSize: {},{}", start, pageSize);
+        List<Employee> rows = employeeMapper.list(start, pageSize,name,gender,begin,end);
         
-        // 3. 查询结果
-        Page<Employee> p = (Page<Employee>) list;
-        
-        return new PageResult<Employee>(p.getTotal(), p.getResult());
+        return new PageResult<Employee>(count, rows);
     }
+    
+    // ------------------------ PageHelper 分页查询 -------------------
+//    @Override
+//    public PageResult<Employee> page(Integer page, Integer pageSize) {
+//
+//        // 1. 设置分页参数
+//        PageHelper.startPage(page, pageSize);
+//
+//        // 2. 执行查询
+//        List<Employee> list = employeeMapper.list();
+//
+//        // 3. 查询结果
+//        Page<Employee> p = (Page<Employee>) list;
+//
+//        return new PageResult<Employee>(p.getTotal(), p.getResult());
+//    }
 }

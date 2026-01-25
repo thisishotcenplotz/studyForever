@@ -205,24 +205,27 @@ limit 15,5;
 
 
 select
-    emp.id as id
-    ,emp.username as username
-    ,emp.password as password
-    ,emp.name as name
-    ,emp.gender as gender
-    ,emp.phone as phone
-    ,emp.job as job
-    ,emp.salary as salary
-    ,emp.image as image
-    ,emp.entry_date as entry_date
-    ,emp.created_at as created_at
-    ,emp.updated_at as updated_at
-    ,emp.department_id as department_id
-    ,dpt.name as department_name
-from tlias.employee emp
-left join tlias.department dpt on emp.department_id = dpt.id
+    emp.id              as id,
+    emp.username        as username,
+    emp.password        as password,
+    emp.name            as name,
+    emp.gender          as gender,
+    emp.phone           as phone,
+    emp.job             as job,
+    emp.salary          as salary,
+    emp.image           as image,
+    emp.entry_date      as entryDate,
+    emp.created_at      as createdAt,
+    emp.updated_at      as updatedAt,
+    emp.department_id   as departmentId,
+    dpt.name            as departmentName
+from employee emp
+left join department dpt
+on(emp.department_id = dpt.id)
+where emp.name like '%张%'
+    and emp.gender = '1'
+    and emp.entry_date between '1900-01-01' and '9999-12-31'
 order by emp.updated_at desc
-limit #{start}, #{pageSize}
 
 
 
