@@ -42,4 +42,9 @@ public class DepartmentServiceImplement implements DepartmentService {
         return departmentMapper.getById(id);
     }
     
+    @Override
+    public void update(Department department) {
+        departmentMapper.update(department);
+    }
+    
 }

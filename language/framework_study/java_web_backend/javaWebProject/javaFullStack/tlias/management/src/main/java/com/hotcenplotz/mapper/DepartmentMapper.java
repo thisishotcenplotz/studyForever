@@ -1,10 +1,7 @@
 package com.hotcenplotz.mapper;
 
 import com.hotcenplotz.pojo.Department;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -32,4 +29,7 @@ public interface DepartmentMapper {
     
     @Select("select id,name,created_at,updated_at from tlias.department where id = #{id}")
     Department getById(Integer id);
+    
+    @Update("update tlias.department set name = #{name}, updated_at = now() where id = #{id}")
+    void update(Department department);
 }

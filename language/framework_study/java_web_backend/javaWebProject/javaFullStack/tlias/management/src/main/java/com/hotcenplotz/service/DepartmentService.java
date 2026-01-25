@@ -25,4 +25,10 @@ public interface DepartmentService {
     void add(Department department);
     
     Department getInfo(Integer id);
+    
+    /**
+     * 修改部门
+     * @param department
+     */
+    void update(Department department);
 }
